@@ -1,0 +1,17 @@
+
+<mat-toolbar>
+    <span>Real Estate</span>
+    
+    <span class="example-padding"></span>
+    <div *ngFor="let menu of menus">
+        <button mat-button>{{menu.name}}</button>
+    </div>
+
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon>favorite</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>share</mat-icon>
+    </button>
+</mat-toolbar>
