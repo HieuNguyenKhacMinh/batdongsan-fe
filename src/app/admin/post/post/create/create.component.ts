@@ -18,13 +18,30 @@ export class CreatePostComponent implements OnInit {
         this.dialogRef.close();
     }
     dataSource: any;
-    columns: any;
+    columns: any[];
     properties: any;
-    ngOnInit() {
+    async ngOnInit() {
         console.log(this.data);
         // get properites
         this.properties = this.data.properties;
-        this.columns = Object.keys(this.data.properties);
+        // filter những collum có visible != true
+        this.columns = Object.keys(this.data.properties)
+            .filter((column: any) => this.properties[column].visible !== true);
+
+        // get colums reference 
+        const references = this.columns.filter((column: any) => this.properties[column].reference !== undefined);
+        console.log(references);
+
+        // get data referent
+        await Promise.all(references.map(async column => {
+            await this.service.getData(this.properties[column].reference.api_url).subscribe((res) =>{
+                this.properties[column].data = res;
+            })
+        }))
+
+        console.log(this.properties);
+        
+
         this.dataSource = this.data.dataSource || {};
         // set to form control
 
@@ -36,6 +53,6 @@ export class CreatePostComponent implements OnInit {
         this.service.update(this.dataSource).subscribe(res => {
             this.dialogRef.close();
         })
-       
+
     }
 }

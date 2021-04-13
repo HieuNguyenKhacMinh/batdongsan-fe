@@ -2,10 +2,50 @@
 <div>
   <div *ngFor="let column of columns">
     <div *ngIf="column !== 'id'">
-      <mat-form-field>
-        <mat-label> {{properties[column].alias}}</mat-label>
-        <input matInput [(ngModel)]="dataSource[column]">
-      </mat-form-field>
+      <!-- if textarea -->
+      <div *ngIf="properties[column].type ==='textarea'">
+        <mat-form-field class="example-full-width">
+          <mat-label>{{properties[column].alias}}</mat-label>
+          <textarea matInput [matAutosize]=true [rows]="properties[column].row_number"
+            [(ngModel)]="dataSource[column]"></textarea>
+        </mat-form-field>
+      </div>
+      <!-- else textarea -->
+      <div *ngIf="properties[column].type !=='textarea'">
+
+        <div *ngIf="properties[column].type ==='dropdown'">
+          <div *ngIf="properties[column].data">
+            <mat-form-field appearance="fill">
+              <mat-label>{{properties[column].alias}}</mat-label>
+              <mat-select [(ngModel)]="dataSource[column]">
+                <mat-option *ngFor="let food of properties[column].data"
+                  [value]="food[properties[column].reference.value]">
+                  {{food[properties[column].reference.label]}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <!-- else dropdown -->
+        <div *ngIf="properties[column].type !=='dropdown'">
+          <div *ngIf="properties[column].type ==='radio'">
+          
+            <mat-radio-group aria-label="{{properties[column].alias}}" [(ngModel)]="dataSource[column]">
+              <mat-radio-button *ngFor="let food of properties[column].data"
+              [value]="food[properties[column].reference.value]">  
+              {{food[properties[column].reference.label]}}
+            </mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <!-- else radio -->
+          <div *ngIf="properties[column].type !=='radio'">
+            <mat-form-field>
+              <mat-label> {{properties[column].alias}}</mat-label>
+              <input matInput [(ngModel)]="dataSource[column]">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

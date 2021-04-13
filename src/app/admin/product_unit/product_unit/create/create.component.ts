@@ -1,17 +1,17 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ProductTypeService } from '../product-type.service';
+import { ProductUnitService } from '../product_unit.service';
 
 @Component({
-    selector: 'create-product-type',
+    selector: 'create-productunit',
     templateUrl: 'create.component.html',
     styleUrls: ['create.component.scss']
 })
 
-export class CreateProductTypeComponent implements OnInit {
+export class CreateProductUnitComponent implements OnInit {
     constructor(
-        private service: ProductTypeService,
-        public dialogRef: MatDialogRef<CreateProductTypeComponent>,
+        private service: ProductUnitService,
+        public dialogRef: MatDialogRef<CreateProductUnitComponent>,
         @Inject(MAT_DIALOG_DATA) public data: any) { }
 
     onNoClick(): void {

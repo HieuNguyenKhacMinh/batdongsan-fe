@@ -2,14 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class PostService {
-  url = 'http://localhost:3000/cms/posts';
+export class PageService {
+  url = 'http://localhost:3000/cms/page';
   propertiesUrl = ''
   constructor(private http: HttpClient) { }
 
   all(): any {
     let headers = { authorization: localStorage.getItem('authorization') || '', site_id: localStorage.getItem('site_id') || '' }
-    return this.http.post(`${this.url}/all`, { headers });
+    return this.http.get(`${this.url}`, { headers });
   }
 
   get(id: any): any {
@@ -18,7 +18,7 @@ export class PostService {
 
   getProperties() {
     let headers = { authorization: localStorage.getItem('authorization') || '', site_id: localStorage.getItem('site_id') || '' }
-    return this.http.get(`http://localhost:3000/cms/table-config/post`, { headers });
+    return this.http.get(`http://localhost:3000/cms/table-config/page`, { headers });
   }
   update(data: any) {
     let headers = {
@@ -34,13 +34,5 @@ export class PostService {
       site_id: localStorage.getItem('site_id') || ''
     };
     return this.http.delete(`${this.url}/${data.id}`, { headers });
-  }
-
-  getData(url: string) {
-    let headers = {
-      authorization: localStorage.getItem('authorization') || '',
-      site_id: localStorage.getItem('site_id') || ''
-    };
-    return this.http.get(`${url}`, { headers });
   }
 }

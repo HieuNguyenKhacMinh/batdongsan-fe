@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { ProductTypeService } from './product-type.service';
+import { PageService } from './page.service';
 import { MatDialog } from '@angular/material/dialog';
-import { CreateProductTypeComponent } from './create/create.component';
-import { DeleteProductTypeComponent } from './delete/delete.component';
+import { CreatePageComponent } from './create/create.component';
+import { DeletePageComponent } from './delete/delete.component';
 
 @Component({
-  selector: 'app-product-type',
-  templateUrl: './product-type.component.html',
-  styleUrls: ['./product-type.component.scss'],
+  selector: 'app-page',
+  templateUrl: './page.component.html',
+  styleUrls: ['./page.component.scss'],
   animations: [
     trigger('detailExpand', [
       state('collapsed', style({ height: '0px', minHeight: '0' })),
@@ -17,15 +17,15 @@ import { DeleteProductTypeComponent } from './delete/delete.component';
     ]),
   ],
 })
-export class ProductTypeComponent implements OnInit {
+export class PageComponent implements OnInit {
 
-  constructor(private producttypeService: ProductTypeService, public dialog: MatDialog) {
+  constructor(private pageService: PageService, public dialog: MatDialog) {
 
   }
 
   ngOnInit(): void {
     //get table properties
-    this.producttypeService.getProperties().subscribe((res: any) => {
+    this.pageService.getProperties().subscribe((res: any) => {
       // change column display
       this.properties = res.content;
       this.columnsToDisplay = Object.keys(res.content);
@@ -37,7 +37,7 @@ export class ProductTypeComponent implements OnInit {
 
   getDatasource() {
  // set datasource
- this.producttypeService.all().subscribe((res: any) => {
+ this.pageService.all().subscribe((res: any) => {
   this.dataSource = res;
 })
   }
@@ -47,7 +47,7 @@ export class ProductTypeComponent implements OnInit {
   expandedElement: any | null | undefined;
   properties: any;
   openDialog(dataSource?: any): void {
-    const dialogRef = this.dialog.open(CreateProductTypeComponent, {
+    const dialogRef = this.dialog.open(CreatePageComponent, {
       width: '550px',
       data: {properties: this.properties, dataSource}
     });
@@ -59,7 +59,7 @@ export class ProductTypeComponent implements OnInit {
     });
   }
   confirmDialog(dataSource?: any): void {
-    const dialogRef = this.dialog.open(DeleteProductTypeComponent, {
+    const dialogRef = this.dialog.open(DeletePageComponent, {
       width: '550px',
       data: {properties: this.properties, dataSource}
     });

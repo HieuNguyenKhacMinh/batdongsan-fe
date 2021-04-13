@@ -88,12 +88,21 @@ const routes: Routes = [{
         }, {
             path: 'readstatus',
             loadChildren: () => import('./read-status/read-status/read-status.module').then(m => m.ReadStatusModule)
+        },{
+            path: 'page',
+            loadChildren: () => import('./page/page/page.module').then(m => m.PageModule)
         }, {
             path: 'comment',
             loadChildren: () => import('./comment/comment/comment.module').then(m => m.CommentModule)
+        },{
+            path: 'product-type',
+            loadChildren: () => import('./product-type/product-type/product-type.module').then(m => m.ProductTypeModule)
         }, {
             path: 'message',
             loadChildren: () => import('./message/massage/message.module').then(m => m.MessageModule)
+        },{
+            path: 'product-unit',
+            loadChildren: () => import('./product_unit/product_unit/product_unit.module').then(m => m.ProductUnitModule)
         }, {
             path: 'address',
             loadChildren: () => import('./address/address/address.module').then(m => m.AddressModule)

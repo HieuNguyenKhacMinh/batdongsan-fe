@@ -25,21 +25,22 @@ export class PostComponent implements OnInit {
 
   ngOnInit(): void {
     //get table properties
+    // http://localhost:3000/cms/table-config/post -> res:  {name: "", content: {}}
     this.postService.getProperties().subscribe((res: any) => {
       // change column display
       this.properties = res.content;
-      this.columnsToDisplay = Object.keys(res.content);
+      this.columnsToDisplay = Object.keys(res.content).filter((column: any) => this.properties[column].visible !== true);
       this.columnsToDisplay.push('action');
     })
-   
+
     this.getDatasource();
   }
 
   getDatasource() {
- // set datasource
- this.postService.all().subscribe((res: any) => {
-  this.dataSource = res;
-})
+    // set datasource
+    this.postService.all().subscribe((res: any) => {
+      this.dataSource = res;
+    })
   }
 
   dataSource: any;
@@ -49,7 +50,7 @@ export class PostComponent implements OnInit {
   openDialog(dataSource?: any): void {
     const dialogRef = this.dialog.open(CreatePostComponent, {
       width: '550px',
-      data: {properties: this.properties, dataSource}
+      data: { properties: this.properties, dataSource }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -61,7 +62,7 @@ export class PostComponent implements OnInit {
   confirmDialog(dataSource?: any): void {
     const dialogRef = this.dialog.open(DeletePostComponent, {
       width: '550px',
-      data: {properties: this.properties, dataSource}
+      data: { properties: this.properties, dataSource }
     });
 
     dialogRef.afterClosed().subscribe(result => {
