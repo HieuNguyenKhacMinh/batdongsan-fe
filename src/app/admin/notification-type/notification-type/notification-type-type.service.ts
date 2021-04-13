@@ -18,7 +18,7 @@ export class NotificationTypeService {
 
   getProperties() {
     let headers = { authorization: localStorage.getItem('authorization') || '', site_id: localStorage.getItem('site_id') || '' }
-    return this.http.get(`http://localhost:3000/cms/table-config/notification-type`, { headers });
+    return this.http.get(`http://localhost:3000/cms/table-config/notification_type`, { headers });
   }
   update(data: any) {
     let headers = {

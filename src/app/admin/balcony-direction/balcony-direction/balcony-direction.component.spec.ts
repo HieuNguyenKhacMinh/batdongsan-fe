@@ -1,20 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { BalconyDirectionComponent } from './balcony-direction.component';
 
-import { MessageComponent } from './message.component';
-
-describe('MesageComponent', () => {
-  let component: MessageComponent;
-  let fixture: ComponentFixture<MessageComponent>;
+describe('HotelComponent', () => {
+  let component:  BalconyDirectionComponent;
+  let fixture: ComponentFixture< BalconyDirectionComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MessageComponent ]
+      declarations: [  BalconyDirectionComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MessageComponent);
+    fixture = TestBed.createComponent( BalconyDirectionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

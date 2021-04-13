@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MessageComponent } from './message.component';
+import { HashtagComponent } from './hashtag.component';
 
-describe('MesageComponent', () => {
-  let component: MessageComponent;
-  let fixture: ComponentFixture<MessageComponent>;
+describe('HotelComponent', () => {
+  let component: HashtagComponent;
+  let fixture: ComponentFixture<HashtagComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MessageComponent ]
+      declarations: [ HashtagComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MessageComponent);
+    fixture = TestBed.createComponent(HashtagComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

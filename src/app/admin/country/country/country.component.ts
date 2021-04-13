@@ -1,16 +1,14 @@
-
-
 import { Component, OnInit } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { MessageService } from './message.service';
+import { CountryService } from './country.service';
 import { MatDialog } from '@angular/material/dialog';
-import { CreateMessageComponent } from './create/create.component';
-import { DeleteMessageComponent } from './delete/delete.component';
+import { CreateCountryComponent } from './create/create.component';
+import { DeleteCountryComponent } from './delete/delete.component';
 
 @Component({
-  selector: 'app-message',
-  templateUrl: './message.component.html',
-  styleUrls: ['./message.component.scss'],
+  selector: 'app-country',
+  templateUrl: './country.component.html',
+  styleUrls: ['./country.component.scss'],
   animations: [
     trigger('detailExpand', [
       state('collapsed', style({ height: '0px', minHeight: '0' })),
@@ -19,19 +17,18 @@ import { DeleteMessageComponent } from './delete/delete.component';
     ]),
   ],
 })
-export class MessageComponent implements OnInit {
+export class CountryComponent implements OnInit {
 
-  constructor(private messageService: MessageService, public dialog: MatDialog) {
+  constructor(private countryService: CountryService, public dialog: MatDialog) {
 
   }
 
   ngOnInit(): void {
     //get table properties
-    this.messageService.getProperties().subscribe((res: any) => {
+    this.countryService.getProperties().subscribe((res: any) => {
       // change column display
       this.properties = res.content;
       this.columnsToDisplay = Object.keys(res.content);
-      console.log(this.properties);
       this.columnsToDisplay.push('action');
     })
    
@@ -40,7 +37,7 @@ export class MessageComponent implements OnInit {
 
   getDatasource() {
  // set datasource
- this.messageService.all().subscribe((res: any) => {
+ this.countryService.all().subscribe((res: any) => {
   this.dataSource = res;
 })
   }
@@ -50,7 +47,7 @@ export class MessageComponent implements OnInit {
   expandedElement: any | null | undefined;
   properties: any;
   openDialog(dataSource?: any): void {
-    const dialogRef = this.dialog.open(CreateMessageComponent, {
+    const dialogRef = this.dialog.open(CreateCountryComponent, {
       width: '550px',
       data: {properties: this.properties, dataSource}
     });
@@ -62,7 +59,7 @@ export class MessageComponent implements OnInit {
     });
   }
   confirmDialog(dataSource?: any): void {
-    const dialogRef = this.dialog.open(DeleteMessageComponent, {
+    const dialogRef = this.dialog.open(DeleteCountryComponent, {
       width: '550px',
       data: {properties: this.properties, dataSource}
     });

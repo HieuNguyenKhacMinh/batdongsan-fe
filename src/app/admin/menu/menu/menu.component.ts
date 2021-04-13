@@ -1,16 +1,14 @@
-
-
 import { Component, OnInit } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { MessageService } from './message.service';
+import { MenuService } from './menu.service';
 import { MatDialog } from '@angular/material/dialog';
-import { CreateMessageComponent } from './create/create.component';
-import { DeleteMessageComponent } from './delete/delete.component';
+import { CreateMenuComponent } from './create/create.component';
+import { DeleteMenuComponent } from './delete/delete.component';
 
 @Component({
-  selector: 'app-message',
-  templateUrl: './message.component.html',
-  styleUrls: ['./message.component.scss'],
+  selector: 'app-menu',
+  templateUrl: './menu.component.html',
+  styleUrls: ['./menu.component.scss'],
   animations: [
     trigger('detailExpand', [
       state('collapsed', style({ height: '0px', minHeight: '0' })),
@@ -19,19 +17,18 @@ import { DeleteMessageComponent } from './delete/delete.component';
     ]),
   ],
 })
-export class MessageComponent implements OnInit {
+export class MenuComponent implements OnInit {
 
-  constructor(private messageService: MessageService, public dialog: MatDialog) {
+  constructor(private menuService: MenuService, public dialog: MatDialog) {
 
   }
 
   ngOnInit(): void {
     //get table properties
-    this.messageService.getProperties().subscribe((res: any) => {
+    this.menuService.getProperties().subscribe((res: any) => {
       // change column display
       this.properties = res.content;
       this.columnsToDisplay = Object.keys(res.content);
-      console.log(this.properties);
       this.columnsToDisplay.push('action');
     })
    
@@ -40,7 +37,7 @@ export class MessageComponent implements OnInit {
 
   getDatasource() {
  // set datasource
- this.messageService.all().subscribe((res: any) => {
+ this.menuService.all().subscribe((res: any) => {
   this.dataSource = res;
 })
   }
@@ -50,7 +47,7 @@ export class MessageComponent implements OnInit {
   expandedElement: any | null | undefined;
   properties: any;
   openDialog(dataSource?: any): void {
-    const dialogRef = this.dialog.open(CreateMessageComponent, {
+    const dialogRef = this.dialog.open(CreateMenuComponent, {
       width: '550px',
       data: {properties: this.properties, dataSource}
     });
@@ -62,7 +59,7 @@ export class MessageComponent implements OnInit {
     });
   }
   confirmDialog(dataSource?: any): void {
-    const dialogRef = this.dialog.open(DeleteMessageComponent, {
+    const dialogRef = this.dialog.open(DeleteMenuComponent, {
       width: '550px',
       data: {properties: this.properties, dataSource}
     });

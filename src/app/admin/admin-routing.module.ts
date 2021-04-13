@@ -11,7 +11,11 @@ const routes: Routes = [{
             path: 'category',
             loadChildren: () => import('./category/category/category.module').then(m => m.CategoryModule)
         },
-         {
+        {
+            path: 'menu',
+            loadChildren: () => import('./menu/menu/menu.module').then(m => m.MenuModule)
+        },
+        {
             path: 'status',
             loadChildren: () => import('./status/status/status.module').then(m => m.StatusModule)
         }, {
@@ -20,65 +24,77 @@ const routes: Routes = [{
         }, {
             path: 'formality',
             loadChildren: () => import('./formality/formality/formality.module').then(m => m.FormalityModule)
-        },{
-            path: 'notificationtype',
+        }, {
+            path: 'notification-type',
             loadChildren: () => import('./notification-type/notification-type/notification-type.module').then(m => m.NotificationTypeModule)
-        },{
+        }, {
             path: 'provincecity',
             loadChildren: () => import('./province-city/province-city/provincecity.module').then(m => m.ProvinceCityModule)
-        },{
+        }, {
             path: 'project',
             loadChildren: () => import('./project/poject/project.module').then(m => m.ProjectModule)
+        },{
+            path: 'country',
+            loadChildren: () => import('./country/country/country.module').then(m => m.CountryModule)
         },
         {
             path: 'post',
             loadChildren: () => import('./post/post/post.module').then(m => m.PostModule)
+        }, {
+            path: 'balcony-direction',
+            loadChildren: () => import('./balcony-direction/balcony-direction/balcony-direction.module').then(m => m.BalconyDirectionModule)
         },
         {
             path: 'district',
             loadChildren: () => import('./district/district/district.module').then(m => m.DistrictModule)
+        }, {
+            path: 'notification',
+            loadChildren: () => import('./notification/notification/notification.module').then(m => m.NotificationModule)
         },
         {
             path: 'producttype',
             loadChildren: () => import('./product-type/product-type/product-type.module').then(m => m.ProductTypeModule)
-        },{
+        }, {
             path: 'organization',
             loadChildren: () => import('./organization/organization/organization.module').then(m => m.OrganizationModule)
-        },{
+        }, {
             path: 'widget',
             loadChildren: () => import('./widget/widget/widget.module').then(m => m.WidgetModule)
-        },{
+        }, {
             path: 'lead',
             loadChildren: () => import('./lead/lead/lead.module').then(m => m.LeadModule)
-        },{
+        }, {
             path: 'comment',
             loadChildren: () => import('./comment/comment/comment.module').then(m => m.CommentModule)
-        },{
+        }, {
             path: 'dashboard',
             loadChildren: () => import('./dashboard/dashboard/dashboard.module').then(m => m.DashboardModule)
-        },{
+        }, {
             path: 'user',
             loadChildren: () => import('./user/user/user.module').then(m => m.UserModule)
-        },{
+        }, {
             path: 'product',
             loadChildren: () => import('./product/product/product.module').then(m => m.ProductModule)
+        },{
+            path: 'hashtag',
+            loadChildren: () => import('./hashtag/hashtag/hashtag.module').then(m => m.HashtagModule)
         },
         {
             path: 'house-direstion',
             loadChildren: () => import('./house-direstion/house-direstion/housedirestion.module').then(m => m.HouseDirestionModule)
-        },{
+        }, {
             path: 'notification',
             loadChildren: () => import('./notification/notification/notification.module').then(m => m.NotificationModule)
-        },{
+        }, {
             path: 'readstatus',
             loadChildren: () => import('./read-status/read-status/read-status.module').then(m => m.ReadStatusModule)
-        },{
+        }, {
             path: 'comment',
             loadChildren: () => import('./comment/comment/comment.module').then(m => m.CommentModule)
-        },{
+        }, {
             path: 'message',
             loadChildren: () => import('./message/massage/message.module').then(m => m.MessageModule)
-        },{
+        }, {
             path: 'address',
             loadChildren: () => import('./address/address/address.module').then(m => m.AddressModule)
         },

@@ -6,7 +6,7 @@ import { CreateNotificationTypeComponent } from './create/create.component';
 import { DeleteNotificationTypeComponent } from './delete/delete.component';
 
 @Component({
-  selector: 'app-notificationtype',
+  selector: 'app-notification-type',
   templateUrl: './notification-type-type.component.html',
   styleUrls: ['./notification-type-type.component.scss'],
   animations: [
