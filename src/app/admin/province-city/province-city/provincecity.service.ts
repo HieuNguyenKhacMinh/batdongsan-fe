@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class ProvinceCityService {
-  url = 'http://localhost:3000/cms/provincecity';
+  url = 'http://localhost:3000/cms/province-city';
   propertiesUrl = ''
   constructor(private http: HttpClient) { }
 
@@ -18,7 +18,7 @@ export class ProvinceCityService {
 
   getProperties() {
     let headers = { authorization: localStorage.getItem('authorization') || '', site_id: localStorage.getItem('site_id') || '' }
-    return this.http.get(`http://localhost:3000/cms/table-config/provincecity`, { headers });
+    return this.http.get(`http://localhost:3000/cms/table-config/province-city`, { headers });
   }
   update(data: any) {
     let headers = {
@@ -34,5 +34,12 @@ export class ProvinceCityService {
       site_id: localStorage.getItem('site_id') || ''
     };
     return this.http.delete(`${this.url}/${data.id}`, { headers });
+  }
+  getData(url: string) {
+    let headers = {
+      authorization: localStorage.getItem('authorization') || '',
+      site_id: localStorage.getItem('site_id') || ''
+    };
+    return this.http.get(`${url}`, { headers });
   }
 }

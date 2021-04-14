@@ -6,7 +6,7 @@ import { CreateProvinceCityComponent } from './create/create.component';
 import { DeleteProvinceCityComponent } from './delete/delete.component';
 
 @Component({
-  selector: 'app-provincecity',
+  selector: 'app-province-city',
   templateUrl: './provincecity.component.html',
   styleUrls: ['./provincecity.component.scss'],
   animations: [

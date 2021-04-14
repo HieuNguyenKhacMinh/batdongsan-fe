@@ -25,7 +25,13 @@ export class CreateStatusComponent implements OnInit {
         console.log(this.data);
         // get properites
         this.properties = this.data.properties;
-        this.columns = Object.keys(this.data.properties);
+        // filter những collum có visible != true
+        this.columns = Object.keys(this.data.properties)
+            .filter((column: any) => this.properties[column].visible !== true);
+       
+
+
+
         this.dataSource = this.data.dataSource || {};
         // set to form control
 

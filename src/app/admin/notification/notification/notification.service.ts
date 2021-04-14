@@ -35,4 +35,11 @@ export class NotificationService {
     };
     return this.http.delete(`${this.url}/${data.id}`, { headers });
   }
+  getData(url: string) {
+    let headers = {
+      authorization: localStorage.getItem('authorization') || '',
+      site_id: localStorage.getItem('site_id') || ''
+    };
+    return this.http.get(`${url}`, { headers });
+  }
 }

@@ -28,7 +28,7 @@ const routes: Routes = [{
             path: 'notification-type',
             loadChildren: () => import('./notification-type/notification-type/notification-type.module').then(m => m.NotificationTypeModule)
         }, {
-            path: 'provincecity',
+            path: 'province-city',
             loadChildren: () => import('./province-city/province-city/provincecity.module').then(m => m.ProvinceCityModule)
         }, {
             path: 'project',

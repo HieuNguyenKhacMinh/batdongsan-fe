@@ -12,6 +12,9 @@ export class CreatePostComponent implements OnInit {
     constructor(
         private service: PostService,
         public dialogRef: MatDialogRef<CreatePostComponent>,
+        // data này được truyền từ list category
+        // data : {dataSource, properties}
+        // datasource Là ! object chua thong tin cua category {id: "5345367867", name: "categoryname", description: "gndsndsgd"}
         @Inject(MAT_DIALOG_DATA) public data: any) { }
 
     onNoClick(): void {
@@ -28,7 +31,7 @@ export class CreatePostComponent implements OnInit {
         this.columns = Object.keys(this.data.properties)
             .filter((column: any) => this.properties[column].visible !== true);
 
-        // get colums reference 
+        /** colums reference */
         const references = this.columns.filter((column: any) => this.properties[column].reference !== undefined);
         console.log(references);
 
