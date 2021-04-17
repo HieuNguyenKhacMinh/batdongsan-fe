@@ -1,0 +1,16 @@
+.search {
+    background: #000;
+    color: #fff;
+    .mat-button-toggle {
+        background-color: #000;
+    }
+    .mat-button-toggle-checked {
+        color: #fff;
+        border: 1px solid #fff;
+    }
+
+    .mat-form-field {
+        width: 150px;
+    }
+ 
+}

@@ -1,0 +1,14 @@
+.real-estate {
+    .flex {
+        display: flex;
+
+        .mat-card-image {
+            width: 100px;
+            border-radius: 5%;
+            margin: 0;
+        }
+        .content {
+            margin: 0 16px;
+        }
+    }
+}

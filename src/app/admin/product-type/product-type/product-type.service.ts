@@ -42,4 +42,5 @@ export class ProductTypeService {
     };
     return this.http.get(`${url}`, { headers });
   }
+  
 }

@@ -3,9 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: "news",
-    loadChildren: () => import('./news/news.module').then(m => m.NewsModule)
-  },
+    path: "client",
+    loadChildren: () => import('./client/client.module').then(m => m.ClientModule)
+  }, 
   {
     path: "admin",
     loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
@@ -16,7 +16,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'news',
+    redirectTo: '',
     pathMatch: 'full'
   }];
 

@@ -1,0 +1,81 @@
+<div class="search">
+    <mat-button-toggle-group appearance="legacy"  [(ngModel)]="search.formality_id" (change)="selectedFormality()">
+        <mat-button-toggle mat-raised-button *ngFor="let p of formalities" [value]="p.id">
+            <mat-icon [style.color]="search.formality_id===p.id ? '#fff' : '#ccc'">check</mat-icon>
+
+            {{p.name}}</mat-button-toggle>
+    </mat-button-toggle-group>
+    <!-- <mat-button-toggle-group appearance="legacy" name="fontStyle" aria-label="Font Style">
+        <mat-button-toggle [value]="f.id" *ngFor="let f of formalities">{{f.name}}</mat-button-toggle>
+    </mat-button-toggle-group> -->
+    <!-- tim kiem -->
+    <!-- product type -->
+    <mat-form-field appearance="fill" style="width: 200px;">
+        <mat-label>Loại nhà đất</mat-label>
+        <mat-select>
+            <mat-option *ngFor="let p of productTypes" [value]="p.id">
+                {{p.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+
+
+    <!-- country -->
+    <mat-form-field appearance="fill">
+        <mat-label>Quốc gia</mat-label>
+        <mat-select [(ngModel)]="search.country_id" (selectionChange)="selectedCountry()">
+            <mat-option *ngFor="let p of countries" [value]="p.id">
+                {{p.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <!-- City -->
+    <mat-form-field appearance="fill" *ngIf="cities">
+        <mat-label>Tĩnh thành phố</mat-label>
+        <mat-select [(ngModel)]="search.city_id" (selectionChange)="selectedCity()">
+            <mat-option *ngFor="let p of cities" [value]="p.id">
+                {{p.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <!-- district -->
+    <mat-form-field appearance="fill">
+        <mat-label>Quận Huyện</mat-label>
+        <mat-select *ngIf="districts">
+            <mat-option *ngFor="let p of districts" [value]="p.id">
+                {{p.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <!-- price -->
+    <br/>
+    <mat-form-field appearance="fill" style="width:180px;">
+        <mat-label>Giá</mat-label>
+        <mat-select>
+            <mat-option *ngFor="let p of prices" [value]="p.id">
+                {{p.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <!-- m2 -->
+    <mat-form-field appearance="fill">
+        <mat-label>Mét vuông</mat-label>
+        <mat-select>
+            <mat-option *ngFor="let p of m2" [value]="p.id">
+                {{p.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field style="width: 50%;">
+        <mat-label>Tìm kiếm</mat-label>
+        <input matInput placeholder="Nhập từ khóa tìm kiếm">
+    </mat-form-field>
+
+    <button mat-raised-button color="secondary">
+        <mat-icon aria-hidden="false">search</mat-icon>
+        Tìm kiếm
+    </button>
+</div>
