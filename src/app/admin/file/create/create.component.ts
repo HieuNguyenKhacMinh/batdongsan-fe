@@ -1,17 +1,17 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { AddressService } from '../address.service';
+import { FileService } from '../file.service';
 
 @Component({
-    selector: 'create-address',
+    selector: 'create-file',
     templateUrl: 'create.component.html',
     styleUrls: ['create.component.scss']
 })
 
-export class CreateAddressComponent implements OnInit {
+export class CreateFileComponent implements OnInit {
     constructor(
-        private service: AddressService,
-        public dialogRef: MatDialogRef<CreateAddressComponent>,
+        private service: FileService,
+        public dialogRef: MatDialogRef<CreateFileComponent>,
         @Inject(MAT_DIALOG_DATA) public data: any) { }
 
     onNoClick(): void {
@@ -38,9 +38,9 @@ export class CreateAddressComponent implements OnInit {
             })
         }))
 
+
         this.dataSource = this.data.dataSource || {};
         // set to form control
-
 
 
 

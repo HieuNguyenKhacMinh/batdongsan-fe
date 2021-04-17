@@ -41,6 +41,9 @@ const routes: Routes = [{
             path: 'post',
             loadChildren: () => import('./post/post/post.module').then(m => m.PostModule)
         }, {
+            path: 'opportunity',
+            loadChildren: () => import('./opportunity/opportunity.module').then(m => m.OpportunityModule)
+        }, {
             path: 'balcony-direction',
             loadChildren: () => import('./balcony-direction/balcony-direction/balcony-direction.module').then(m => m.BalconyDirectionModule)
         },
@@ -100,12 +103,18 @@ const routes: Routes = [{
         }, {
             path: 'message',
             loadChildren: () => import('./message/massage/message.module').then(m => m.MessageModule)
+        }, {
+            path: 'contact',
+            loadChildren: () => import('./contact/contact/contact.module').then(m => m.ContactModule)
         },{
             path: 'product-unit',
             loadChildren: () => import('./product_unit/product_unit/product_unit.module').then(m => m.ProductUnitModule)
         }, {
             path: 'address',
             loadChildren: () => import('./address/address/address.module').then(m => m.AddressModule)
+        },{
+            path: 'file',
+            loadChildren: () => import('./file/file.module').then(m => m.FileModule)
         },
     ]
 },

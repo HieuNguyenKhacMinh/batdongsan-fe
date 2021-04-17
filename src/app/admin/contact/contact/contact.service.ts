@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class AddressService {
-  url = 'http://localhost:3000/cms/address';
+export class ContactService {
+  url = 'http://localhost:3000/cms/contact';
   propertiesUrl = ''
   constructor(private http: HttpClient) { }
 
@@ -18,7 +18,7 @@ export class AddressService {
 
   getProperties() {
     let headers = { authorization: localStorage.getItem('authorization') || '', site_id: localStorage.getItem('site_id') || '' }
-    return this.http.get(`http://localhost:3000/cms/table-config/address`, { headers });
+    return this.http.get(`http://localhost:3000/cms/table-config/contact`, { headers });
   }
   update(data: any) {
     let headers = {

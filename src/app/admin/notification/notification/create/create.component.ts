@@ -41,12 +41,6 @@ export class CreateNotificationComponent implements OnInit {
 
         this.dataSource = this.data.dataSource || {};
         // set to form control
-
-
-
-
-
-
     }
     create() {
         console.log(this.dataSource);

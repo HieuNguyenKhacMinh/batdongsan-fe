@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { ProjectService } from './project.service';
+import { FileService } from './file.service';
 import { MatDialog } from '@angular/material/dialog';
-import { CreateProjectComponent } from './create/create.component';
-import { DeleteProjectComponent } from './delete/delete.component';
+import { CreateFileComponent } from './create/create.component';
+import { DeleteFileComponent } from './delete/delete.component';
 
 @Component({
-  selector: 'app-project',
-  templateUrl: './project.component.html',
-  styleUrls: ['./project.component.scss'],
+  selector: 'app-file',
+  templateUrl: './file.component.html',
+  styleUrls: ['./file.component.scss'],
   animations: [
     trigger('detailExpand', [
       state('collapsed', style({ height: '0px', minHeight: '0' })),
@@ -17,19 +17,19 @@ import { DeleteProjectComponent } from './delete/delete.component';
     ]),
   ],
 })
-export class ProjectComponent implements OnInit {
+export class FileComponent implements OnInit {
 
-  constructor(private projectService: ProjectService, public dialog: MatDialog) {
+  constructor(private fileService: FileService, public dialog: MatDialog) {
 
   }
 
   ngOnInit(): void {
     //get table properties
-    this.projectService.getProperties().subscribe((res: any) => {
+    this.fileService.getProperties().subscribe((res: any) => {
       // change column display
       this.properties = res.content;
-      this.columnsToDisplay = Object.keys(res.content).
-      sort((a: any, b: any) => (this.properties[a].order > this.properties[b].order) ? 1 : ((this.properties[b].order > this.properties[a].order) ? -1 : 0));
+      this.columnsToDisplay = Object.keys(res.content)  
+      .sort((a: any, b: any) => (this.properties[a].order > this.properties[b].order) ? 1 : ((this.properties[b].order > this.properties[a].order) ? -1 : 0));
       this.columnsToDisplay.push('action');
     })
    
@@ -38,7 +38,7 @@ export class ProjectComponent implements OnInit {
 
   getDatasource() {
  // set datasource
- this.projectService.all().subscribe((res: any) => {
+ this.fileService.all().subscribe((res: any) => {
   this.dataSource = res;
 })
   }
@@ -48,7 +48,7 @@ export class ProjectComponent implements OnInit {
   expandedElement: any | null | undefined;
   properties: any;
   openDialog(dataSource?: any): void {
-    const dialogRef = this.dialog.open(CreateProjectComponent, {
+    const dialogRef = this.dialog.open(CreateFileComponent, {
       width: '550px',
       data: {properties: this.properties, dataSource}
     });
@@ -60,7 +60,7 @@ export class ProjectComponent implements OnInit {
     });
   }
   confirmDialog(dataSource?: any): void {
-    const dialogRef = this.dialog.open(DeleteProjectComponent, {
+    const dialogRef = this.dialog.open(DeleteFileComponent, {
       width: '550px',
       data: {properties: this.properties, dataSource}
     });

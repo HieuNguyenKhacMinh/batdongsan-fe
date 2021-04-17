@@ -1,17 +1,17 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { AddressService } from '../address.service';
+import { ContactService } from '../contact.service';
 
 @Component({
-    selector: 'create-address',
+    selector: 'create-contact',
     templateUrl: 'create.component.html',
     styleUrls: ['create.component.scss']
 })
 
-export class CreateAddressComponent implements OnInit {
+export class CreateContactComponent implements OnInit {
     constructor(
-        private service: AddressService,
-        public dialogRef: MatDialogRef<CreateAddressComponent>,
+        private service: ContactService,
+        public dialogRef: MatDialogRef<CreateContactComponent>,
         @Inject(MAT_DIALOG_DATA) public data: any) { }
 
     onNoClick(): void {

@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { CategoryService } from './category.service';
+import { OpportunityService } from './opportunity.service';
 import { MatDialog } from '@angular/material/dialog';
-import { CreateCategoryComponent } from './create/create.component';
-import { DeleteCategoryComponent } from './delete/delete.component';
+import { CreateOpportunityComponent } from './create/create.component';
+import { DeleteOpportunityComponent } from './delete/delete.component';
 
 @Component({
-  selector: 'app-category',
-  templateUrl: './category.component.html',
-  styleUrls: ['./category.component.scss'],
+  selector: 'app-opportunity',
+  templateUrl: './opportunity.component.html',
+  styleUrls: ['./opportunity.component.scss'],
   animations: [
     trigger('detailExpand', [
       state('collapsed', style({ height: '0px', minHeight: '0' })),
@@ -17,18 +17,19 @@ import { DeleteCategoryComponent } from './delete/delete.component';
     ]),
   ],
 })
-export class CategoryComponent implements OnInit {
+export class OpportunityComponent implements OnInit {
 
-  constructor(private categoryService: CategoryService, public dialog: MatDialog) {
+  constructor(private opportunityService: OpportunityService, public dialog: MatDialog) {
 
   }
 
   ngOnInit(): void {
     //get table properties
-    this.categoryService.getProperties().subscribe((res: any) => {
+    this.opportunityService.getProperties().subscribe((res: any) => {
       // change column display
       this.properties = res.content;
-      this.columnsToDisplay = Object.keys(res.content);
+      this.columnsToDisplay = Object.keys(res.content)
+      .sort((a: any, b: any) => (this.properties[a].order > this.properties[b].order) ? 1 : ((this.properties[b].order > this.properties[a].order) ? -1 : 0));
       this.columnsToDisplay.push('action');
     })
    
@@ -37,7 +38,7 @@ export class CategoryComponent implements OnInit {
 
   getDatasource() {
  // set datasource
- this.categoryService.all().subscribe((res: any) => {
+ this.opportunityService.all().subscribe((res: any) => {
   this.dataSource = res;
 })
   }
@@ -47,7 +48,7 @@ export class CategoryComponent implements OnInit {
   expandedElement: any | null | undefined;
   properties: any;
   openDialog(dataSource?: any): void {
-    const dialogRef = this.dialog.open(CreateCategoryComponent, {
+    const dialogRef = this.dialog.open(CreateOpportunityComponent, {
       width: '550px',
       data: {properties: this.properties, dataSource}
     });
@@ -59,7 +60,7 @@ export class CategoryComponent implements OnInit {
     });
   }
   confirmDialog(dataSource?: any): void {
-    const dialogRef = this.dialog.open(DeleteCategoryComponent, {
+    const dialogRef = this.dialog.open(DeleteOpportunityComponent, {
       width: '550px',
       data: {properties: this.properties, dataSource}
     });

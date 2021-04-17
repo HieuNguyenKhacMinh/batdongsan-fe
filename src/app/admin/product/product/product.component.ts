@@ -22,25 +22,40 @@ export class ProductComponent implements OnInit {
   constructor(private productService: ProductService, public dialog: MatDialog) {
 
   }
-
-  ngOnInit(): void {
+  references: any[] = [];
+  ngOnInit() {
     //get table properties
-    this.productService.getProperties().subscribe((res: any) => {
+    this.productService.getProperties().subscribe(async (res: any) => {
       // change column display
       this.properties = res.content;
-      this.columnsToDisplay = Object.keys(res.content);
+      this.columnsToDisplay = Object.keys(res.content)
+        .sort((a: any, b: any) => (this.properties[a].order > this.properties[b].order) ? 1 : ((this.properties[b].order > this.properties[a].order) ? -1 : 0));
       this.columnsToDisplay.push('action');
+
+      // get reference column
+      this.references = Object.keys(res.content)
+      .filter((column: any) => this.properties[column].reference !== undefined && this.properties[column].filter);
+      // 
+
+      // get data referent
+      await Promise.all(this.references.map(async column => {
+        await this.productService.getData(this.properties[column].reference.api_url).subscribe((res) => {
+          this.properties[column].data = res;
+        })
+      }))
     })
-   
+
     this.getDatasource();
   }
 
   getDatasource() {
- // set datasource
- this.productService.all().subscribe((res: any) => {
-  this.dataSource = res;
-})
+    // set datasource
+    this.productService.all().subscribe((res: any) => {
+      this.dataSource = res;
+    })
   }
+  filter: any = {};
+  countries: any[] = [];
 
   dataSource: any;
   columnsToDisplay: any;
@@ -49,7 +64,7 @@ export class ProductComponent implements OnInit {
   openDialog(dataSource?: any): void {
     const dialogRef = this.dialog.open(CreateProductComponent, {
       width: '550px',
-      data: {properties: this.properties, dataSource}
+      data: { properties: this.properties, dataSource: dataSource || {} }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -61,7 +76,7 @@ export class ProductComponent implements OnInit {
   confirmDialog(dataSource?: any): void {
     const dialogRef = this.dialog.open(DeleteProductComponent, {
       width: '550px',
-      data: {properties: this.properties, dataSource}
+      data: { properties: this.properties, dataSource }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -69,6 +84,12 @@ export class ProductComponent implements OnInit {
 
       this.getDatasource();
     });
+  }
+
+
+  search() {
+    console.log(this.filter);
+    
   }
 }
 

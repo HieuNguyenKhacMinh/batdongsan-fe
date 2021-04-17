@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class ProductService {
-  url = 'http://localhost:3000/cms/products';
+  url = 'http://localhost:3000/cms/product';
   propertiesUrl = ''
   constructor(private http: HttpClient) { }
 
@@ -34,5 +34,12 @@ export class ProductService {
       site_id: localStorage.getItem('site_id') || ''
     };
     return this.http.delete(`${this.url}/${data.id}`, { headers });
+  }
+  getData(url: string) {
+    let headers = {
+      authorization: localStorage.getItem('authorization') || '',
+      site_id: localStorage.getItem('site_id') || ''
+    };
+    return this.http.get(`${url}`, { headers });
   }
 }

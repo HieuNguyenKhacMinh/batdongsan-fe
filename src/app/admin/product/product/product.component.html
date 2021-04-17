@@ -1,4 +1,28 @@
 <p>product works!</p>
+
+<div class="condition_class"> 
+<div *ngFor="let column of references">
+  <div *ngIf="column !== 'id'">
+    <div *ngIf="properties[column].type ==='dropdown'">
+      <div *ngIf="properties[column].data">
+        <mat-form-field appearance="fill">
+          <mat-label>{{properties[column].alias}}</mat-label>
+          <mat-select [(ngModel)]="filter[column]">
+            <mat-option *ngFor="let food of properties[column].data" [value]="food[properties[column].reference.value]">
+              {{food[properties[column].reference.label]}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+</div>
+  <div>
+    <button mat-button (click)="search()">Tìm kiếm</button>
+  </div>
+</div>
+
+
 <div>
   <button mat-button (click)="openDialog()" color="primary">Thêm</button>
 </div>
@@ -8,13 +32,26 @@
       <th mat-header-cell *matHeaderCellDef> {{properties[column]?.alias}} </th>
       <td mat-cell *matCellDef="let element">
         <div *ngIf="column !== 'action'">
-          <span *ngIf="column === 'id'">
-            {{  element[column]?.slice(0, 5)}}
-          </span>
-          <span *ngIf="column !== 'id'">
-            {{  element[column]}}
-          </span>
-
+          <!-- if id-->
+          <div *ngIf="column === 'id'">
+            <span>
+              {{ element[column]?.slice(0, 5)}}
+            </span>
+          </div>
+          <!-- else id-->
+          <div *ngIf="column !== 'id'">
+            <!-- if -->
+            <div *ngIf="properties[column].reference !== undefined">
+              {{  element[properties[column].reference.table]
+                && element[properties[column].reference.table][properties[column].reference.label]}}
+            </div>
+            <!-- else -->
+            <div *ngIf="properties[column].reference === undefined">
+              <span>
+                {{ element[column]}}
+              </span>
+            </div>
+          </div>
         </div>
         <div *ngIf="column === 'action'">
           <button mat-stroked-button (click)="openDialog(element)" color="">Sửa</button>
@@ -22,12 +59,12 @@
         </div>
       </td>
     </ng-container>
- 
+
     <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
     <tr mat-row *matRowDef="let element; columns: columnsToDisplay;" class="example-element-row"
       [class.example-expanded-row]="expandedElement === element"
       (click)="expandedElement = expandedElement === element ? null : element">
     </tr>
-     
+
   </table>
 </div>
