@@ -28,7 +28,10 @@ export class ProductComponent implements OnInit {
     this.productService.getProperties().subscribe(async (res: any) => {
       // change column display
       this.properties = res.content;
-      this.columnsToDisplay = Object.keys(res.content)
+      const arr = ["description", "sub_description", "address_id", "title", "home_number", "street", "product_type", "product_unit_id",
+      "city_id", "wards_id", "district_id", "country_id", "no_of_bedroom", "no_of_toilet", "balcony_direction_id", 
+      "house_direstion_id", "facade", "entry_width"];
+      this.columnsToDisplay = Object.keys(res.content).filter(c => !arr.includes(c))
         .sort((a: any, b: any) => (this.properties[a].order > this.properties[b].order) ? 1 : ((this.properties[b].order > this.properties[a].order) ? -1 : 0));
       this.columnsToDisplay.push('action');
 

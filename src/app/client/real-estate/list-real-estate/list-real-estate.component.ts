@@ -1,3 +1,4 @@
+import { RealEstateService } from '../../real-estate/real.estate.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class ListRealEstateComponent implements OnInit {
-    constructor() { }
+    constructor(private realEstateService: RealEstateService) { }
 
-    ngOnInit() { }
+    allProducts: any[] = [];
+    products: any[] = [];
+
+    ngOnInit() {
+        this.realEstateService.getProducts().subscribe((res: any[]) => {
+            this.allProducts = res;
+            this.products = this.allProducts;
+            console.log(this.allProducts);
+
+        })
+
+
+    }
 }

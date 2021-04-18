@@ -7,18 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class RealEstateComponent implements OnInit {
-    constructor(private realEstateService: RealEstateService) { }
 
-    allProducts: any[] = [];
-    products: any[] = [];
+    constructor() { }
 
-    ngOnInit() {
-        this.realEstateService.getProducts().subscribe((res: any[]) => {
-            this.allProducts = res;
-            console.log(this.allProducts);
-
-        })
-
-
-    }
+    ngOnInit() { }
 }

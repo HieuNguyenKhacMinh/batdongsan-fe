@@ -1,35 +1,171 @@
 admin component
 
 <mat-drawer-container class="example-container" autosize>
-    <mat-drawer #drawer class="example-sidenav" mode="side">
-        <mat-list role="list">
-            <mat-list-item role="listitem">
-                <button mat-button matLine [routerLink]="['/admin/product']"
-                 routerLinkActive="router-link-active" >Product</button>
-            </mat-list-item>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <mat-list role="list">
+      <mat-list-item role="listitem">
+        <button mat-button matLine [routerLink]="['/admin/product']"
+          routerLinkActive="router-link-active">Product</button>
+      </mat-list-item>
 
-            <mat-list-item role="listitem">
-              <button mat-button matLine [routerLink]="['/admin/category']"
-               routerLinkActive="router-link-active" >Category</button>
-           </mat-list-item>  
+      <mat-list-item role="listitem">
+        <button mat-button matLine [routerLink]="['/admin/project']"
+          routerLinkActive="router-link-active">Project</button>
+      </mat-list-item>
 
-            <mat-list-item role="listitem">
-            <button mat-button matLine [routerLink]="['/admin/menu']"
-             routerLinkActive="router-link-active" >Menu</button>
-         </mat-list-item>
-            <mat-list-item role="listitem">Item 3</mat-list-item>
-          </mat-list>
-     
-          
-    </mat-drawer>
-  
-    <div class="example-sidenav-content">
-      <button  type="button" mat-icon-button (click)="drawer.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-      hello
+      <mat-list-item role="listitem">
+        <button mat-button matLine [routerLink]="['/admin/category']"
+          routerLinkActive="router-link-active">Category</button>
+      </mat-list-item>
 
-      <router-outlet></router-outlet>
-    </div>
-  
-  </mat-drawer-container>
+      <mat-list-item role="listitem">
+        <button mat-button matLine [routerLink]="['/admin/lead']" routerLinkActive="router-link-active">Lead</button>
+      </mat-list-item>
+
+      <mat-list-item role="listitem">
+        <button mat-button matLine [routerLink]="['/admin/balcony-direction']"
+          routerLinkActive="router-link-active">BalconyDirection</button>
+      </mat-list-item>
+
+      <mat-list-item role="listitem">
+        <button mat-button matLine [routerLink]="['/admin/house-direstion']"
+          routerLinkActive="router-link-active">HouseDirestion</button>
+      </mat-list-item>
+
+      <mat-list-item role="listitem">
+        <button mat-button matLine [routerLink]="['/admin/formality']"
+          routerLinkActive="router-link-active">Formality</button>
+      </mat-list-item>
+
+      <mat-list-item role="listitem">
+        <button mat-button matLine [routerLink]="['/admin/country']"
+          routerLinkActive="router-link-active">Coutry</button>
+      </mat-list-item>
+      <mat-list-item role="listitem">
+        <button mat-button matLine [routerLink]="['/admin/province-city']"
+          routerLinkActive="router-link-active">ProvinceCity</button>
+      </mat-list-item>
+
+      <mat-list-item role="listitem">
+      <button mat-button matLine [routerLink]="['/admin/district']"
+        routerLinkActive="router-link-active">District</button>
+      </mat-list-item>
+
+      <mat-list-item role="listitem">
+      <button mat-button matLine [routerLink]="['/admin/wards']"
+        routerLinkActive="router-link-active">Wards</button>
+      </mat-list-item>
+
+
+      <mat-list-item role="listitem">
+        <button mat-button matLine [routerLink]="['/admin/read-status']"
+          routerLinkActive="router-link-active">ReadStatus</button>
+      </mat-list-item>
+       
+      <mat-list-item role="listitem">
+        <button mat-button matLine [routerLink]="['/admin/menu']"
+          routerLinkActive="router-link-active">Menu</button>
+      </mat-list-item>
+
+      <mat-list-item role="listitem">
+        <button mat-button matLine [routerLink]="['/admin/page']"
+          routerLinkActive="router-link-active">Page</button>
+      </mat-list-item>
+
+      <mat-list-item role="listitem">
+        <button mat-button matLine [routerLink]="['/admin/post']"
+          routerLinkActive="router-link-active">Post</button>
+      </mat-list-item>
+
+      <mat-list-item role="listitem">
+        <button mat-button matLine [routerLink]="['/admin/widget']"
+          routerLinkActive="router-link-active">Widget</button>
+      </mat-list-item>
+
+      <mat-list-item role="listitem">
+        <button mat-button matLine [routerLink]="['/admin/hashtag']"
+          routerLinkActive="router-link-active">Hashtag</button>
+      </mat-list-item>
+
+      <mat-list-item role="listitem">
+        <button mat-button matLine [routerLink]="['/admin/comment']"
+          routerLinkActive="router-link-active">Comment</button>
+      </mat-list-item>
+
+      <mat-list-item role="listitem">
+        <button mat-button matLine [routerLink]="['/admin/file']"
+          routerLinkActive="router-link-active">File</button>
+      </mat-list-item>
+
+      <mat-list-item role="listitem">
+        <button mat-button matLine [routerLink]="['/admin/user']"
+          routerLinkActive="router-link-active">User</button>
+      </mat-list-item>
+
+      <mat-list-item role="listitem">
+        <button mat-button matLine [routerLink]="['/admin/organization']"
+          routerLinkActive="router-link-active">Organization
+        </button>
+      </mat-list-item>
+
+      <mat-list-item role="listitem">
+        <button mat-button matLine [routerLink]="['/admin/organization']"
+          routerLinkActive="router-link-active">Organization
+        </button>
+      </mat-list-item>
+
+      <mat-list-item role="listitem">
+        <button mat-button matLine [routerLink]="['/admin/opportunity']"
+          routerLinkActive="router-link-active">Opportunity
+        </button>
+      </mat-list-item>
+
+      <mat-list-item role="listitem">
+        <button mat-button matLine [routerLink]="['/admin/contact']"
+          routerLinkActive="router-link-active">Contact
+        </button>
+      </mat-list-item>
+
+      <mat-list-item role="listitem">
+        <button mat-button matLine [routerLink]="['/admin/status']"
+          routerLinkActive="router-link-active">Status
+        </button>
+      </mat-list-item>
+
+      <mat-list-item role="listitem">
+        <button mat-button matLine [routerLink]="['/admin/message']"
+          routerLinkActive="router-link-active">Message
+        </button>
+      </mat-list-item>
+
+      <mat-list-item role="listitem">
+        <button mat-button matLine [routerLink]="['/admin/dashboarch']"
+          routerLinkActive="router-link-active">DashBoarch
+        </button>
+      </mat-list-item>
+
+      <mat-list-item role="listitem">
+        <button mat-button matLine [routerLink]="['/admin/report-widget']"
+          routerLinkActive="router-link-active">ReportWidget
+        </button>
+      </mat-list-item>
+
+      <mat-list-item role="listitem">
+        <button mat-button matLine [routerLink]="['/admin/menu']" routerLinkActive="router-link-active">Menu</button>
+      </mat-list-item>
+      <mat-list-item role="listitem">Item 3</mat-list-item>
+    </mat-list>
+
+
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <button type="button" mat-icon-button (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    hello
+
+    <router-outlet></router-outlet>
+  </div>
+
+</mat-drawer-container>

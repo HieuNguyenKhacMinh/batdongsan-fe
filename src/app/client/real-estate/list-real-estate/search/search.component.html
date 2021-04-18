@@ -5,12 +5,14 @@
 
             {{p.name}}</mat-button-toggle>
     </mat-button-toggle-group>
-    <!-- <mat-button-toggle-group appearance="legacy" name="fontStyle" aria-label="Font Style">
-        <mat-button-toggle [value]="f.id" *ngFor="let f of formalities">{{f.name}}</mat-button-toggle>
-    </mat-button-toggle-group> -->
-    <!-- tim kiem -->
-    <!-- product type -->
-    <mat-form-field appearance="fill" style="width: 200px;">
+
+    
+    <mat-form-field style="width: 100px;margin: 5px;">
+        <mat-label>Tìm kiếm</mat-label>
+        <input matInput placeholder="Nhập từ khóa tìm kiếm">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" style="width: 100px;">
         <mat-label>Loại nhà đất</mat-label>
         <mat-select>
             <mat-option *ngFor="let p of productTypes" [value]="p.id">
@@ -49,8 +51,7 @@
         </mat-select>
     </mat-form-field>
     <!-- price -->
-    <br/>
-    <mat-form-field appearance="fill" style="width:180px;">
+    <mat-form-field appearance="fill" style="width:100px;">
         <mat-label>Giá</mat-label>
         <mat-select>
             <mat-option *ngFor="let p of prices" [value]="p.id">
@@ -69,10 +70,6 @@
         </mat-select>
     </mat-form-field>
 
-    <mat-form-field style="width: 50%;">
-        <mat-label>Tìm kiếm</mat-label>
-        <input matInput placeholder="Nhập từ khóa tìm kiếm">
-    </mat-form-field>
 
     <button mat-raised-button color="secondary">
         <mat-icon aria-hidden="false">search</mat-icon>

@@ -1,16 +1,27 @@
 .search {
-    background: #000;
+    background: #424242;
     color: #fff;
+
+    .mat-button-toggle-group {
+        vertical-align: super;
+    }
     .mat-button-toggle {
-        background-color: #000;
+        background-color: #424242;
+        font-size: 9px;
+        width: 110px;
+
+        .mat-icon {
+            color: #424242;
+        }
     }
     .mat-button-toggle-checked {
         color: #fff;
-        border: 1px solid #fff;
+        border: 1px solid #ccc;
+        background-color: #000;
     }
 
     .mat-form-field {
-        width: 150px;
+        width: 100px;
+        font-size: 10px;
     }
- 
 }
