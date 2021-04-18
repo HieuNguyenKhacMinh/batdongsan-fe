@@ -1,3 +1,4 @@
+import { CreateRealEstateComponent } from './create-real-estate/create-real-estate.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ClientComponent } from './client.component';
@@ -14,6 +15,10 @@ const routes: Routes = [{
     {
       path: "real-estate",
       loadChildren: () => import('./real-estate/real-estate.module').then(m => m.RealEstateModule)
+    },
+    {
+      path: "create-real-estate",
+     component: CreateRealEstateComponent,
     },
   ],
 }];

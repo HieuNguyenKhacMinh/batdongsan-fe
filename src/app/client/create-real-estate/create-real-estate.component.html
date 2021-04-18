@@ -1,0 +1,163 @@
+<h3 style="text-align: center;margin: 30px 0px 0px 0px;color: #055699;"><b>ĐĂNG TIN RAO BÁN CHO THUÊ NHÀ ĐẤT</b></h3>
+<h6 style="text-align: center;">(Quý vị nhập thông tin nhà đất cần bán hoặc cho thuê vào các mục dưới đây)</h6>
+<div class="form">
+
+  <div class="tieude">
+    <h3>THÔNG TIN CƠ BẢN</h3>
+  </div>
+
+  <mat-form-field class="example-full-width" style="width: 81%;">
+    <mat-label style="color:darkgray;">Tiêu đề (*)</mat-label>
+    <input matInput placeholder="Ex. Pizza" value="Sushi">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width" style="width: 81%;">
+    <mat-label style="color:darkgray;">Tiêu đề ngắn (*)</mat-label>
+    <input matInput placeholder="Ex. Pizza" value="Sushi">
+  </mat-form-field><br>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Hình Thức</mat-label>
+    <mat-select [(ngModel)]="realEstate.formality_id" (selectionChange)="selectedFormality()">
+      <mat-option *ngFor="let f of formalities" [value]="f.id">
+        {{f.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Loại</mat-label>
+    <mat-select  [(ngModel)]="realEstate.productType_id">
+      <mat-option *ngFor="let food of productTypes" [value]="food.id">
+        {{food.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field><br>
+  
+
+  <mat-form-field appearance="fill">
+    <mat-label>Quốc gia</mat-label>
+    <mat-select [(ngModel)]="realEstate.country_id" (selectionChange)="selectedCountry()">
+      <mat-option *ngFor="let food of countries"  [value]="food.id">
+        {{food.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Tĩnh thành phốc</mat-label>
+    <mat-select [(ngModel)]="realEstate.city_id" (selectionChange)="selectedCity()">
+      <mat-option *ngFor="let food of cities" [value]="food.id">
+        {{food.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field><br>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Quận/Huyện</mat-label>
+    <mat-select  [(ngModel)]="realEstate.district_id" (selectionChange)="selectedDistrict()">
+      <mat-option *ngFor="let food of districts" [value]="food.id">
+        {{food.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Phường/Xã</mat-label>
+    <mat-select [(ngModel)]="realEstate.wards_id" >
+      <mat-option *ngFor="let food of wards" [value]="food.id">
+        {{food.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field> <br>
+
+  <mat-form-field class="example-full-width">
+    <mat-label style="color:darkgray;">Đường phố</mat-label>
+    <input matInput placeholder="Ex. Pizza" value="Sushi">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label style="color:darkgray;">Só nhà</mat-label>
+    <input matInput placeholder="Ex. Pizza" value="Sushi">
+  </mat-form-field> <br>
+
+  <mat-form-field appearance="fill" style=" ">
+    <mat-label>Dự án</mat-label>
+    <mat-select [(ngModel)]="realEstate.project_id">
+      <mat-option *ngFor="let food of projects" [value]="food.id">
+        {{food.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field> 
+
+  <mat-form-field class="example-full-width">
+    <mat-label style="color:darkgray;">Diện tích</mat-label>
+    <input matInput placeholder="Ex. Pizza" value="Sushi">
+  </mat-form-field><br>
+
+  <mat-form-field class="example-full-width" >
+    <mat-label style="color:darkgray;">Gía bán</mat-label>
+    <input matInput placeholder="Ex. Pizza" value="Sushi">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label style="color:darkgray;">Đơn vị</mat-label>
+    <input matInput placeholder="Ex. Pizza" value="Sushi">
+  </mat-form-field> <br>
+</div>
+
+<div class="form">
+
+  <div class="tieude">
+    <h3>THÔNG TIN KHÁC</h3>
+  </div>
+
+  <mat-form-field class="haft-width">
+    <mat-label style="color:darkgray;">Mặt tiền</mat-label>
+    <input matInput placeholder="Ex. Pizza" value="Sushi">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label style="color:darkgray;">Đường vào</mat-label>
+    <input matInput placeholder="Ex. Pizza" value="Sushi">
+  </mat-form-field><br>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Hướng nhà</mat-label>
+    <mat-select [(ngModel)]="realEstate.house_direstion_id">
+      <mat-option *ngFor="let food of houseDirestions" [value]="food.id">
+        {{food.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Hướng ban công</mat-label>
+    <mat-select [(ngModel)]="realEstate.balcony_direstion_id">
+      <mat-option *ngFor="let food of balconyDirestions" [value]="food.id">
+        {{food.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field><br>
+
+  <mat-form-field class="example-full-width">
+    <mat-label style="color:darkgray;">Số phòng ngủ</mat-label>
+    <input matInput placeholder="Ex. Pizza" value="Sushi">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label style="color:darkgray;">Số phòng toilet</mat-label>
+    <input matInput placeholder="Ex. Pizza" value="Sushi">
+  </mat-form-field><br>
+
+  <mat-form-field class="example-full-width">
+    <mat-label style="color:darkgray;">Mô tả</mat-label>
+    <textarea matInput placeholder="Ex. Pizza" value="Sushi"></textarea>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label style="color:darkgray;">Mô tả ngắn</mat-label>
+    <input matInput placeholder="Ex. Pizza" value="Sushi">
+  </mat-form-field>
+
+ </div>

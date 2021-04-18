@@ -1,5 +1,5 @@
-import { RealEstateService } from '../../../real-estate/real.estate.service';
-import { Component, OnInit } from '@angular/core';
+import { RealEstateService } from '../../../real.estate.service';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
     selector: 'search-real-estate',
@@ -21,7 +21,7 @@ export class SearchRealEstateComponent implements OnInit {
 
     allDistricts: any[] = [];
     districts: any[] = [];
-    
+
     allCities: any[] = [];
     cities: any[] = [];
 
@@ -105,6 +105,9 @@ export class SearchRealEstateComponent implements OnInit {
         name: ">=500(m2)"
     }];
 
+
+    @Output() change = new EventEmitter<any>();
+
     ngOnInit() {
 
         this.realEstateService.getFormality().subscribe((res: any[]) => {
@@ -128,22 +131,21 @@ export class SearchRealEstateComponent implements OnInit {
         this.realEstateService.getDistrict().subscribe((res: any[]) => {
             this.allDistricts = res;
         })
-
-
     }
 
     selectedFormality() {
         this.productTypes = this.allProductTypes.filter(p => p.formality_id === this.search.formality_id);
-        ;
+        this.change.emit(this.search);
     }
 
     selectedCountry() {
         this.cities = this.allCities.filter(c => c.country_id === this.search.country_id);
+        this.change.emit(this.search);
     }
 
     selectedCity() {
         this.districts = this.allDistricts.filter(d => d.city_id === this.search.city_id);
-        console.log(this.districts);
-        
+        this.change.emit(this.search);
+
     }
 }

@@ -1,4 +1,4 @@
-import { RealEstateService } from '../real-estate/real.estate.service';
+import { RealEstateService } from '../real.estate.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

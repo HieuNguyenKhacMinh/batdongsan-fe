@@ -30,8 +30,33 @@ export class RealEstateService {
         return this.httpClient.get(url);
     }
 
+    getWards() {
+        const url = "http://localhost:3000/cms/wards";
+        return this.httpClient.get(url);
+    }
+
+    getBalconyDirestion() {
+        const url = "http://localhost:3000/cms/balcony-direction";
+        return this.httpClient.get(url);
+    }
+
+    getHouseDirestion() {
+        const url = "http://localhost:3000/cms/house-direstion";
+        return this.httpClient.get(url);
+    }
+
+    getProject() {
+        const url = "http://localhost:3000/cms/project";
+        return this.httpClient.get(url);
+    }
+
     getProducts() {
         const url = "http://localhost:3000/cms/product";
+        return this.httpClient.get(url);
+    }
+
+    getProductUnit() {
+        const url = "http://localhost:3000/cms/product-unit";
         return this.httpClient.get(url);
     }
 }

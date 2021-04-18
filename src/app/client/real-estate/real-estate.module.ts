@@ -1,5 +1,4 @@
 import { FormsModule } from '@angular/forms';
-import { RealEstateService } from './real.estate.service';
 import { ListRealEstateComponent } from './list-real-estate/list-real-estate.component';
 import { MaterialModule } from '../../material-module';
 import { CommonModule } from '@angular/common';
@@ -26,7 +25,6 @@ import { HttpClientModule } from '@angular/common/http';
     ],
 
     providers: [
-        RealEstateService
     ],
 })
 export class RealEstateModule { }
