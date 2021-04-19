@@ -1,22 +1,21 @@
 <div class="real-estate">
     <search-real-estate (change)="changeConditionSearch($event)"></search-real-estate>
     <div style="width: 60%;">
-        <mat-card class="example-card" *ngFor="let product of products">
+        <mat-card class="example-card" *ngFor="let product of products" >
             <mat-card-header>
-                <mat-card-title> {{product.title}}</mat-card-title>
-                <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+                <mat-card-title [routerLink]="['../', product.id]" routerLinkActive="router-link-active" style="color: red;" > {{product.title}}</mat-card-title>
             </mat-card-header>
             <mat-card-content>
                 <div class="flex">
                     <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-                        alt="Photo of a Shiba Inu">
+                        alt="Photo of a Shiba Inu" style="height: 200px;width: 200px;margin-left: 15px;">
                     <div class="content">
                         <p>
                             {{product.sub_description}}
                         </p>
                         <p>
-                            <span>Giá: {{product.price}} {{product.product_unit.name}}</span>
-                            <span class="m-l-1">Diện tích: {{product.acreage}} m²</span>
+                            <span><b>Giá: {{product.price}} {{product.product_unit.name}}</b></span>
+                            <span class="m-l-1"><b>Diện tích: {{product.acreage}} m²</b></span>
                         </p>
                     </div>
                 </div>

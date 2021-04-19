@@ -31,7 +31,7 @@ export class ListRealEstateComponent implements OnInit {
 
     compareObjectAndObject(product, search) {
         const keys = Object.keys(search);
-
+    
         for (let i = 0; i < keys.length; i++) {
             const key = keys[i];
             if (product[key] === search[key]) {

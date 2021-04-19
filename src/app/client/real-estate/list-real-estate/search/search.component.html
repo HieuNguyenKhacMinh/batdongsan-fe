@@ -1,13 +1,14 @@
 <div class="search">
-    <mat-button-toggle-group appearance="legacy"  [(ngModel)]="search.formality_id" (change)="selectedFormality()">
+    <mat-button-toggle-group appearance="legacy" [(ngModel)]="search.formality_id" (change)="selectedFormality()">
         <mat-button-toggle mat-raised-button *ngFor="let p of formalities" [value]="p.id">
             <mat-icon [style.color]="search.formality_id===p.id ? '#fff' : '#ccc'">check</mat-icon>
 
-            {{p.name}}</mat-button-toggle>
+            {{p.name}}
+        </mat-button-toggle>
     </mat-button-toggle-group>
 
-    
-    <mat-form-field style="width: 100px;margin: 5px;">
+
+    <mat-form-field style="width: 150px;margin-top:0px;">
         <mat-label>Tìm kiếm</mat-label>
         <input matInput placeholder="Nhập từ khóa tìm kiếm">
     </mat-form-field>
@@ -69,10 +70,4 @@
             </mat-option>
         </mat-select>
     </mat-form-field>
-
-<!-- 
-    <button mat-raised-button color="secondary">
-        <mat-icon aria-hidden="false">search</mat-icon>
-        Tìm kiếm
-    </button> -->
 </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoryService } from './category.service';
+import { NewsService } from '../news.service';
 
 @Component({
     selector: 'app-new-categories',
@@ -7,11 +7,11 @@ import { CategoryService } from './category.service';
 })
 
 export class CategoryComponent implements OnInit {
-    constructor(private categoryService: CategoryService) { }
+    constructor(private service: NewsService) { }
 
     categories: any;
     ngOnInit() {
-        this.categoryService.get().subscribe(res => {
+        this.service.getCategories().subscribe(res => {
             this.categories = res;
             console.log(this.categories);
         })

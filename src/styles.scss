@@ -12,4 +12,8 @@ body {
     .mat-button-toggle-label-content {
         padding: 0 8px !important;
     }
+          
+    .mat-form-field-appearance-fill .mat-form-field-infix {
+        padding: .25em 0 0.4em 0;
+    }
 }

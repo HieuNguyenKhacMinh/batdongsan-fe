@@ -22,25 +22,25 @@ export class ProjectComponent implements OnInit {
   constructor(private projectService: ProjectService, public dialog: MatDialog) {
 
   }
-
+  references: any[];
   ngOnInit(): void {
     //get table properties
     this.projectService.getProperties().subscribe((res: any) => {
       // change column display
       this.properties = res.content;
       this.columnsToDisplay = Object.keys(res.content).
-      sort((a: any, b: any) => (this.properties[a].order > this.properties[b].order) ? 1 : ((this.properties[b].order > this.properties[a].order) ? -1 : 0));
+        sort((a: any, b: any) => (this.properties[a].order > this.properties[b].order) ? 1 : ((this.properties[b].order > this.properties[a].order) ? -1 : 0));
       this.columnsToDisplay.push('action');
     })
-   
+
     this.getDatasource();
   }
 
   getDatasource() {
- // set datasource
- this.projectService.all().subscribe((res: any) => {
-  this.dataSource = res;
-})
+    // set datasource
+    this.projectService.all().subscribe((res: any) => {
+      this.dataSource = res;
+    })
   }
 
   dataSource: any;
@@ -50,7 +50,7 @@ export class ProjectComponent implements OnInit {
   openDialog(dataSource?: any): void {
     const dialogRef = this.dialog.open(CreateProjectComponent, {
       width: '550px',
-      data: {properties: this.properties, dataSource}
+      data: { properties: this.properties, dataSource }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -62,7 +62,7 @@ export class ProjectComponent implements OnInit {
   confirmDialog(dataSource?: any): void {
     const dialogRef = this.dialog.open(DeleteProjectComponent, {
       width: '550px',
-      data: {properties: this.properties, dataSource}
+      data: { properties: this.properties, dataSource }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -71,6 +71,8 @@ export class ProjectComponent implements OnInit {
       this.getDatasource();
     });
   }
+
+  search() { }
 }
 
 

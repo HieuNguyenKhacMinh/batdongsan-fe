@@ -1,3 +1,4 @@
+import { FooterComponent } from './footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import { CreateRealEstateComponent } from './create-real-estate/create-real-estate.component';
 import { MenuComponent } from './menu/menu.component';
@@ -10,6 +11,8 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../material-module';
 import { HttpClientModule } from '@angular/common/http';
 import { RealEstateService } from './real.estate.service';
+import { NeedBuyComponent } from './create-real-estate/need-buy/need-buy.component';
+import { NeedSellComponent } from './create-real-estate/need-sell/need-sell.component';
 
 @NgModule({
     imports: [
@@ -23,7 +26,10 @@ import { RealEstateService } from './real.estate.service';
     declarations: [
         ClientComponent,
         MenuComponent,
-        CreateRealEstateComponent
+        CreateRealEstateComponent,
+        NeedBuyComponent,
+        NeedSellComponent,
+        FooterComponent
     ],
     providers: [MenuService, 
         RealEstateService],
