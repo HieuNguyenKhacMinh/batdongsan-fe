@@ -3,7 +3,7 @@ import { NewsService } from '../news.service';
 
 @Component({
     selector: 'app-new-categories',
-    templateUrl: 'category.component.html'
+    templateUrl: 'list.component.html'
 })
 
 export class CategoryComponent implements OnInit {
@@ -13,7 +13,6 @@ export class CategoryComponent implements OnInit {
     ngOnInit() {
         this.service.getCategories().subscribe(res => {
             this.categories = res;
-            console.log(this.categories);
         })
     }
 }

@@ -1,4 +1,3 @@
-import { RealEstateService } from './../../real.estate.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NewsService } from '../news.service';

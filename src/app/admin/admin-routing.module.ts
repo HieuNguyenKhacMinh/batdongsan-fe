@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './admin.component';
@@ -55,7 +56,7 @@ const routes: Routes = [{
             loadChildren: () => import('./notification/notification/notification.module').then(m => m.NotificationModule)
         },
         {
-            path: 'producttype',
+            path: 'product-type',
             loadChildren: () => import('./product-type/product-type/product-type.module').then(m => m.ProductTypeModule)
         }, {
             path: 'organization',
@@ -75,10 +76,8 @@ const routes: Routes = [{
         }, {
             path: 'user',
             loadChildren: () => import('./user/user/user.module').then(m => m.UserModule)
-        }, {
-            path: 'product',
-            loadChildren: () => import('./product/product/product.module').then(m => m.ProductModule)
-        },{
+        }, 
+        {
             path: 'hashtag',
             loadChildren: () => import('./hashtag/hashtag/hashtag.module').then(m => m.HashtagModule)
         },
@@ -115,6 +114,10 @@ const routes: Routes = [{
         },{
             path: 'file',
             loadChildren: () => import('./file/file.module').then(m => m.FileModule)
+        },
+        {
+            path: 'project-type',
+            loadChildren: () => import('./project-type/project-type.module').then(m => m.ProjectTypeModule)
         },
     ]
 },

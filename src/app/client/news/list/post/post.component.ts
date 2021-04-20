@@ -5,7 +5,7 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.scss']
 })
-export class CategoryPostComponent implements OnInit {
+export class PostItemComponent implements OnInit {
   title = 'Post';
 
   @Input() posts: any
@@ -16,6 +16,5 @@ export class CategoryPostComponent implements OnInit {
 
   ngOnInit() {
     this.posts = this.posts.slice(0, 4);
-    console.log(this.posts);
   }
 }

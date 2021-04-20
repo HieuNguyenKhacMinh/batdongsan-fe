@@ -1,0 +1,6 @@
+<div>
+    <div *ngFor="let type of projectTypes">
+        <h3>{{type.name}}</h3>
+        <project-item [projects]="type.projects"></project-item>
+    </div>
+</div>

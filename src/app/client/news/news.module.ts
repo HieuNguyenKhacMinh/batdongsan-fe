@@ -7,16 +7,16 @@ import { CommonModule } from "@angular/common";
 import { NewsDetailComponent } from './detail/detail.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from '../../material-module';
-import { CategoryComponent } from './category/category.component';
+import { CategoryComponent } from './list/list.component';
 import { NewsService } from './news.service';
-import { CategoryPostComponent } from './category/post/post.component';
+import { PostItemComponent } from './list/post/post.component';
 
 @NgModule({
     declarations: [
         NewsComponent,
         NewsDetailComponent,
         CategoryComponent,
-        CategoryPostComponent
+        PostItemComponent
     ],
     imports: [
         CommonModule,

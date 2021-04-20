@@ -1,0 +1,18 @@
+<div *ngIf="projects">
+    <mat-card class="project-item" *ngFor="let project of projects">
+
+        <mat-card-header>
+            <mat-card-title>
+                {{project.name}}
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p>
+                {{project.address?.home_number}}, {{project.address?.street}} - {{project.wards?.name}} - {{project.district?.name}} - {{project.city?.name}} - {{project.country?.name}}
+            </p>
+            <p>
+                Tổng diện tích: {{project.total_area}} m²
+            </p>
+        </mat-card-content>
+    </mat-card>
+</div>
