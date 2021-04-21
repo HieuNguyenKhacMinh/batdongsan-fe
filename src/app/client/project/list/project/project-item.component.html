@@ -1,11 +1,12 @@
-<div *ngIf="projects">
+<div *ngIf="projects" class="project-items">
     <mat-card class="project-item" *ngFor="let project of projects">
 
         <mat-card-header>
-            <mat-card-title>
+            <mat-card-title [routerLink]="['../', project.id]" routerLinkActive="router-link-active" >
                 {{project.name}}
             </mat-card-title>
         </mat-card-header>
+        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
         <mat-card-content>
             <p>
                 {{project.address?.home_number}}, {{project.address?.street}} - {{project.wards?.name}} - {{project.district?.name}} - {{project.city?.name}} - {{project.country?.name}}
@@ -15,4 +16,5 @@
             </p>
         </mat-card-content>
     </mat-card>
+
 </div>

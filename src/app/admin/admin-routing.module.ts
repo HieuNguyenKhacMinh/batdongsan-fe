@@ -114,6 +114,9 @@ const routes: Routes = [{
         },{
             path: 'file',
             loadChildren: () => import('./file/file.module').then(m => m.FileModule)
+        },{
+            path: 'product',
+            loadChildren: () => import('./product/product/product.module').then(m => m.ProductModule)
         },
         {
             path: 'project-type',

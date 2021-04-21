@@ -1,3 +1,30 @@
-<div>
+<div *ngIf="project">
     Detail
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>
+                {{project.name}}
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p>
+                {{project.address?.home_number}}, {{project.address?.street}} - {{project.wards?.name}} -
+                {{project.district?.name}} - {{project.city?.name}} - {{project.country?.name}}
+            </p>
+            <p>
+                Tổng diện tích: {{project.total_area}} m²
+            </p>
+            <pre  class="pre-wrap">
+                {{project.description}}
+            </pre>
+        </mat-card-content>
+    </mat-card>
+
+    <h3> TIN RAO THUỘC DỰ ÁN </h3>
+    <mat-card *ngFor="let product of project.products">
+        <mat-card-content>
+            <a [routerLink]="['../../real-estate', product.id]" routerLinkActive="router-link-active">
+                {{product.sub_title}}</a>
+        </mat-card-content>
+    </mat-card>
 </div>
