@@ -20,7 +20,10 @@ const routes: Routes = [{
       path: "projects",
       loadChildren: () => import('./project/project.module').then(m => m.ProjectModule)
     },
-    
+    {
+      path: "manager",
+      loadChildren: () => import('./manager/manager.module').then(m => m.ManagerModule)
+    },
     {
       path: "create-real-estate",
      component: CreateRealEstateComponent,

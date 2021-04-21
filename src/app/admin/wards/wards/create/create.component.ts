@@ -33,9 +33,9 @@ export class CreateWardsComponent implements OnInit {
         console.log(references);
 
          // get data referent
-         await Promise.all(references.map(async column => {
-            await this.service.getData(this.properties[column].reference.api_url).subscribe((res) =>{
-                this.properties[column].data = res;
+         await Promise.all(references.map(async reference => {
+            await this.service.getData(this.properties[reference].reference.api_url).subscribe((res) =>{
+                this.properties[reference].data = res;
             })
         }))
 

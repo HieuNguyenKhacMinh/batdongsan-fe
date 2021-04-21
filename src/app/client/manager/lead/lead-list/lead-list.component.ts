@@ -1,0 +1,13 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+    selector: 'selector-client-manager-lead-lead-list',
+    templateUrl: 'lead-list.component.html',
+    styleUrls: ['./lead-list.component.scss']
+})
+
+export class LeadListComponent implements OnInit {
+    constructor() { }
+
+    ngOnInit() { }
+}

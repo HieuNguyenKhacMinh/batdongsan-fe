@@ -28,11 +28,11 @@ export class CreateDistrictComponent implements OnInit {
         this.columns = Object.keys(this.data.properties)
             .filter((column: any) => this.properties[column].visible !== true);
         /** colums reference */
-        const references = this.columns.filter((column: any) => this.properties[column].reference !== undefined);
+        const references: string[] = this.columns.filter((column: string) => this.properties[column].reference !== undefined);
         console.log(references);
 
          // get data referent
-         await Promise.all(references.map(async column => {
+         await Promise.all(references.map(async (column: string) => {
             await this.service.getData(this.properties[column].reference.api_url).subscribe((res) =>{
                 this.properties[column].data = res;
             })
