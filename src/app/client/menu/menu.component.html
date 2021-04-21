@@ -1,9 +1,10 @@
 <mat-toolbar color="primary">
-    <span>Real Estate</span>
+    <div [routerLink]="['/']" routerLinkActive="router-link-active" > <span>Real Estate</span></div>
+   
 
     <span class="example-padding"></span>
-    <div *ngFor="let menu of menus" style="margin-right: 30px;font-size: 30px;">
-        <button mat-button [routerLink]="[menu.path]" routerLinkActive="router-link-active">{{menu.name}}</button>
+    <div *ngFor="let menu of menus" >
+        <button mat-button [routerLink]="[menu.path]">{{menu.name}}</button>
     </div>
 
     <span class="example-spacer"></span>
@@ -15,4 +16,10 @@
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
         <mat-icon>share</mat-icon>
     </button>
+
+    <button mat-button [matMenuTriggerFor]="menu">Hieu Nguyen Khac Minh</button>
+<mat-menu #menu="matMenu">
+  <a mat-menu-item [routerLink]="['/client/manager']" routerLinkActive="router-link-active" >Quản lý tài khoản</a>
+  <button mat-menu-item>Đăng xuất</button>
+</mat-menu>
 </mat-toolbar>

@@ -1,3 +1,44 @@
 <!-- Hello world!! -->
 
-<router-outlet></router-outlet>
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+        <mat-list role="list">
+            <mat-list-item role="listitem">
+                <button mat-button matLine [routerLink]="['/client/manager/company']"
+                    routerLinkActive="router-link-active">Company</button>
+            </mat-list-item>
+            <mat-list-item role="listitem">
+                <button mat-button matLine [routerLink]="['/client/manager/users']"
+                    routerLinkActive="router-link-active">User</button>
+            </mat-list-item>
+            <mat-list-item role="listitem">
+                <button mat-button matLine [routerLink]="['/client/manager/contact']"
+                    routerLinkActive="router-link-active">Contact</button>
+            </mat-list-item>
+            <mat-list-item role="listitem">
+                <button mat-button matLine [routerLink]="['/client/manager/lead']"
+                    routerLinkActive="router-link-active">Lead</button>
+            </mat-list-item>
+            <mat-list-item role="listitem">
+                <button mat-button matLine [routerLink]="['/client/manager/opportunity']"
+                    routerLinkActive="router-link-active">Opportunity</button>
+            </mat-list-item>
+            <mat-list-item role="listitem">
+                <button mat-button matLine [routerLink]="['/client/manager/post']"
+                    routerLinkActive="router-link-active">Post</button>
+            </mat-list-item>
+        </mat-list>
+
+
+    </mat-drawer>
+
+    <div class="example-sidenav-content">
+        <button type="button" mat-icon-button (click)="drawer.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        hello
+
+        <router-outlet></router-outlet>
+    </div>
+
+</mat-drawer-container>
