@@ -1,3 +1,4 @@
+import { LeadListComponent } from './lead-list/lead-list.component';
 import { LeadService } from './lead.service';
 import { LeadRoutingModule } from './lead-routing.module';
 import { MaterialModule } from '../../../material-module';
@@ -16,7 +17,9 @@ import { LeadDetailComponent } from './lead-detail/lead-detail.component';
         LeadRoutingModule,
     ],
     exports: [],
-    declarations: [LeadComponent, LeadDetailComponent],
+    declarations: [LeadComponent, 
+        LeadListComponent,
+        LeadDetailComponent],
     providers: [LeadService],
 })
 export class LeadModule { }

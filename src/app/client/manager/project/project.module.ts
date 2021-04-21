@@ -1,3 +1,4 @@
+import { ProjectListComponent } from './project-list/project-list.component';
 import { ProjectService } from '../project/project.service';
 import { ProjectComponent } from './project.component';
 import { ProjectRoutingModule } from './project-routing.module';
@@ -17,7 +18,9 @@ import { ProjectDetailComponent } from './project-detail/project-detail.componen
         ProjectRoutingModule,
     ],
     exports: [],
-    declarations: [ProjectComponent, ProjectDetailComponent],
+    declarations: [ProjectComponent,
+        ProjectListComponent,
+        ProjectDetailComponent],
     providers: [ProjectService],
 })
 export class ProjectModule { }

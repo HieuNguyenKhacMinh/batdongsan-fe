@@ -1,3 +1,4 @@
+import { CustomerListComponent } from './customer-list/customer-list.component';
 import { CustomerService } from './customer.service';
 import { CustomerDetailComponent } from './customer-detail/customer-detail.component';
 import { MaterialModule } from '../../../material-module';
@@ -9,14 +10,18 @@ import { CustomerComponent } from './customer.component';
 import { CustomerRoutingModule } from './customer-routing.module';
 
 @NgModule({
-    imports: [  
+    imports: [
         CommonModule,
         HttpClientModule,
         MaterialModule,
         CustomerRoutingModule,
     ],
     exports: [],
-    declarations: [CustomerComponent, CustomerDetailComponent],
+    declarations: [
+        CustomerComponent,
+        CustomerListComponent,
+        CustomerDetailComponent
+    ],
     providers: [CustomerService],
 })
 export class CustomerModule { }

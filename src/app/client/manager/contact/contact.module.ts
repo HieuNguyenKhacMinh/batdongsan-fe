@@ -1,4 +1,6 @@
-import { ContactService } from './../../../admin/contact/contact/contact.service';
+import { ContactListComponent } from './contact-list/contact-list.component';
+import { FormsModule } from '@angular/forms';
+import { ContactService } from './contact.service';
 import { ContactDetailComponent } from './contact-detail/contact-detail.component';
 import { MaterialModule } from '../../../material-module';
 import { HttpClientModule } from '@angular/common/http';
@@ -7,16 +9,29 @@ import { NgModule } from '@angular/core';
 
 import { ContactComponent } from './contact.component';
 import { ContactRoutingModule } from './contact-routing.module';
+import { DeleteContactComponent } from './delete/delete.component';
+import { CreateContactComponent } from './create/create.component';
 
 @NgModule({
-    imports: [  
+    imports: [
         CommonModule,
         HttpClientModule,
-        MaterialModule,
+        FormsModule,
         ContactRoutingModule,
+        MaterialModule,
     ],
     exports: [],
-    declarations: [ContactComponent, ContactDetailComponent],
+    declarations: [
+        ContactComponent,
+        ContactListComponent,
+        ContactDetailComponent,
+        DeleteContactComponent,
+        CreateContactComponent
+    ],
+    entryComponents: [
+        DeleteContactComponent,
+        CreateContactComponent
+    ],
     providers: [ContactService],
 })
 export class ContactModule { }

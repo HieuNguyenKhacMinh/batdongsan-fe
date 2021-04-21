@@ -1,3 +1,4 @@
+import { CompanyListComponent } from './company-list/company-list.component';
 import { CompanyService } from './company.service';
 import { CompanyDetailComponent } from './company-detail/company-detail.component';
 import { MaterialModule } from './../../../material-module';
@@ -16,7 +17,9 @@ import { CompanyRoutingModule } from './company-routing.module';
         CompanyRoutingModule,
     ],
     exports: [],
-    declarations: [CompanyComponent, CompanyDetailComponent],
+    declarations: [CompanyComponent,
+        CompanyListComponent,
+        CompanyDetailComponent],
     providers: [CompanyService],
 })
 export class CompanyModule { }

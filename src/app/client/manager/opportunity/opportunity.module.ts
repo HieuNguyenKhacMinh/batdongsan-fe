@@ -1,3 +1,4 @@
+import { OpportunityListComponent } from './opportunity-list/opportunity-list.component';
 import { OpportunityService } from './opportunity.service';
 import { OpportunityComponent } from './opportunity.component';
 import { OpportunityDetailComponent } from './opportunity-detail/opportunity-detail.component';
@@ -17,7 +18,9 @@ import { OpportunityRoutingModule } from './opportunity-routing.module';
         OpportunityRoutingModule,
     ],
     exports: [],
-    declarations: [OpportunityComponent, OpportunityDetailComponent],
+    declarations: [OpportunityComponent,
+        OpportunityListComponent,
+        OpportunityDetailComponent],
     providers: [OpportunityService],
 })
 export class OpportunityModule { }

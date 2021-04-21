@@ -1,3 +1,4 @@
+import { PostListComponent } from './post-list/post-list.component';
 import { PostService } from './post.service';
 import { PostComponent } from '../post/post.component';
 import { PostRoutingModule } from './post-routing.module';
@@ -11,14 +12,16 @@ import { NgModule } from '@angular/core';
 
 
 @NgModule({
-    imports: [  
+    imports: [
         CommonModule,
         HttpClientModule,
         MaterialModule,
         PostRoutingModule,
     ],
     exports: [],
-    declarations: [PostComponent, PostDetailComponent],
+    declarations: [PostComponent,
+        PostListComponent,
+        PostDetailComponent],
     providers: [PostService],
 })
 export class PostModule { }

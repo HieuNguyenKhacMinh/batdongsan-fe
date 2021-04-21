@@ -1,3 +1,4 @@
+import { UsersListComponent } from './users-list/users-list.component';
 import { UsersService } from './users.service';
 import { UsersRoutingModule } from './users-routing.module';
 import { UsersComponent } from './users.component';
@@ -16,7 +17,9 @@ import { UsersDetailComponent } from './users-detail/users-detail.component';
         UsersRoutingModule,
     ],
     exports: [],
-    declarations: [UsersComponent, UsersDetailComponent],
+    declarations: [UsersComponent, 
+        UsersListComponent,
+        UsersDetailComponent],
     providers: [UsersService],
 })
 export class UsersModule { }
