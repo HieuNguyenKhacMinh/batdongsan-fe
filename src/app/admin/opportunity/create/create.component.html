@@ -1,5 +1,5 @@
 <div></div>
-<div>
+<div class="scroll">
   <div *ngFor="let column of columns">
     <div *ngIf="column !== 'id'">
 
@@ -16,7 +16,7 @@
           <div *ngIf="properties[column].data">
             <mat-form-field appearance="fill">
               <mat-label>{{properties[column].alias}}</mat-label>
-              <mat-select [(ngModel)]="dataSource[column]">
+              <mat-select [name]="column" [(ngModel)]="dataSource[column]" (selectionChange)="selectionChange($event)">
                 <mat-option *ngFor="let food of properties[column].data"
                   [value]="food[properties[column].reference.value]">
                   {{food[properties[column].reference.label]}}

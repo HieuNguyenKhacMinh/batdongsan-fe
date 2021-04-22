@@ -1,63 +1,15 @@
 opportunity list
 <div cdkDropListGroup class="opportunity">
-    <div class="example-container">
-      <h2>To do</h2>
-  
-      <div
-        cdkDropList
-        [cdkDropListData]="todo"
-        class="example-list"
-        (cdkDropListDropped)="drop($event)">
-        <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+  <div class="example-container" *ngFor="let pipe of pipelines">
+    <h2>{{pipe.name}}</h2>
+
+    <div cdkDropList [cdkDropListData]="pipe.opportunities" [id]="pipe.id" class="example-list" (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let opp of pipe.opportunities" [id]="opp.id" cdkDrag>
+        <div>
+          {{opp.firsname}}
+        </div>
+       
       </div>
     </div>
-  
-    <div class="example-container">
-      <h2>Done</h2>
-  
-      <div
-        cdkDropList
-        [cdkDropListData]="done"
-        class="example-list"
-        (cdkDropListDropped)="drop($event)">
-        <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
-      </div>
-    </div>
-  
-    <div class="example-container">
-        <h2>Done</h2>
-    
-        <div
-          cdkDropList
-          [cdkDropListData]="done"
-          class="example-list"
-          (cdkDropListDropped)="drop($event)">
-          <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
-        </div>
-      </div>
-
-      <div class="example-container">
-        <h2>Done</h2>
-    
-        <div
-          cdkDropList
-          [cdkDropListData]="done"
-          class="example-list"
-          (cdkDropListDropped)="drop($event)">
-          <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
-        </div>
-      </div>
-
-      <div class="example-container">
-        <h2>Done</h2>
-    
-        <div
-          cdkDropList
-          [cdkDropListData]="done"
-          class="example-list"
-          (cdkDropListDropped)="drop($event)">
-          <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
-        </div>
-      </div>
-      
   </div>
+</div>

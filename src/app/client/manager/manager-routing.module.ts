@@ -1,3 +1,4 @@
+import { PipelineModule } from './../../admin/pipeline/pipeline/pipeline.module';
 import { ManagerComponent } from './manager.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -29,13 +30,18 @@ const routes: Routes = [{
     {
       path: "post",
       loadChildren: () => import('./post/post.module').then(m => m.PostModule)
-    }, {
+    },
+    {
       path: "project",
       loadChildren: () => import('./project/project.module').then(m => m.ProjectModule)
-    }
-    , {
+    },
+    {
       path: "users",
       loadChildren: () => import('./users/users.module').then(m => m.UsersModule)
+    },
+    {
+      path: "pipeline",
+      loadChildren: () => import('./pipeline/pipeline.module').then(m => m.PipelineModule)
     },
 
     {

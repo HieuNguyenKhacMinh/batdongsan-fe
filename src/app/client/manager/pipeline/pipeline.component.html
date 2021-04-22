@@ -1,4 +1,6 @@
-<p>Opportunity works!</p>
+<p>pipeline works!</p>
+
+
 <div>
   <button mat-button (click)="openDialog()" color="primary">Thêm</button>
 </div>
@@ -18,7 +20,8 @@
           <div *ngIf="column !== 'id'">
             <!-- if -->
             <div *ngIf="properties[column].reference !== undefined">
-              {{ element[properties[column].reference.table][properties[column].reference.label]}}
+              {{ element[properties[column].reference.table] &&
+              element[properties[column].reference.table][properties[column].reference.label]}}
             </div>
             <!-- else -->
             <div *ngIf="properties[column].reference === undefined">
@@ -34,12 +37,12 @@
         </div>
       </td>
     </ng-container>
- 
+
     <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
     <tr mat-row *matRowDef="let element; columns: columnsToDisplay;" class="example-element-row"
       [class.example-expanded-row]="expandedElement === element"
       (click)="expandedElement = expandedElement === element ? null : element">
     </tr>
-     
+
   </table>
 </div>
