@@ -1,17 +1,17 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { AddressService } from '../pipeline.service';
+import { PipelineService } from '../pipeline.service';
 
 @Component({
-    selector: 'create-address',
+    selector: 'create-pipeline',
     templateUrl: 'create.component.html',
     styleUrls: ['create.component.scss']
 })
 
-export class CreateAddressComponent implements OnInit {
+export class CreatePipelineComponent implements OnInit {
     constructor(
-        private service: AddressService,
-        public dialogRef: MatDialogRef<CreateAddressComponent>,
+        private service: PipelineService,
+        public dialogRef: MatDialogRef<CreatePipelineComponent>,
         @Inject(MAT_DIALOG_DATA) public data: any) { }
 
     onNoClick(): void {
@@ -20,13 +20,28 @@ export class CreateAddressComponent implements OnInit {
     dataSource: any;
     columns: any;
     properties: any;
-    ngOnInit() {
+    async ngOnInit() {
         console.log(this.data);
         // get properites
         this.properties = this.data.properties;
-        this.columns = Object.keys(this.data.properties);
+        // filter những collum có visible != true
+        this.columns = Object.keys(this.data.properties)
+            .filter((column: any) => this.properties[column].visible !== true);
+        /** colums reference */
+        const references = this.columns.filter((column: any) => this.properties[column].reference !== undefined);
+        console.log(references);
+
+         // get data referent
+         await Promise.all(references.map(async column => {
+            await this.service.getData(this.properties[column].reference.api_url).subscribe((res) =>{
+                this.properties[column].data = res;
+            })
+        }))
+
         this.dataSource = this.data.dataSource || {};
         // set to form control
+
+
 
 
 

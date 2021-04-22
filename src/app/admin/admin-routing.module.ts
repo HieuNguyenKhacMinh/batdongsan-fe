@@ -1,3 +1,4 @@
+import { PipelineModule } from './pipeline/pipeline/pipeline.module';
 
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -121,6 +122,15 @@ const routes: Routes = [{
         {
             path: 'project-type',
             loadChildren: () => import('./project-type/project-type.module').then(m => m.ProjectTypeModule)
+        },{
+            path: 'order',
+            loadChildren: () => import('./order/order.module').then(m => m.OrderModule)
+        },{
+            path: 'wishlist',
+            loadChildren: () => import('./wishlist/wishlist.module').then(m => m.WishlistModule)
+        },{
+            path: 'pipeline',
+            loadChildren: () => import('./pipeline/pipeline/pipeline.module').then(m => m.PipelineModule)
         },
     ]
 },

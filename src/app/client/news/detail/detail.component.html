@@ -1,11 +1,12 @@
-<div *ngIf="post">
+<div *ngIf="post" class="post">
     <mat-card class="example-card">
+        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" 
+        alt="Photo of a Shiba Inu" style="margin-top: 4px;" >
         <mat-card-header>
             <mat-card-title>{{post.title}}</mat-card-title>
         </mat-card-header>
-        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-        <mat-card-content>
-            <pre>
+        <mat-card-content class="content" >
+            <pre class="pre-wrap">
                 {{post.content}}
             </pre>
         </mat-card-content>

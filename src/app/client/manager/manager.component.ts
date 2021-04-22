@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class ManagerComponent {
   title = 'y';
+  showFiller = true;
 }

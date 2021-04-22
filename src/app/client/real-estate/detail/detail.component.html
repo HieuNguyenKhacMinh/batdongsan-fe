@@ -1,19 +1,85 @@
-
 <search-real-estate></search-real-estate>
-<div *ngIf="product">
-    <mat-card class="example-card">
-        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-        <mat-card-header>
-            <mat-card-title>{{product.title}}</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-            <pre class="pre-wrap">
+<div class="total">
+    <div *ngIf="product" class="product">
+        <mat-card class="example-card">
+            <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+                alt="Photo of a Shiba Inu" >
+            <mat-card-header>
+                <mat-card-title>{{product.title}}</mat-card-title>
+            </mat-card-header>
+            <p><b>Thông tin mô tả</b></p>
+            <mat-card-content>
+                <pre class="pre-wrap">
                 {{product.description}}
             </pre>
-        </mat-card-content>
-        <mat-card-actions>
-            <button mat-button>LIKE</button>
-            <button mat-button>SHARE</button>
-        </mat-card-actions>
-    </mat-card>
+            </mat-card-content>
+            <p><b>Đặc điểm nổi bậc</b></p>
+            <pre>Loại tin đăng: {{product.product_type}}</pre>
+            <pre>Địa chỉ: {{product.home_number}},{{product.street}},{{product.wards}}</pre>
+            <pre>Đường vào: {{product.entry_width}} mét</pre>
+            <pre>Mặt tiền: {{product.facade}} m</pre>
+
+            <!-- <p><b>Thông tin dự án</b></p>
+            <pre>Loại tin đăng: {{product.product_type}}</pre>
+            <pre>Địa chỉ: {{product.home_number}},{{product.street}},{{product.wards}}</pre>
+            <pre>Đường vào: {{product.entry_width}} mét</pre>
+            <pre>Mặt tiền: {{product.facade}} mặt tiền</pre> -->
+            <mat-card-actions>
+                <button mat-button>LIKE</button>
+                <button mat-button>SHARE</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    <div class="comment">
+        <mat-card class="example-card">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+
+            </mat-card-header>
+
+            <mat-card-content>
+                <p>
+                    Bất động sản giá bao nhiêu
+                </p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button>LIKE</button>
+                <button mat-button>REPLY</button>
+            </mat-card-actions>
+        </mat-card>
+        <mat-card class="example-card reply">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+
+            </mat-card-header>
+
+            <mat-card-content>
+                <p>
+                   Căn hộ đẹp quá
+                </p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button>LIKE</button>
+                <button mat-button>REPLY</button>
+            </mat-card-actions>
+        </mat-card>
+        <<mat-card class="example-card">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>Shiba Inu</mat-card-title>
+                <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+            </mat-card-header>
+
+            <mat-card-content>
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Leave a comment</mat-label>
+                    <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+                </mat-form-field>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button>SEND</button>
+            </mat-card-actions>
+            </mat-card>
+    </div>
 </div>

@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { AddressService } from '../pipeline.service';
+import { PipelineService } from '../pipeline.service';
 
 @Component({
     selector: 'delete-hotel',
@@ -8,10 +8,10 @@ import { AddressService } from '../pipeline.service';
     styleUrls: ['delete.component.scss']
 })
 
-export class DeleteAddressComponent implements OnInit {
+export class DeletePipelineComponent implements OnInit {
     constructor(
-        private service: AddressService,
-        public dialogRef: MatDialogRef<DeleteAddressComponent>,
+        private service: PipelineService,
+        public dialogRef: MatDialogRef<DeletePipelineComponent>,
         @Inject(MAT_DIALOG_DATA) public data: any) { }
 
     ngOnInit() { }

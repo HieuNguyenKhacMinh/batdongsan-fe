@@ -1,0 +1,31 @@
+.post{
+   margin-left: 150px;
+}
+.content{
+    width: 600px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    color: #2c2f36;
+    margin-bottom: 16px;
+    display: inline-block;
+}
+.example-card{
+    width: 600px;
+   
+}
+img {
+    height: 400px;
+    margin-top: 4px;
+
+}
+.pre-wrap {
+    word-wrap: break-word; /* IE 5.5-7 */
+    white-space: -moz-pre-wrap; /* Firefox 1.0-2.0 */
+    white-space: pre-wrap;
+    line-height: 1.5; /* current browsers */
+    font-size: 14px;
+    font-family: Serif;
+}

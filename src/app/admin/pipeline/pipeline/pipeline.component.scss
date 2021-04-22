@@ -7,11 +7,11 @@ table {
   }
   
   tr.example-element-row:not(.example-expanded-row):hover {
-    // background: whitesmoke;
+    background: whitesmoke;
   }
   
   tr.example-element-row:not(.example-expanded-row):active {
-    // background: #efefef;
+    background: #efefef;
   }
   
   .example-element-row td {
@@ -44,4 +44,8 @@ table {
   
   .example-element-description-attribution {
     opacity: 0.5;
+  }
+
+  .condition_class {
+    display: flex;
   }

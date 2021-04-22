@@ -7,7 +7,8 @@ import { DeleteUserComponent } from './delete/delete.component';
 
 @Component({
   selector: 'app-user',
-  templateUrl: './user.component.html',
+  templateUrl: 
+  './user.component.html',
   styleUrls: ['./user.component.scss'],
   animations: [
     trigger('detailExpand', [
@@ -28,7 +29,8 @@ export class UserComponent implements OnInit {
     this.userService.getProperties().subscribe((res: any) => {
       // change column display
       this.properties = res.content;
-      this.columnsToDisplay = Object.keys(res.content);
+      this.columnsToDisplay = Object.keys(res.content).
+      sort((a: any, b: any) => (this.properties[a].order > this.properties[b].order) ? 1 : ((this.properties[b].order > this.properties[a].order) ? -1 : 0));
       this.columnsToDisplay.push('action');
     })
    

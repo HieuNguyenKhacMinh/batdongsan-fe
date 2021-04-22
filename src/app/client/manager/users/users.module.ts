@@ -1,5 +1,8 @@
+import { FormsModule } from '@angular/forms';
+import { CreateUsersComponent } from './create/create.component';
+import { DeleteUsersComponent } from './delete/delete.component';
 import { UsersListComponent } from './users-list/users-list.component';
-import { UsersService } from './users.service';
+import { UserService } from './users.service';
 import { UsersRoutingModule } from './users-routing.module';
 import { UsersComponent } from './users.component';
 import { MaterialModule } from '../../../material-module';
@@ -15,11 +18,16 @@ import { UsersDetailComponent } from './users-detail/users-detail.component';
         HttpClientModule,
         MaterialModule,
         UsersRoutingModule,
+        FormsModule,
     ],
     exports: [],
-    declarations: [UsersComponent, 
+    declarations: [
+        UsersComponent, 
         UsersListComponent,
-        UsersDetailComponent],
-    providers: [UsersService],
+        UsersDetailComponent,
+        DeleteUsersComponent,
+        CreateUsersComponent
+    ],
+    providers: [UserService],
 })
 export class UsersModule { }

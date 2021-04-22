@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CompanyListComponent } from './company-list/company-list.component';
+import { CompanyDetailComponent } from './company-detail/company-detail.component';
 import { CompanyComponent } from './company.component';
 
 const routes: Routes = [{
@@ -9,12 +9,12 @@ const routes: Routes = [{
   children: [
 
     {
-      path: "list",
-      component: CompanyListComponent
+      path: "info",
+      component: CompanyDetailComponent
     },
     {
       path: '',
-      redirectTo: 'list',
+      redirectTo: 'info',
       pathMatch: 'full'
     }]
 },

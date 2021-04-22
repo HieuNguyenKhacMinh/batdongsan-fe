@@ -1,28 +1,28 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AddressComponent } from './address.component';
-import { AddressService } from './address.service';
+import { PipelineComponent } from './pipeline.component';
+import { PipelineService } from './pipeline.service';
 import { HttpClientModule } from '@angular/common/http';
-import { CreateAddressComponent } from './create/create.component';
+import { CreatePipelineComponent } from './create/create.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DeleteAddressComponent } from './delete/delete.component';
-import { AddressRoutingModule } from './pipeline-routing.module';
+import { DeletePipelineComponent } from './delete/delete.component';
+import { PipelineRoutingModule } from './pipeline-routing.module';
 import { MaterialModule } from '../../../material-module';
  
 
 @NgModule({
-  declarations: [AddressComponent, CreateAddressComponent, DeleteAddressComponent],
+  declarations: [PipelineComponent, CreatePipelineComponent, DeletePipelineComponent],
   imports: [
     CommonModule,
     MaterialModule,
     HttpClientModule,
-    AddressRoutingModule,
+    PipelineRoutingModule,
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [AddressService],
+  providers: [PipelineService],
   entryComponents: [
-    CreateAddressComponent, DeleteAddressComponent
+    CreatePipelineComponent, DeletePipelineComponent
   ],
 })
-export class AddressModule { }
+export class PipelineModule { }

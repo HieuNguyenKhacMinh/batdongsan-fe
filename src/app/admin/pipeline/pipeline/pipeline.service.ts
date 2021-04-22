@@ -2,14 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class AddressService {
-  url = 'http://localhost:3000/cms/categories';
+export class PipelineService {
+  url = 'http://localhost:3000/cms/pipeline';
   propertiesUrl = ''
   constructor(private http: HttpClient) { }
 
-  all(): any {
+  all(org_id: string): any {
     let headers = { authorization: localStorage.getItem('authorization') || '', site_id: localStorage.getItem('site_id') || '' }
-    return this.http.get(`${this.url}`, { headers });
+    return this.http.get(`${this.url}/${org_id}`, { headers });
   }
 
   get(id: any): any {
@@ -18,7 +18,7 @@ export class AddressService {
 
   getProperties() {
     let headers = { authorization: localStorage.getItem('authorization') || '', site_id: localStorage.getItem('site_id') || '' }
-    return this.http.get(`http://localhost:3000/cms/table-config/address`, { headers });
+    return this.http.get(`http://localhost:3000/cms/table-config/pipeline`, { headers });
   }
   update(data: any) {
     let headers = {
@@ -34,5 +34,12 @@ export class AddressService {
       site_id: localStorage.getItem('site_id') || ''
     };
     return this.http.delete(`${this.url}/${data.id}`, { headers });
+  }
+  getData(url: string) {
+    let headers = {
+      authorization: localStorage.getItem('authorization') || '',
+      site_id: localStorage.getItem('site_id') || ''
+    };
+    return this.http.get(`${url}`, { headers });
   }
 }
