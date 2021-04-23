@@ -3,12 +3,40 @@ opportunity list
   <div class="example-container" *ngFor="let pipe of pipelines">
     <h2>{{pipe.name}}</h2>
 
-    <div cdkDropList [cdkDropListData]="pipe.opportunities" [id]="pipe.id" class="example-list" (cdkDropListDropped)="drop($event)">
+    <div cdkDropList [cdkDropListData]="pipe.opportunities" [id]="pipe.id" class="example-list"
+      (cdkDropListDropped)="drop($event)">
       <div class="example-box" *ngFor="let opp of pipe.opportunities" [id]="opp.id" cdkDrag>
         <div>
-          {{opp.firsname}}
+          <p>
+            Tên: {{opp.name}}
+          </p>
+          <p>
+            Mô tả: {{opp.description}}
+          </p>
+
+          <p *ngIf="opp.project">
+            Dự án: <a [routerLink]="['/client/projects', opp.project.id]" routerLinkActive="router-link-active">
+              {{opp.project.name}}</a>
+          </p>
+          <div *ngIf="opp.product">
+
+            Sản phẩm:
+            <div *ngIf="opp.product.is_buy_hire === 0">
+              <a [routerLink]="['/client/real-estate', opp.product.id]" routerLinkActive="router-link-active">
+                {{opp.product.title}}</a>
+            </div>
+            <div *ngIf="opp.product.is_buy_hire === 1">
+              <a [routerLink]="['/client/buy-hire', opp.product.id]" routerLinkActive="router-link-active">
+                {{opp.product.title}}
+              </a>
+            </div>
+            <h3>
+              Giá trị {{opp.value}} {{ opp.unit === 1000000 ? "Triệu" :(opp.unit === 1000000000 ? "tỷ" :"" )}}
+
+            </h3>
+          </div>
         </div>
-       
+
       </div>
     </div>
   </div>

@@ -1,4 +1,4 @@
-<p>contact works!</p>
+<p>address works!</p>
 <div>
   <button mat-button (click)="openDialog()" color="primary">Thêm</button>
 </div>
@@ -8,13 +8,25 @@
       <th mat-header-cell *matHeaderCellDef> {{properties[column]?.alias}} </th>
       <td mat-cell *matCellDef="let element">
         <div *ngIf="column !== 'action'">
-          <span *ngIf="column === 'id'">
-            {{  element[column]?.slice(0, 5)}}
-          </span>
-          <span *ngIf="column !== 'id'">
-            {{  element[column]}}
-          </span>
-
+          <!-- if id-->
+          <div *ngIf="column === 'id'">
+            <span>
+              {{ element[column]?.slice(0, 5)}}
+            </span>
+          </div>
+          <!-- else id-->
+          <div *ngIf="column !== 'id'">
+            <!-- if -->
+            <div *ngIf="properties[column].reference !== undefined">
+              {{ element[properties[column].reference.table][properties[column].reference.label]}}
+            </div>
+            <!-- else -->
+            <div *ngIf="properties[column].reference === undefined">
+              <span>
+                {{ element[column]}}
+              </span>
+            </div>
+          </div>
         </div>
         <div *ngIf="column === 'action'">
           <button mat-stroked-button (click)="openDialog(element)" color="">Sửa</button>

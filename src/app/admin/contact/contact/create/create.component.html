@@ -1,3 +1,4 @@
+<div></div>
 <div>
   <div *ngFor="let column of columns">
     <div *ngIf="column !== 'id'">
@@ -25,7 +26,7 @@
           </div>
         </div>
         <!-- else radio -->
-        <div *ngIf="properties[column].type !=='radio'">
+        <div *ngIf="properties[column].type !=='dropdown'">
           <mat-form-field>
             <mat-label> {{properties[column].alias}}</mat-label>
             <input matInput [(ngModel)]="dataSource[column]">

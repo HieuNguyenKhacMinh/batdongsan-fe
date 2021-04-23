@@ -1,3 +1,4 @@
+import { FilterDataPipe } from './opportunity/opportunity.pipe';
 import { NgModule } from '@angular/core';
 
 import { AdminComponent } from './admin.component';

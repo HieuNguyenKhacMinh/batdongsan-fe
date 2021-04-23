@@ -1,3 +1,4 @@
+import { FilterDataPipe } from './opportunity.pipe';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
@@ -11,7 +12,12 @@ import { MaterialModule } from 'src/app/material-module';
  
 
 @NgModule({
-  declarations: [OpportunityComponent, CreateOpportunityComponent, DeleteOpportunityComponent],
+  declarations: [
+    OpportunityComponent, 
+    CreateOpportunityComponent,
+     DeleteOpportunityComponent,
+     FilterDataPipe
+    ],
   imports: [
     CommonModule,
     MaterialModule,
