@@ -2,37 +2,38 @@
 <div class="total">
     <div *ngIf="product" class="product">
         <mat-card class="example-card">
-            <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-                alt="Photo of a Shiba Inu" >
             <mat-card-header>
                 <mat-card-title>{{product.title}}</mat-card-title>
             </mat-card-header>
+            <p><b>Khu vực:</b> <span style="color: limegreen;"> {{product.product_type.name}}</span> tại <span style="color:#055699;">{{product.street}}</span>, {{product.wards.name}}, {{product.city.name}}</p>
+            <pre><b>Gía:</b>   <span style="color: limegreen;">{{product.price}} {{product.product_unit.name}}</span>  <b>Diện tích:</b>  <span style="color: limegreen;">{{product.acreage}} m2</span></pre>
+
             <p><b>Thông tin mô tả</b></p>
             <mat-card-content>
                 <pre class="pre-wrap">
                 {{product.description}}
             </pre>
             </mat-card-content>
-            <h4><b>Đặc điểm nổi bậc</b></h4>
+            <div style="float: left;margin-right: 50px;">
+            <p><b>Đặc điểm bất động sản</b></p>
             <pre>Thuộc dự án: <a [routerLink]="['/client/projects/', product.project.id]" routerLinkActive="router-link-active" >{{product.project.name}}</a></pre>
-            <pre class="pre-wrap2"><span style="color:#5F6666;"><b> Loại tin đăng:</b></span> {{product.product_type.name}}</pre> 
-            <pre class="pre-wrap2"><span style="color:#5F6666;"><b> Địa chỉ:</b></span> {{product.address_id.street}}</pre>
-            <pre class="pre-wrap2"><span style="color:#5F6666;"><b> Đường vào:</b>Đường vào:</span> {{product.entry_width}} mét</pre>
-            <pre class="pre-wrap2"><span style="color:#5F6666;"><b> Mặt tiền:</b>Mặt tiền:</span> {{product.facade}} m</pre>
-            <pre class="pre-wrap2"><span style="color:#5F6666;"><b> Diện tích:</b></span> {{product.facade}} m2</pre>
-            <pre class="pre-wrap2"><span style="color:#5F6666;"><b> Số phòng ngủ:</b></span> {{product.no_of_bedroom}} phòng</pre>
-            <pre class="pre-wrap2"><span style="color:#5F6666;"><b> Số phòng vệ sinh:</b></span> {{product.no_of_toilet}} phòng</pre>
-            <pre class="pre-wrap2"><span style="color:#5F6666;"><b> Số tầng:</b></span> {{product.no_of_floors}} tầng</pre>
-            <pre class="pre-wrap2"><span style="color:#5F6666;"><b> Pháp lý:</b></span> {{product.juridical}} phòng</pre>
-            <pre class="pre-wrap2"><span style="color:#5F6666;"><b> Hướng nhà:</b></span> {{product.house_direstion_id.name}}</pre>
-            <pre class="pre-wrap2"><span style="color:#5F6666;"><b> Hướng ban công:</b></span> {{product.balcony_direction_id.name}}</pre>
-           
+            <pre>Địa chỉ: {{product.street}} - {{product.wards.name}} - {{product.city.name}}</pre>
+            <pre>Loại tin rao: {{product.product_type.name}}</pre>
+            <pre>Mặt tiền: {{product.facade}} m</pre>
+            </div>
+            <div>
+                <p><b>Thông tin liên hệ</b></p>
+                <pre>Tên liên hệ: <span style="color: #055699;">{{product.contact_name}}</span></pre>
+                <pre>Số điện thoại: <span style="color: #055699;">{{product.phone_number}}</span></pre>
+                <pre>Email: <span style="color: #055699;">{{product.email}}</span></pre>
+            </div>
+
             <!-- <p><b>Thông tin dự án</b></p>
             <pre>Loại tin đăng: {{product.product_type}}</pre>
             <pre>Địa chỉ: {{product.home_number}},{{product.street}},{{product.wards}}</pre>
             <pre>Đường vào: {{product.entry_width}} mét</pre>
             <pre>Mặt tiền: {{product.facade}} mặt tiền</pre> -->
-            <mat-card-actions>
+            <mat-card-actions style="clear: left;">
                 <button mat-button>LIKE</button>
                 <button mat-button>SHARE</button>
             </mat-card-actions>
@@ -63,7 +64,7 @@
 
             <mat-card-content>
                 <p>
-                   Căn hộ đẹp quá
+                    Căn hộ đẹp quá
                 </p>
             </mat-card-content>
             <mat-card-actions>

@@ -2,12 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+
+
 @Injectable({ providedIn: 'root' })
 export class RealEstateService {
     constructor(private httpClient: HttpClient) { }
 
-    getFormality(): Observable<any> {
-        const url = "http://localhost:3000/cms/formality";
+
+    getFormality(isBuy?): Observable<any> {
+        const url = "http://localhost:3000/cms/formality/" + (isBuy ? 1 : 0);
         return this.httpClient.get(url);
     }
 
@@ -51,8 +54,8 @@ export class RealEstateService {
         return this.httpClient.get(url);
     }
 
-    getProducts(): Observable<any> {
-        const url = "http://localhost:3000/cms/product";
+    getProducts(isBuy?: boolean): Observable<any> {
+        const url = "http://localhost:3000/cms/product/all/" + (isBuy ? 1 : 0);
         return this.httpClient.get(url);
     }
 
@@ -77,5 +80,13 @@ export class RealEstateService {
             site_id: localStorage.getItem('site_id') || ''
         };
         return this.httpClient.get(`${url}/${id}`);
+    }
+
+    getData(url: string) {
+        let headers = {
+            authorization: localStorage.getItem('authorization') || '',
+            site_id: localStorage.getItem('site_id') || ''
+        };
+        return this.httpClient.get(`${url}`, { headers });
     }
 }

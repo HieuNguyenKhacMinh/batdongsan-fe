@@ -53,7 +53,7 @@ export class ProductComponent implements OnInit {
 
   getDatasource() {
     // set datasource
-    this.productService.all().subscribe((res: any) => {
+    this.productService.all(2).subscribe((res: any) => {
       this.dataSource = res;
     })
   }

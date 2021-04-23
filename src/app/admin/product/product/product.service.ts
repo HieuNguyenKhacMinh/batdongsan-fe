@@ -7,9 +7,9 @@ export class ProductService {
   propertiesUrl = ''
   constructor(private http: HttpClient) { }
 
-  all(): any {
+  all(isBuy): any {
     let headers = { authorization: localStorage.getItem('authorization') || '', site_id: localStorage.getItem('site_id') || '' }
-    return this.http.get(`${this.url}`, { headers });
+    return this.http.get(`${this.url}/all/${isBuy}`, { headers });
   }
 
   get(id: any): any {

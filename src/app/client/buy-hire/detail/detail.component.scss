@@ -17,14 +17,6 @@
         font-family: serif;
         font-size: 14px;
     }
-    .pre-wrap2 {
-        word-wrap: break-word; /* IE 5.5-7 */
-        white-space: -moz-pre-wrap; /* Firefox 1.0-2.0 */
-        white-space: pre-wrap; /* current browsers */
-        font-family: serif;
-        font-size: 14px;
-        line-height: 1;
-    }
     .example-header-image {
         background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
         background-size: cover;
@@ -33,9 +25,6 @@
         width: 100%;
     }
 
-    span {
-        color: #2c2f36;
-    }
     .reply {
         margin-left: 2rem;
     }
@@ -54,4 +43,9 @@ img {
     height: 400px;
     margin-top: 50px;
 }
-
+pre{
+    font-family: serif;
+}
+mat-card-header{
+    color: #055699;
+}
