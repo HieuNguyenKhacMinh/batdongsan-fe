@@ -43,7 +43,10 @@ const routes: Routes = [{
       path: "pipeline",
       loadChildren: () => import('./pipeline/pipeline.module').then(m => m.PipelineModule)
     },
-
+    {
+      path: "notification",
+      loadChildren: () => import('./notification/notification.module').then(m => m.NotificationModule)
+    },
     {
       path: '',
       redirectTo: 'company',

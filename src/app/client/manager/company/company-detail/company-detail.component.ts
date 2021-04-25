@@ -13,7 +13,7 @@ export class CompanyDetailComponent implements OnInit {
     company: any;
     ngOnInit() {
         this.setColumns()
-        const companyId = localStorage.getItem("company_id");
+        const companyId = localStorage.getItem("organization_id");
         if (companyId) {
             this.service.get(companyId).subscribe(res => {
                 this.company = res;

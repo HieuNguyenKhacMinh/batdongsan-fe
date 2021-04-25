@@ -1,0 +1,19 @@
+<div class="organization-list">
+
+    <mat-card *ngFor="let item of organizations" class="card">
+        <mat-card-title>
+            {{item.name}}
+        </mat-card-title>
+        <mat-card-content>
+            <div>
+                <div class="logo">
+                    <img src="" />
+                </div>
+                <div class="description">
+                    {{ item.description}}
+                </div>
+            </div>
+        </mat-card-content>
+        Simple card
+    </mat-card>
+</div>

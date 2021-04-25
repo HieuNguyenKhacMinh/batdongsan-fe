@@ -1,4 +1,4 @@
-<p>Opportunity works!</p>
+<p>notification works!</p>
 <div>
   <button mat-button (click)="openDialog()" color="primary">Thêm</button>
 </div>
@@ -18,14 +18,8 @@
           <div *ngIf="column !== 'id'">
             <!-- if -->
             <div *ngIf="properties[column].reference !== undefined">
-
-              <div *ngIf="properties[column].reference.api_url">
-                {{ element[properties[column].reference.table] && element[properties[column].reference.table][properties[column].reference.label]}}
-              </div>
-              <div *ngIf="!properties[column].reference.api_url">
-                {{ properties[column].data | filterData : element[column]  }}
-              </div>
-               </div>
+              {{ element[properties[column].reference.table][properties[column].reference.label]}}
+            </div>
             <!-- else -->
             <div *ngIf="properties[column].reference === undefined">
               <span>

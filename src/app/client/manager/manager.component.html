@@ -3,53 +3,66 @@
 <mat-drawer-container class="example-container" autosize>
     <mat-drawer #drawer class="example-sidenav" mode="side" [opened]="true">
         <mat-list role="list">
-            <mat-list-item role="listitem" style="background:blue">
-                Quản lý tài khoản
+
+            <mat-list-item role="listitem" style="background:#8189b7;color:white">
+                CÁ NHÂN
+            </mat-list-item>
+
+            <mat-list-item role="listitem">
+                <a matLine [routerLink]="['/client/manager/profile']"
+                    routerLinkActive="router-link-active">Hồ sơ</a>
             </mat-list-item>
             <mat-list-item role="listitem">
-                <button mat-button matLine [routerLink]="['/client/manager/company']"
-                    routerLinkActive="router-link-active">Company</button>
+                <a matLine [routerLink]="['/client/manager/notification']"
+                    routerLinkActive="router-link-active">Thông báo</a>
+            </mat-list-item>
+            <mat-list-item role="listitem" style="background:#8189b7;color:white">
+                QUẢN LÝ TÀ KHOẢN
             </mat-list-item>
             <mat-list-item role="listitem">
-                <button mat-button matLine [routerLink]="['/client/manager/users']"
-                    routerLinkActive="router-link-active">User</button>
-            </mat-list-item>
-            <mat-list-item role="listitem" style="background:blue">
-                Quản lý CRM
+                <a matLine [routerLink]="['/client/manager/company']"
+                    routerLinkActive="router-link-active">Company</a>
             </mat-list-item>
             <mat-list-item role="listitem">
-                <button mat-button matLine [routerLink]="['/client/manager/lead']"
-                    routerLinkActive="router-link-active">Lead</button>
+                <a matLine [routerLink]="['/client/manager/users']"
+                    routerLinkActive="router-link-active">User</a>
+            </mat-list-item>
+            <mat-list-item role="listitem" style="background:#8189b7;color:white">
+                QUẢN LY CRM
             </mat-list-item>
             <mat-list-item role="listitem">
-                <button mat-button matLine [routerLink]="['/client/manager/contact']"
-                    routerLinkActive="router-link-active">Contact</button>
+                <a matLine [routerLink]="['/client/manager/lead']"
+                    routerLinkActive="router-link-active">Lead</a>
             </mat-list-item>
             <mat-list-item role="listitem">
-                <button mat-button matLine [routerLink]="['/client/manager/opportunity']"
-                    routerLinkActive="router-link-active">Opportunity</button>
+                <a matLine [routerLink]="['/client/manager/contact']"
+                    routerLinkActive="router-link-active">Contact</a>
             </mat-list-item>
             <mat-list-item role="listitem">
-                Quản lý bài viêt
+                <a matLine [routerLink]="['/client/manager/opportunity']"
+                    routerLinkActive="router-link-active">Opportunity</a>
+            </mat-list-item>
+            <mat-list-item role="listitem" style="background:#8189b7;color:white">
+                QUẢN LÝ BÀI VIẾT
             </mat-list-item>
             <mat-list-item role="listitem">
-                <button mat-button matLine [routerLink]="['/client/manager/post']"
-                    routerLinkActive="router-link-active">Post</button>
+                <a matLine [routerLink]="['/client/manager/post']"
+                    routerLinkActive="router-link-active">Post</a>
             </mat-list-item>
             <mat-list-item role="listitem">
-                <button mat-button matLine [routerLink]="['/client/manager/post']"
-                    routerLinkActive="router-link-active">Nhà đất bán/cho thuê</button>
+                <a matLine [routerLink]="['/client/manager/post']"
+                    routerLinkActive="router-link-active">Nhà đất bán/cho thuê</a>
             </mat-list-item>
             <mat-list-item role="listitem">
-                <button mat-button matLine [routerLink]="['/client/manager/post']"
-                    routerLinkActive="router-link-active">Nhà đất cần mua/ thuê</button>
+                <a matLine [routerLink]="['/client/manager/post']"
+                    routerLinkActive="router-link-active">Nhà đất cần mua/ thuê</a>
+            </mat-list-item>
+            <mat-list-item role="listitem" style="background:#8189b7;color:white">
+                CÀI ĐẶT
             </mat-list-item>
             <mat-list-item role="listitem">
-                Cài đặt
-            </mat-list-item>
-            <mat-list-item role="listitem">
-                <button mat-button matLine [routerLink]="['/client/manager/pipeline']"
-                    routerLinkActive="router-link-active">Pipeline</button>
+                <a matLine [routerLink]="['/client/manager/pipeline']"
+                    routerLinkActive="router-link-active">Pipeline</a>
             </mat-list-item>
         </mat-list>
 

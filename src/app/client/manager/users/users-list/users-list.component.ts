@@ -22,7 +22,7 @@ export class UsersListComponent implements OnInit {
         // change column display
         this.properties = res.content;
         this.columnsToDisplay = Object.keys(res.content);
-        this.columnsToDisplay.push('action');
+        // this.columnsToDisplay.push('action');
       })
      
       this.getDatasource();
