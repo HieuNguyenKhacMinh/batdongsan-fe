@@ -6,7 +6,7 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   login(user: any): any {
-    return this.http.post('http://localhost:3000/auth/login', user);
+    return this.http.post('http://localhost:3000/identity/auth/login', user);
   }
  
 }

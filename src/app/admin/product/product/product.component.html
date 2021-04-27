@@ -35,7 +35,8 @@
           <!-- if id-->
           <div *ngIf="column === 'id'">
             <span>
-              {{ element[column]}}
+              {{ element[column]?.slice(0, 5)}}
+
             </span>
           </div>
           <!-- else id-->
@@ -48,7 +49,8 @@
             <!-- else -->
             <div *ngIf="properties[column].reference === undefined">
               <span>
-                {{ element[column]}}
+                {{ element[column]&&element[column]?.toString().slice(0, 20)}} 
+                 {{element[column]&&element[column].length>20?'... ':""}}
               </span>
             </div>
           </div>

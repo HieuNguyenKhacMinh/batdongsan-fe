@@ -1,3 +1,5 @@
+import { MenuDisplayComponent } from './menu-display/menu.component';
+import { MenuDisplayService } from './menu-display/menu.service';
 import { FilterDataPipe } from './opportunity/opportunity.pipe';
 import { NgModule } from '@angular/core';
 
@@ -15,7 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
         AdminRoutingModule,
     ],
     exports: [],
-    declarations: [AdminComponent],
-    providers: [],
+    declarations: [AdminComponent, MenuDisplayComponent],
+    providers: [MenuDisplayService],
 })
 export class AdminModule { }

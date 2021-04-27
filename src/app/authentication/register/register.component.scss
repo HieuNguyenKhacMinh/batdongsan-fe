@@ -1,18 +1,56 @@
+.example-card {
+  margin: 0 auto;
+  width: 500px;
+  border-radius: 15px;
+}
 .example-form {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
-    margin-left: 25%;
-  }
-  
-  .example-full-width {
-    width: 100%;
-  }
-  .form-control-input{
-    padding-top:2.0825rem ;
-  }
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  margin-left: 25%;
+}
 
-  
+.example-full-width {
+  width: 100%;
+}
+.form-control-input {
+  padding-top: 2.0825rem;
+}
+
 .ex-2-header {
-  padding-top: 6rem;
+}
+
+.back-to-top-page-scroll {
+  width: 300px;
+  margin: auto;
+  text-align: center;
+  height: 600px;
+}
+.form-container {
+  padding: 0px;
+}
+mat-radio-group {
+  margin-right: 30px;
+}
+mat-radio-button {
+  margin-left: 20px;
+  font-size: 10px;
+}
+.form-control-submit-button-disabled {
+  background-color: #055698;
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  margin: auto;
+  color: white;
+}
+.form-control-submit-button-disabled:hover {
+  background-color: cadetblue;
+}
+mat-form-field {
+  width: 100%;
+  height: auto;
+}
+.content {
+  margin: 50px;
 }

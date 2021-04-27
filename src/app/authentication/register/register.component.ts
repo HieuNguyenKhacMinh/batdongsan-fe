@@ -8,20 +8,24 @@ import { RegisterService } from './register.service';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-
+  user: any = {};
+  company: number = 1;
   username: string = "";
   password: string = "";
-  email: string="";
-  phone: string="";
-  company: string="";
+  email: string = "";
+  phone: string = "";
   constructor(private authService: RegisterService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
+  register(): void {
+
+  }
+
   login(): void {
-    const user = {username: this.username, password: this.password} ;
-     this.authService.login(user).subscribe((res: any) => {
+    const user = { username: this.username, password: this.password };
+    this.authService.login(user).subscribe((res: any) => {
       if (res.access_token) {
         console.log(res);
         localStorage.setItem('authorization', res.access_token);

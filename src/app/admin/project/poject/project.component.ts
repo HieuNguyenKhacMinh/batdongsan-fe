@@ -28,7 +28,10 @@ export class ProjectComponent implements OnInit {
     this.projectService.getProperties().subscribe((res: any) => {
       // change column display
       this.properties = res.content;
-      this.columnsToDisplay = Object.keys(res.content).
+
+      const arr = ["description", "home_number", "street", "product_type", "product_unit_id",
+      "city_id", "wards_id", "district_id", "country_id"]
+      this.columnsToDisplay = Object.keys(res.content).filter(c => !arr.includes(c)).
         sort((a: any, b: any) => (this.properties[a].order > this.properties[b].order) ? 1 : ((this.properties[b].order > this.properties[a].order) ? -1 : 0));
       this.columnsToDisplay.push('action');
     })

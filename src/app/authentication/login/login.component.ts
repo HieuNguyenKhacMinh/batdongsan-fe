@@ -8,8 +8,8 @@ import { LoginService } from './login.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
-  username: string = "";
+  user: any = {};
+  email: string = "";
   password: string = "";
   constructor(private authService: LoginService, private router: Router) { }
 
@@ -18,22 +18,25 @@ export class LoginComponent implements OnInit {
   message: any;
   login(): void {
     console.log("login")
-    const user = {username: this.username, password: this.password} ;
-     this.authService.login(user).subscribe((res: any) => {
+    this.authService.login(this.user).subscribe((res: any) => {
+
       if (res.access_token) {
         console.log(res);
-        localStorage.setItem('authorization', res.access_token);
-        localStorage.setItem('site_id', res.site_id);
+        localStorage.setItem('access_token', res.access_token);
+        localStorage.setItem('organization_id', res.organization_id);
+        localStorage.setItem('user_id', res.user_id);
 
-        if(res.position === 'admin') {
+        if (res.position === 'admin') {
           this.router.navigate(['./admin']);
-        }if(res.position === 'manager') {
+        } if (res.position === 'manager') {
           this.router.navigate(['./manager']);
         }
       }
       this.message = res.message
-      // this.router.navigate(['./landing']);
-    });
-
+      this.router.navigate(['./client']);
+    },
+      (res: any) => {
+        this.message = res.error.message;
+      })
   }
 }

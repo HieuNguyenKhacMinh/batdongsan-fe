@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MenuService } from './menu.service';
+import { MenuDisplayService } from './menu.service';
 
 @Component({
-    selector: 'app-news-menu',
+    selector: 'app-admin-menu',
     templateUrl: 'menu.component.html',
     styleUrls: ['./menu.component.scss']
 })
 
-export class MenuComponent implements OnInit {
+export class MenuDisplayComponent implements OnInit {
     userId: string
-    constructor(private menuService: MenuService, private router: Router) {
+    constructor(private menuService: MenuDisplayService, private router: Router) {
         this.userId = localStorage.getItem("user_id");
     }
     menus: any;
