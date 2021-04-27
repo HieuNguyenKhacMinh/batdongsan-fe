@@ -18,7 +18,7 @@ const routes: Routes = [{
     },
     {
       path: "buy-hire",
-      loadChildren: () => import('./buy-hire/buy-hire.module').then(m =>m.BuyHireModule)
+      loadChildren: () => import('./buy-hire/buy-hire.module').then(m => m.BuyHireModule)
     },
     {
       path: "projects",
@@ -33,8 +33,12 @@ const routes: Routes = [{
       loadChildren: () => import('./organization/organization.module').then(m => m.OrganizationModule)
     },
     {
+      path: "page",
+      loadChildren: () => import('./page/page.module').then(m => m.PageModule)
+    },
+    {
       path: "create-real-estate",
-     component: CreateRealEstateComponent,
+      component: CreateRealEstateComponent,
     },
   ],
 }];
