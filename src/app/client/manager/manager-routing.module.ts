@@ -48,6 +48,10 @@ const routes: Routes = [{
       loadChildren: () => import('./notification/notification.module').then(m => m.NotificationModule)
     },
     {
+      path: "real-estate",
+      loadChildren: () => import('./real-estate/real-estate.module').then(m => m.RealEstateModule)
+    },
+    {
       path: '',
       redirectTo: 'company',
       pathMatch: 'full'

@@ -2,3 +2,26 @@
     max-width: 800px;
     margin: 0 auto;
 }
+mat-card-content{
+    font-size: 15px;
+    font-family: serif;
+    line-height: 1.5;
+
+}
+.page{
+    width: 1000px;
+}
+
+.pre-wrap {
+    word-wrap: break-word; /* IE 5.5-7 */
+    white-space: -moz-pre-wrap; /* Firefox 1.0-2.0 */
+    white-space: pre-wrap; /* current browsers */
+    font-family: serif;
+    font-size: 14px;
+}
+.h1{
+    text-align: center;
+    margin: 0px 300px 0px 300px;
+    color: #055699;
+    text-transform: uppercase;
+}

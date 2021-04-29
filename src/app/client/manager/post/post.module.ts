@@ -1,3 +1,4 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PostListComponent } from './post-list/post-list.component';
 import { PostService } from './post.service';
 import { PostComponent } from '../post/post.component';
@@ -8,8 +9,7 @@ import { MaterialModule } from '../../../material-module';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-
-
+import { PostItem2Component } from './post-list/list/post.component';
 
 @NgModule({
     imports: [
@@ -17,11 +17,14 @@ import { NgModule } from '@angular/core';
         HttpClientModule,
         MaterialModule,
         PostRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
     ],
     exports: [],
     declarations: [PostComponent,
         PostListComponent,
-        PostDetailComponent],
+        PostDetailComponent,
+        PostItem2Component],
     providers: [PostService],
 })
 export class PostModule { }

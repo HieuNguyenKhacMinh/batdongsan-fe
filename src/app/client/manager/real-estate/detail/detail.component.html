@@ -1,25 +1,19 @@
-
+<!-- <search-real-estate></search-real-estate>
 <div class="total">
-    <div *ngIf="organization" class="product">
+    <div *ngIf="product" class="product">
         <mat-card class="example-card">
-            <mat-card-header>
-                <mat-card-title>{{organization.name}}</mat-card-title>
-            </mat-card-header>
-            <p><b>Thông tin liên hệ</b></p>
-            <pre class="pre-wrap2"><span style="color:#5F6666;"><b> Địa chỉ:</b></span> {{organization.home_number}}  {{organization.street}}, {{organization.wards.name}} - {{organization.district.name}} - {{organization.city.name}}</pre>
-            <pre class="pre-wrap2"><span style="color:#5F6666;"><b> Di dộng:</b></span> {{organization.phone_number}}</pre>
-            <pre class="pre-wrap2"><span style="color:#5F6666;"><b> Email:</b></span> {{organization.email}}</pre>
             <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-            alt="Photo of a Shiba Inu" style="margin-top:30px">
+                alt="Photo of a Shiba Inu" >
+            <mat-card-header>
+                <mat-card-title>{{product.title}}</mat-card-title>
+            </mat-card-header>
             <p><b>Thông tin mô tả</b></p>
             <mat-card-content>
                 <pre class="pre-wrap">
-                {{organization.description}}
+                {{product.description}}
             </pre>
             </mat-card-content>
-            
-            
-            <!-- <h4><b>Đặc điểm nổi bậc</b></h4>
+            <h4><b>Đặc điểm nổi bậc</b></h4>
             <pre>Thuộc dự án: <a [routerLink]="['/client/projects/', product.project.id]" routerLinkActive="router-link-active" >{{product.project.name}}</a></pre>
             <pre class="pre-wrap2"><span style="color:#5F6666;"><b> Loại tin đăng:</b></span> {{product.product_type.name}}</pre> 
             <pre class="pre-wrap2"><span style="color:#5F6666;"><b> Địa chỉ:</b></span> {{product.address_id.street}}</pre>
@@ -32,13 +26,13 @@
             <pre class="pre-wrap2"><span style="color:#5F6666;"><b> Pháp lý:</b></span> {{product.juridical}} phòng</pre>
             <pre class="pre-wrap2"><span style="color:#5F6666;"><b> Hướng nhà:</b></span> {{product.house_direstion_id.name}}</pre>
             <pre class="pre-wrap2"><span style="color:#5F6666;"><b> Hướng ban công:</b></span> {{product.balcony_direction_id.name}}</pre>
-            -->
+           
             <!-- <p><b>Thông tin dự án</b></p>
             <pre>Loại tin đăng: {{product.product_type}}</pre>
             <pre>Địa chỉ: {{product.home_number}},{{product.street}},{{product.wards}}</pre>
             <pre>Đường vào: {{product.entry_width}} mét</pre>
             <pre>Mặt tiền: {{product.facade}} mặt tiền</pre> -->
-            <mat-card-actions>
+            <!-- <mat-card-actions>
                 <button mat-button>LIKE</button>
                 <button mat-button>SHARE</button>
             </mat-card-actions>
@@ -53,7 +47,7 @@
 
             <mat-card-content>
                 <p>
-                    Công ty có bất động sản nào khoản 500tr ko ?
+                    Bất động sản giá bao nhiêu
                 </p>
             </mat-card-content>
             <mat-card-actions>
@@ -96,4 +90,60 @@
             </mat-card-actions>
             </mat-card>
     </div>
+</div> --> -->
+
+<div *ngIf="dataSource">
+    <mat-card>
+        <mat-card-content *ngIf="columns">
+
+            <div *ngFor="let column of columns">
+                <div *ngIf="column !== 'id'">
+                    <div *ngIf="properties[column].type ==='textarea'">
+                        <mat-form-field>
+                            <mat-label> {{properties[column].alias}}</mat-label>
+                            <textarea matInput [matAutosize]=true [rows]="properties[column].row_number"
+                                [(ngModel)]="dataSource[column]"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div *ngIf="properties[column].type !=='textarea'">
+
+                        <div *ngIf="properties[column].type ==='dropdown' || properties[column].type ==='radio'">
+                            <div *ngIf="properties[column].data">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>{{properties[column].alias}}</mat-label>
+                                    <mat-select [(ngModel)]="dataSource[column]">
+                                        <mat-option *ngFor="let food of properties[column].data"
+                                            [value]="food[properties[column].reference.value]">
+                                            {{food[properties[column].reference.label]}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <!-- else radio -->
+                        <div *ngIf="properties[column].type !=='dropdown'">
+ 
+                            <div *ngIf="properties[column].type !=='radio'">
+
+                                <mat-form-field>
+                                    <mat-label> {{properties[column].alias}}</mat-label>
+                                    <input matInput [(ngModel)]="dataSource[column]">
+                                </mat-form-field></div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <mat-card-action >
+                <button  mat-button cdkFocusInitial (click)="updateCompany()" [routerLink]="['../list']" routerLinkActive="router-link-active" >Save</button>
+                <button  mat-button [routerLink]="['../list']" routerLinkActive="router-link-active" >Cancel</button>
+            </mat-card-action>
+        </mat-card-content>
+    </mat-card>
 </div>
+
+
+
+
+

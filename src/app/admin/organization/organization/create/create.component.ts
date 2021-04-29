@@ -41,18 +41,11 @@ export class CreateOrganizationComponent implements OnInit {
 
         this.dataSource = this.data.dataSource || {};
         // set to form control
-
-
-
-
-
-
     }
     create() {
         console.log(this.dataSource);
         this.service.update(this.dataSource).subscribe(res => {
             this.dialogRef.close();
-        })
-       
+        })       
     }
 }

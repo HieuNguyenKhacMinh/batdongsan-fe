@@ -1,3 +1,4 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CompanyListComponent } from './company-list/company-list.component';
 import { CompanyService } from './company.service';
 import { CompanyDetailComponent } from './company-detail/company-detail.component';
@@ -15,6 +16,8 @@ import { CompanyRoutingModule } from './company-routing.module';
         HttpClientModule,
         MaterialModule,
         CompanyRoutingModule,
+        FormsModule,
+        ReactiveFormsModule
     ],
     exports: [],
     declarations: [CompanyComponent,

@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class CompanyDetailComponent implements OnInit {
     constructor(private service: CompanyService) { }
     edit: any;
-    company: any;
+    company: any = {};
     ngOnInit() {
         this.setColumns()
         const companyId = localStorage.getItem("organization_id");
@@ -36,6 +36,7 @@ export class CompanyDetailComponent implements OnInit {
 
     setColumns() {
 
+        // load bang table-config
         this.service.getProperties().subscribe(async (res: any) => {
 
             // get properites

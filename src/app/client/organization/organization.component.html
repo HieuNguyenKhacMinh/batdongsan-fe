@@ -1,7 +1,7 @@
 <div class="organization-list">
 
     <mat-card *ngFor="let item of organizations" class="card">
-        <mat-card-title>
+        <mat-card-title  [routerLink]="['../', item.id]" routerLinkActive="router-link-active" style="color: #851d1f;" >
             {{item.name}}
         </mat-card-title>
         <mat-card-content>
@@ -10,10 +10,12 @@
                     <img src="" />
                 </div>
                 <div class="description">
-                    {{ item.description}}
+                    {{ item.phone_number}}
+                </div>
+                <div class="description">
+                    {{ item.email}}
                 </div>
             </div>
         </mat-card-content>
-        Simple card
     </mat-card>
 </div>

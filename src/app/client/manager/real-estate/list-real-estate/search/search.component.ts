@@ -1,5 +1,5 @@
-import { RealEstateService } from '../../../real.estate.service';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { RealEstateService } from '../../real.estate.service';
 
 @Component({
     selector: 'search-real-estate',

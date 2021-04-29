@@ -29,7 +29,7 @@ const routes: Routes = [{
       loadChildren: () => import('./manager/manager.module').then(m => m.ManagerModule)
     },
     {
-      path: "contact",
+      path: "organization",
       loadChildren: () => import('./organization/organization.module').then(m => m.OrganizationModule)
     },
     {

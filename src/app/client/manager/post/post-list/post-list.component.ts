@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PostService } from '../post.service';
 
 @Component({
     selector: 'selector-client-manager-post-post-list',
@@ -7,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class PostListComponent implements OnInit {
-    constructor() { }
+    constructor(private service: PostService) { }
 
-    ngOnInit() { }
+    categories: any;
+    ngOnInit() {
+        this.service.getCategories().subscribe(res => {
+            this.categories = res;
+        })
+    }
 }

@@ -1,12 +1,12 @@
-<div *ngIf="page">
+<div *ngIf="page" class="page">
     <mat-card class="page-data">
         <mat-card-header>
             <mat-card-title>
-                <h1>{{page.name}}</h1>
+                <h1 class="h1"><b>{{page.name}}</b></h1>
             </mat-card-title>
         </mat-card-header>
-        <mat-card-content>
-            <pre>{{page.description}}</pre>
+        <mat-card-content >
+            <pre class="pre-wrap">{{page.description}}</pre>
         </mat-card-content>
     </mat-card>
 </div>

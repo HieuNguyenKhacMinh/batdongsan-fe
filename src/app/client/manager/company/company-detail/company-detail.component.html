@@ -28,7 +28,6 @@
         <div *ngFor="let column of columns">
             <div *ngIf="column !== 'id'">
 
-                {{dataSource[column]}}
                 <div *ngIf="properties[column].type ==='textarea'">
                     <mat-form-field>
                         <mat-label> {{properties[column].alias}}</mat-label>
@@ -66,7 +65,7 @@
     </mat-card-content>
 
     <mat-card-action *ngIf="edit">
-        <button mat-button>Save</button>
+        <button  mat-button cdkFocusInitial (click)="updateCompany()" (click)="setIsEdit(true)">Save</button>
         <button mat-button (click)="setIsEdit(true)">Cancel</button>
     </mat-card-action>
 </mat-card>

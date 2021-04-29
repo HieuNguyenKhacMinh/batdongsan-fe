@@ -1,0 +1,24 @@
+.search {
+    .mat-button-toggle-group {
+        vertical-align: top;
+        margin-right: 1rem;
+    }
+    .mat-button-toggle {
+        font-size: 10px;
+
+        .mat-icon {
+            color: #424242;
+        }
+    }
+    .mat-button-toggle-checked {
+        background-color: #424242;
+        color: #fff;
+    }
+
+    .mat-form-field {
+        width: 100px;
+        font-size: 11px;
+        
+    }
+
+}

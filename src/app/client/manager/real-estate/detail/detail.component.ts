@@ -1,23 +1,37 @@
-import { PostService } from '../post.service';
-import { Component, OnInit } from '@angular/core';
+import { RealEstateService } from './../real.estate.service';
+import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 @Component({
-    selector: 'selector-client-manager-post-post-detail',
-    templateUrl: 'post-detail.component.html',
-    styleUrls: ['./post-detail.component.scss']
+    selector: 'app-real-estate-detail',
+    templateUrl: 'detail.component.html',
+    styleUrls: ["./detail.component.scss"]
 })
 
-export class PostDetailComponent implements OnInit {
-    constructor(private route: ActivatedRoute, private service: PostService) { }
+export class RealEstateDetailComponent implements OnInit {
+    constructor(private realEstateService: RealEstateService,  private route: ActivatedRoute
+        ) { }
+    
+
     dataSource: any = {};
-    ngOnInit() {
+    product: any;
+
+    async ngOnInit() {
+        
+        // get id from router
+        // const id = this.route.snapshot.paramMap.get('id');
+        // this.realEstateService.getProduct(id).subscribe(res => {
+        //     this.product = res;
+        //     console.log(this.product);
+            
+        // })
+
         const id = this.route.snapshot.paramMap.get('id');
         
         const organization_id = localStorage.getItem("organization_id");
         this.dataSource.organization_id = organization_id;
 
-        this.service.get(id).subscribe(res => {
+        this.realEstateService.get(id).subscribe(res => {
             this.dataSource = res;
         })
 
@@ -36,7 +50,7 @@ export class PostDetailComponent implements OnInit {
     }
 
     getColumns() {
-        this.service.getProperties().subscribe(async (res: any) => {
+        this.realEstateService.getProperties().subscribe(async (res: any) => {
 
             // get properites
             this.properties = res.content;
@@ -50,7 +64,7 @@ export class PostDetailComponent implements OnInit {
 
             // get data referent
             await Promise.all(references.map(async column => {
-                await this.service.getData(this.properties[column].reference.api_url).subscribe((res) => {
+                await this.realEstateService.getData(this.properties[column].reference.api_url).subscribe((res) => {
                     this.properties[column].data = res;
                 })
             }))
@@ -59,7 +73,7 @@ export class PostDetailComponent implements OnInit {
     }
 
     updateCompany() {
-        this.service.update(this.dataSource).subscribe(res => {
+        this.realEstateService.update(this.dataSource).subscribe(res => {
             this.setIsEdit(true);
         })
     }

@@ -1,1 +1,4 @@
-post list
+ <div *ngFor="let cat of categories">
+    <h1>{{cat.name}}</h1>
+    <app-news-category-post [posts]="cat.posts"></app-news-category-post>
+</div>
