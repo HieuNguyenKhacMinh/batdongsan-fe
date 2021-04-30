@@ -1,14 +1,15 @@
-import { RealEstateService } from './../real.estate.service';
-import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { RealEstateService } from '../../buy-hire/real.estate.service';
+
 @Component({
     selector: 'app-real-estate-detail',
     templateUrl: 'detail.component.html',
     styleUrls: ["./detail.component.scss"]
 })
 
-export class RealEstateDetailComponent implements OnInit {
+export class BuyHireDetailComponent implements OnInit {
     constructor(private realEstateService: RealEstateService,  private route: ActivatedRoute
         ) { }
     

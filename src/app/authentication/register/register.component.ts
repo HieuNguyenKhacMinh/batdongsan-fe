@@ -10,29 +10,37 @@ import { RegisterService } from './register.service';
 export class RegisterComponent implements OnInit {
   user: any = {};
   company: number = 1;
-  username: string = "";
-  password: string = "";
-  email: string = "";
-  phone: string = "";
+  message: any;
   constructor(private authService: RegisterService, private router: Router) { }
+
+
 
   ngOnInit(): void {
   }
 
-  register(): void {
-
-  }
-
-  login(): void {
-    const user = { username: this.username, password: this.password };
-    this.authService.login(user).subscribe((res: any) => {
-      if (res.access_token) {
+  save() {
+    console.log(this.user);
+    if (this.company === 1) {
+      this.user.domail = undefined;
+    }
+    if (!this.user.password.match(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8})$/)) {
+      this.message = "password must be containing at least 8 characters, 1 number, 1 upper and 1 lowercase"
+    }
+    if (!this.message)
+      this.authService.save(this.user).subscribe(res => {
         console.log(res);
-        localStorage.setItem('authorization', res.access_token);
-        localStorage.setItem('site_id', res.site_id);
-      }
-      this.router.navigate(['./landing']);
-    });
-
+      })
   }
+  // login(): void {
+  //   const user = { username: this.username, password: this.password };
+  //   this.authService.login(user).subscribe((res: any) => {
+  //     if (res.access_token) {
+  //       console.log(res);
+  //       localStorage.setItem('authorization', res.access_token);
+  //       localStorage.setItem('site_id', res.site_id);
+  //     }
+  //     this.router.navigate(['./landing']);
+  //   });
+  // }
+
 }

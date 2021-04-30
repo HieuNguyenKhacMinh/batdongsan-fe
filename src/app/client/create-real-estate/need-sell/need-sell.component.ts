@@ -111,7 +111,6 @@ save() {
     console.log(this.realEstate);
     this.realEstateService.save(this.realEstate).subscribe(res => {
         console.log(res);
-
     })
 }
    

@@ -15,8 +15,8 @@
       <div class="flex">
 
         <mat-radio-group aria-label="Select an option" [(ngModel)]="company">
-          <mat-radio-button [value]="1" selected>Đã có công ty</mat-radio-button>
-          <mat-radio-button [value]="2">Chưa có công ty</mat-radio-button>
+          <mat-radio-button [value]="1" selected title="Người dùng thuộc tổ chức đã tồn tại trong hệ thống">Identity User</mat-radio-button>
+          <mat-radio-button [value]="2" title="Người dùng không thuộc tổ chức đã tồn tại trong hệ thống">Owner</mat-radio-button>
         </mat-radio-group><br>
 
         <mat-form-field *ngIf="company == 2">
@@ -41,13 +41,16 @@
 
         <mat-form-field>
           <mat-label>Password</mat-label>
-          <input matInput [(ngModel)]="user.password" id="lemail" required="">
+          <input type="password" matInput [(ngModel)]="user.password" id="lemail" required="">
+          <mat-error *ngIf="message">
+            {{message}}
+          </mat-error>
         </mat-form-field>
-
+        <div *ngIf="message" style="color:red">{{message}}</div>
       </div>
     </mat-card-content>
     <mat-card-actions style="text-align: center;">
-      <button mat-raised-button color="primary"  (click)="login()">Đăng ký</button>
+      <button mat-raised-button color="primary"  (click)="save()">Đăng ký</button>
       <br />
       Đã có tài khoản<a mat-flat-button class="btn-outline-sm" [routerLink]="['/auth/login']"
         routerLinkActive="router-link-active">Đăng

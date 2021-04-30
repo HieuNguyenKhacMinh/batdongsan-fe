@@ -3,9 +3,8 @@
   <span class="example-padding"></span>
 </mat-toolbar>
 
-
 <div>
-
+  
   <mat-card class="example-card">
     <!-- <h1 style="margin: auto;">{{product.product_type.name}}</h1> -->
     <mat-card-header>
@@ -21,7 +20,7 @@
 
         <mat-form-field>
           <mat-label>Password</mat-label>
-          <input matInput [(ngModel)]="user.password" id="lemail" required="" (input)="message = undefined">
+          <input type="password" matInput [(ngModel)]="user.password" id="lemail" required="" (input)="message = undefined">
         </mat-form-field>
 
       </div>

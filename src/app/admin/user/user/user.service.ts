@@ -8,7 +8,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   all(): any {
-    let headers = { authorization: localStorage.getItem('authorization') || '', site_id: localStorage.getItem('site_id') || '' }
+    let headers = { authorization: `bearer ${localStorage.getItem('access_token')}`, organization_id: localStorage.getItem('organization_id') || '' }
     return this.http.get(`${this.url}`, { headers });
   }
 

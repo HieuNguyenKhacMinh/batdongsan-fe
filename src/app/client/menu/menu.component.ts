@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuService } from './menu.service';
 
@@ -10,6 +10,7 @@ import { MenuService } from './menu.service';
 
 export class MenuComponent implements OnInit {
     userId: string
+    user: any = {};
     constructor(private menuService: MenuService, private router: Router) {
         this.userId = localStorage.getItem("user_id");
     }
@@ -19,6 +20,13 @@ export class MenuComponent implements OnInit {
             this.menus = res;
             console.log(this.menus);
         })
+
+        if (this.userId) {
+            this.menuService.getItem(this.userId).subscribe(res => {
+                this.user = res;
+            })
+        }
+        console.log(this.userId+"adasdasdadsdadasdsadsadsadsdsaadasdasdasdsadsdsadsasadas");
     }
 
     signOut() {

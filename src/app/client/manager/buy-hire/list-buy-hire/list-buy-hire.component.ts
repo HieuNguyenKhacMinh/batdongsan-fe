@@ -1,30 +1,28 @@
-import { RealEstateService } from './../real.estate.service';
-import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { RealEstateService } from '../../buy-hire/real.estate.service';
+
 @Component({
-    selector: 'app-real-estate-detail',
-    templateUrl: 'detail.component.html',
-    styleUrls: ["./detail.component.scss"]
+    selector: 'app-list-buy-hire',
+    templateUrl: 'list-buy-hire.component.html',
+    styleUrls: ["./list-buy-hire.component.scss"]
 })
 
-export class RealEstateDetailComponent implements OnInit {
-    constructor(private realEstateService: RealEstateService,  private route: ActivatedRoute
+export class ListBuyHireComponent implements OnInit {
+    constructor(private realEstateService: RealEstateService,
+        private route: ActivatedRoute
         ) { }
-    
 
+    allProducts: any[] = [];
+    products: any[] = [];
     dataSource: any = {};
-    product: any;
-
-    async ngOnInit() {
-        
-        // get id from router
-        // const id = this.route.snapshot.paramMap.get('id');
-        // this.realEstateService.getProduct(id).subscribe(res => {
-        //     this.product = res;
-        //     console.log(this.product);
-            
-        // })
+    ngOnInit() {
+        this.realEstateService.getProducts(true).subscribe((res: any[]) => {
+            this.allProducts = res;
+            this.products = this.allProducts;
+        })
 
         const id = this.route.snapshot.paramMap.get('id');
         
@@ -35,7 +33,31 @@ export class RealEstateDetailComponent implements OnInit {
             this.dataSource = res;
         })
 
-        this.getColumns();
+    }
+
+    changeConditionSearch(search) {
+        console.log(search);
+        
+        this.products = this.allProducts.filter(product => this.compareObjectAndObject(product, search));
+        console.log(this.products);
+        
+    }
+
+
+    compareObjectAndObject(product, search) {
+        const keys = Object.keys(search);
+    
+        for (let i = 0; i < keys.length; i++) {
+            const key = keys[i];
+            if (product[key] === search[key]) {
+                continue;
+            } else {
+                // case đặc biêt
+                return false;
+            }
+        }
+
+        return true;
     }
     properties: any;
     columns: any;
@@ -72,11 +94,9 @@ export class RealEstateDetailComponent implements OnInit {
         })
     }
 
-    updateCompany() {
-        this.realEstateService.update(this.dataSource).subscribe(res => {
+    delete() {
+        this.realEstateService.delete(this.dataSource).subscribe(res => {
             this.setIsEdit(true);
         })
     }
-
-    
 }

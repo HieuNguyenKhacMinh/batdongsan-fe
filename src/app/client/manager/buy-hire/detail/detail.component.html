@@ -1,0 +1,150 @@
+<!-- <search-real-estate></search-real-estate>
+<div class="total">
+    <div *ngIf="product" class="product">
+        <mat-card class="example-card">
+            <mat-card-header>
+                <mat-card-title>{{product.title}}</mat-card-title>
+            </mat-card-header>
+            <p><b>Khu vực:</b> <span style="color: limegreen;"> {{product.product_type.name}}</span> tại <span style="color:#055699;">{{product.street}}</span>, {{product.wards.name}}, {{product.city.name}}</p>
+            <pre><b>Gía:</b>   <span style="color: limegreen;">{{product.price}} {{product.product_unit.name}}</span>  <b>Diện tích:</b>  <span style="color: limegreen;">{{product.acreage}} m2</span></pre>
+
+            <p><b>Thông tin mô tả</b></p>
+            <mat-card-content>
+                <pre class="pre-wrap">
+                {{product.description}}
+            </pre>
+            </mat-card-content>
+            <div style="float: left;margin-right: 50px;">
+            <p><b>Đặc điểm bất động sản</b></p>
+            <pre>Thuộc dự án: <a [routerLink]="['/client/projects/', product.project.id]" routerLinkActive="router-link-active" >{{product.project.name}}</a></pre>
+            <pre>Địa chỉ: {{product.street}} - {{product.wards.name}} - {{product.city.name}}</pre>
+            <pre>Loại tin rao: {{product.product_type.name}}</pre>
+            <pre>Mặt tiền: {{product.facade}} m</pre>
+            </div>
+            <div>
+                <p><b>Thông tin liên hệ</b></p>
+                <pre>Tên liên hệ: <span style="color: #055699;">{{product.contact_name}}</span></pre>
+                <pre>Số điện thoại: <span style="color: #055699;">{{product.phone_number}}</span></pre>
+                <pre>Email: <span style="color: #055699;">{{product.email}}</span></pre>
+            </div>
+
+            <!-- <p><b>Thông tin dự án</b></p>
+            <pre>Loại tin đăng: {{product.product_type}}</pre>
+            <pre>Địa chỉ: {{product.home_number}},{{product.street}},{{product.wards}}</pre>
+            <pre>Đường vào: {{product.entry_width}} mét</pre>
+            <pre>Mặt tiền: {{product.facade}} mặt tiền</pre> -->
+            <!-- <mat-card-actions style="clear: left;">
+                <button mat-button>LIKE</button>
+                <button mat-button>SHARE</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    <div class="comment">
+        <mat-card class="example-card">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+
+            </mat-card-header>
+
+            <mat-card-content>
+                <p>
+                    Bất động sản giá bao nhiêu
+                </p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button>LIKE</button>
+                <button mat-button>REPLY</button>
+            </mat-card-actions>
+        </mat-card>
+        <mat-card class="example-card reply">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+
+            </mat-card-header>
+
+            <mat-card-content>
+                <p>
+                    Căn hộ đẹp quá
+                </p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button>LIKE</button>
+                <button mat-button>REPLY</button>
+            </mat-card-actions>
+        </mat-card>
+        <<mat-card class="example-card">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>Shiba Inu</mat-card-title>
+                <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+            </mat-card-header>
+
+            <mat-card-content>
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Leave a comment</mat-label>
+                    <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+                </mat-form-field>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button>SEND</button>
+            </mat-card-actions>
+            </mat-card>
+    </div>
+</div> --> -->
+
+
+<div *ngIf="dataSource">
+    <mat-card>
+        <mat-card-content *ngIf="columns">
+
+            <div *ngFor="let column of columns">
+                <div *ngIf="column !== 'id'">
+                    <div *ngIf="properties[column].type ==='textarea'">
+                        <mat-form-field>
+                            <mat-label> {{properties[column].alias}}</mat-label>
+                            <textarea matInput [matAutosize]=true [rows]="properties[column].row_number"
+                                [(ngModel)]="dataSource[column]"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div *ngIf="properties[column].type !=='textarea'">
+
+                        <div *ngIf="properties[column].type ==='dropdown' || properties[column].type ==='radio'">
+                            <div *ngIf="properties[column].data">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>{{properties[column].alias}}</mat-label>
+                                    <mat-select [(ngModel)]="dataSource[column]">
+                                        <mat-option *ngFor="let food of properties[column].data"
+                                            [value]="food[properties[column].reference.value]">
+                                            {{food[properties[column].reference.label]}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <!-- else radio -->
+                        <div *ngIf="properties[column].type !=='dropdown'">
+ 
+                            <div *ngIf="properties[column].type !=='radio'">
+
+                                <mat-form-field>
+                                    <mat-label> {{properties[column].alias}}</mat-label>
+                                    <input matInput [(ngModel)]="dataSource[column]">
+                                </mat-form-field></div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <mat-card-action >
+                <button  mat-button cdkFocusInitial (click)="updateCompany()" [routerLink]="['../list']" routerLinkActive="router-link-active" >Save</button>
+                <button  mat-button  [routerLink]="['../list']" routerLinkActive="router-link-active" >Cancel</button>
+            </mat-card-action>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+
+
+

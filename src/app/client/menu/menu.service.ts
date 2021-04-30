@@ -8,4 +8,7 @@ export class MenuService {
     get() {
         return this.httpClient.get(this.url);
     }
+    getItem(id: any): any {
+        return this.httpClient.get(`${'http://localhost:3000/cms/user'}/${id}`);
+    }
 }
