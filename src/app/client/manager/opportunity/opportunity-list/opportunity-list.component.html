@@ -1,4 +1,7 @@
 opportunity list
+<div>
+  <button mat-button (click)="openDialog()" color="primary">Thêm</button>
+</div>
 <div cdkDropListGroup class="opportunity">
   <div class="example-container" *ngFor="let pipe of pipelines">
     <h2>{{pipe.name}}</h2>

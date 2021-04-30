@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-admin',
@@ -8,7 +9,13 @@ import { Component, OnInit } from '@angular/core';
 
 export class AdminComponent implements OnInit {
     showFiller = true;
-    constructor() { }
+    constructor(private router: Router) { }
 
-    ngOnInit() { }
+    ngOnInit() {
+        const role = localStorage.getItem('user_role');
+        if (role !== undefined && 0 !== +role) {
+alert(" Bạn không có quyền truy cập trang")
+            this.router.navigate(['/client']);
+        }
+    }
 }

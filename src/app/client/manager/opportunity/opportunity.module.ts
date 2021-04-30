@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { OpportunityRoutingModule } from './opportunity-routing.module';
+import { CreateOpportunityComponent } from './create/create.component';
 
 
 
@@ -20,7 +21,10 @@ import { OpportunityRoutingModule } from './opportunity-routing.module';
     exports: [],
     declarations: [OpportunityComponent,
         OpportunityListComponent,
-        OpportunityDetailComponent],
+        OpportunityDetailComponent,
+        CreateOpportunityComponent,
+    ],
+    entryComponents:[CreateOpportunityComponent],
     providers: [OpportunityService],
 })
 export class OpportunityModule { }

@@ -1,6 +1,8 @@
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { CreateOpportunityComponent } from '../create/create.component';
 import { OpportunityService } from '../opportunity.service';
 
 @Component({
@@ -10,10 +12,23 @@ import { OpportunityService } from '../opportunity.service';
 })
 
 export class OpportunityListComponent implements OnInit {
-  constructor(private opportunityService: OpportunityService, private http: HttpClient) { }
+  constructor(private opportunityService: OpportunityService, private http: HttpClient, public dialog: MatDialog) { }
 
+
+  dataSource: any;
+  columnsToDisplay: any;
+  expandedElement: any | null | undefined;
+  properties: any;
   pipelines: any[] = [];
   ngOnInit() {
+     //get table properties
+     this.opportunityService.getProperties().subscribe((res: any) => {
+      // change column display
+      this.properties = res.content;
+      this.columnsToDisplay = Object.keys(res.content)
+      .sort((a: any, b: any) => (this.properties[a].order > this.properties[b].order) ? 1 : ((this.properties[b].order > this.properties[a].order) ? -1 : 0));
+      this.columnsToDisplay.push('action');
+    })
     this.opportunityService.all().subscribe(res => {
       this.pipelines = res.sort((a: any, b: any) => (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0));
       console.log(this.pipelines);
@@ -45,4 +60,15 @@ export class OpportunityListComponent implements OnInit {
     }
   }
 
+  openDialog(dataSource?: any): void {
+    const dialogRef = this.dialog.open(CreateOpportunityComponent, {
+      width: '550px',
+      data: {properties: this.properties, dataSource}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+
+    });
+  }
 }

@@ -25,15 +25,18 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('access_token', res.access_token);
         localStorage.setItem('organization_id', res.organization_id);
         localStorage.setItem('user_id', res.user_id);
+        localStorage.setItem('user_role', res.role);
 
-        if (res.position === 'admin') {
+        if (res.role === 0) {
           this.router.navigate(['./admin']);
-        } if (res.position === 'manager') {
-          this.router.navigate(['./manager']);
+        } if (res.role === 1) {
+          this.router.navigate(['/client/manager']);
         }
       }
+      console.log(res.role);
+      
       this.message = res.message
-      this.router.navigate(['./client']);
+      // this.router.navigate(['./client']);
     },
       (res: any) => {
         this.message = res.error.message;

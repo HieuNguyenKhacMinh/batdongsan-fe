@@ -20,12 +20,13 @@
             <div *ngIf="properties[column].reference !== undefined">
 
               <div *ngIf="properties[column].reference.api_url">
-                {{ element[properties[column].reference.table] && element[properties[column].reference.table][properties[column].reference.label]}}
+                {{ element[properties[column].reference.table] &&
+                element[properties[column].reference.table][properties[column].reference.label]}}
               </div>
               <div *ngIf="!properties[column].reference.api_url">
-                {{ properties[column].data | filterData : element[column]  }}
+                {{ properties[column].data | filterData : element[column] }}
               </div>
-               </div>
+            </div>
             <!-- else -->
             <div *ngIf="properties[column].reference === undefined">
               <span>
@@ -40,12 +41,12 @@
         </div>
       </td>
     </ng-container>
- 
+
     <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
     <tr mat-row *matRowDef="let element; columns: columnsToDisplay;" class="example-element-row"
       [class.example-expanded-row]="expandedElement === element"
       (click)="expandedElement = expandedElement === element ? null : element">
     </tr>
-     
+
   </table>
 </div>

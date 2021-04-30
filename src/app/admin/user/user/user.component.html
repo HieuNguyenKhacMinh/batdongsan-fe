@@ -18,7 +18,13 @@
           <div *ngIf="column !== 'id'">
             <!-- if -->
             <div *ngIf="properties[column].reference !== undefined">
-              {{ element[properties[column].reference.table][properties[column].reference.label]}}
+              <div *ngIf="properties[column].reference.api_url">
+                {{ element[properties[column].reference.table] &&
+                element[properties[column].reference.table][properties[column].reference.label]}}
+              </div>
+              <div *ngIf="!properties[column].reference.api_url">
+                {{ properties[column].data | filterUserRole : element[column] }}
+              </div>
             </div>
             <!-- else -->
             <div *ngIf="properties[column].reference === undefined">

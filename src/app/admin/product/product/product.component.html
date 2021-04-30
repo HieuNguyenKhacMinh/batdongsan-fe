@@ -1,22 +1,23 @@
 <p>product works!</p>
 
-<div class="condition_class"> 
-<div *ngFor="let column of references">
-  <div *ngIf="column !== 'id'">
-    <div *ngIf="properties[column].type ==='dropdown'">
-      <div *ngIf="properties[column].data">
-        <mat-form-field appearance="fill">
-          <mat-label>{{properties[column].alias}}</mat-label>
-          <mat-select [(ngModel)]="filter[column]">
-            <mat-option *ngFor="let food of properties[column].data" [value]="food[properties[column].reference.value]">
-              {{food[properties[column].reference.label]}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+<div class="condition_class">
+  <div *ngFor="let column of references">
+    <div *ngIf="column !== 'id'">
+      <div *ngIf="properties[column].type ==='dropdown'">
+        <div *ngIf="properties[column].data">
+          <mat-form-field appearance="fill">
+            <mat-label>{{properties[column].alias}}</mat-label>
+            <mat-select [(ngModel)]="filter[column]">
+              <mat-option *ngFor="let food of properties[column].data"
+                [value]="food[properties[column].reference.value]">
+                {{food[properties[column].reference.label]}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
       </div>
     </div>
   </div>
-</div>
   <div>
     <button mat-button (click)="search()">Tìm kiếm</button>
   </div>
@@ -43,14 +44,19 @@
           <div *ngIf="column !== 'id'">
             <!-- if -->
             <div *ngIf="properties[column].reference !== undefined">
-              {{  element[properties[column].reference.table]
-                && element[properties[column].reference.table][properties[column].reference.label]}}
+              <div *ngIf="properties[column].reference.api_url">
+                {{ element[properties[column].reference.table] &&
+                element[properties[column].reference.table][properties[column].reference.label]}}
+              </div>
+              <div *ngIf="!properties[column].reference.api_url">
+                {{ properties[column].data | filterData : element[column] }}
+              </div>
             </div>
             <!-- else -->
             <div *ngIf="properties[column].reference === undefined">
               <span>
-                {{ element[column]&&element[column]?.toString().slice(0, 20)}} 
-                 {{element[column]&&element[column].length>20?'... ':""}}
+                {{ element[column]&&element[column]?.toString().slice(0, 20)}}
+                {{element[column]&&element[column].length>20?'... ':""}}
               </span>
             </div>
           </div>

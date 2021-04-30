@@ -8,10 +8,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DeleteUserComponent } from './delete/delete.component';
 import { UserRoutingModule } from './user-routing.module';
 import { MaterialModule } from '../../../material-module';
+import { FilterDataUserPipe } from './user.pipe';
  
 
 @NgModule({
-  declarations: [UserComponent, CreateUserComponent, DeleteUserComponent],
+  declarations: [UserComponent, CreateUserComponent, DeleteUserComponent, FilterDataUserPipe],
   imports: [
     CommonModule,
     MaterialModule,

@@ -14,11 +14,23 @@ export class OpportunityService {
     }
 
     public update(data: any) {
-        const url = 'http://localhost:3000/cms/pipeline';
+        const url = 'http://localhost:3000/cms/opportunity';
         let headers = {
             authorization: localStorage.getItem('authorization') || '',
             site_id: localStorage.getItem('site_id') || ''
         };
         return this.http.put(`${url}/${data.id}`, data, { headers });
+    }
+
+    getProperties() {
+        let headers = { authorization: localStorage.getItem('authorization') || '', site_id: localStorage.getItem('site_id') || '' }
+        return this.http.get(`http://localhost:3000/cms/table-config/opportunity`, { headers });
+    }
+    getData(url: string) {
+        let headers = {
+            authorization: localStorage.getItem('authorization') || '',
+            site_id: localStorage.getItem('site_id') || ''
+        };
+        return this.http.get(`${url}`, { headers });
     }
 }

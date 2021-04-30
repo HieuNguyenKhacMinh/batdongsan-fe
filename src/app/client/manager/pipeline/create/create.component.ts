@@ -26,20 +26,23 @@ export class CreatePipelineComponent implements OnInit {
         this.properties = this.data.properties;
         // filter những collum có visible != true
         this.columns = Object.keys(this.data.properties)
+            // hide control organization_id
+            .filter((column: any) => !["organization_id"].includes(column))
             .filter((column: any) => this.properties[column].visible !== true);
         /** colums reference */
         const references = this.columns.filter((column: any) => this.properties[column].reference !== undefined);
         console.log(references);
 
-         // get data referent
-         await Promise.all(references.map(async column => {
-            await this.service.getData(this.properties[column].reference.api_url).subscribe((res) =>{
+        // get data referent
+        await Promise.all(references.map(async column => {
+            await this.service.getData(this.properties[column].reference.api_url).subscribe((res) => {
                 this.properties[column].data = res;
             })
         }))
 
         this.dataSource = this.data.dataSource || {};
         // set to form control
+        this.dataSource.organization_id = localStorage.getItem("organization_id");
 
 
 
@@ -51,6 +54,6 @@ export class CreatePipelineComponent implements OnInit {
         this.service.update(this.dataSource).subscribe(res => {
             this.dialogRef.close();
         })
-       
+
     }
 }
