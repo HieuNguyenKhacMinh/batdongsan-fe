@@ -1,0 +1,65 @@
+<mat-card *ngIf="user" class="user-info">
+    <mat-card-header>
+        <mat-card-title>Thông tin cá nhân</mat-card-title>
+        <span class="example-spacer"></span>
+        <button mat-icon-button (click)="setIsEdit()" *ngIf="!edit">
+            <mat-icon>edit</mat-icon>
+        </button>
+    </mat-card-header>
+    <mat-card-content *ngIf="!edit">
+        <p>
+            Họ tên: {{user.full_name}}
+        </p>
+        <p> Giới tính: {{user.gender}}</p>
+        <p>Ngày sinh: {{user.birthday}}</p>
+        <p> Di động: {{user.phone_number}}</p>
+        <p>Email: {{user.email}}</p>
+        <p>Tài khoản: {{user.user_name}}</p>
+    </mat-card-content>
+
+    <mat-card-content *ngIf="edit && columns">
+
+        <div *ngFor="let column of columns">
+            <div *ngIf="column !== 'id'">
+
+                <div *ngIf="properties[column].type ==='textarea'">
+                    <mat-form-field>
+                        <mat-label> {{properties[column].alias}}</mat-label>
+                        <textarea matInput [matAutosize]=true [rows]="properties[column].row_number"
+                            [(ngModel)]="dataSource[column]"></textarea>
+                    </mat-form-field>
+                </div>
+                <div *ngIf="properties[column].type !=='textarea'">
+
+                    <div *ngIf="properties[column].type ==='dropdown'">
+                        <div *ngIf="properties[column].data">
+                            <mat-form-field appearance="fill">
+                                <mat-label>{{properties[column].alias}}</mat-label>
+                                <mat-select [(ngModel)]="dataSource[column]">
+                                    <mat-option *ngFor="let food of properties[column].data"
+                                        [value]="food[properties[column].reference.value]">
+                                        {{food[properties[column].reference.label]}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <!-- else radio -->
+                    <div *ngIf="properties[column].type !=='dropdown'">
+                        <mat-form-field>
+                            <mat-label> {{properties[column].alias}}</mat-label>
+                            <input matInput [(ngModel)]="dataSource[column]">
+                        </mat-form-field>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </mat-card-content>
+
+    <mat-card-action *ngIf="edit">
+        <button mat-button cdkFocusInitial (click)="updateCompany()" (click)="setIsEdit(true)">Save</button>
+        <button mat-button (click)="setIsEdit(true)">Cancel</button>
+    </mat-card-action>
+</mat-card>

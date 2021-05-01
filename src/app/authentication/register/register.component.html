@@ -17,6 +17,7 @@
         <mat-radio-group aria-label="Select an option" [(ngModel)]="company">
           <mat-radio-button [value]="1" selected title="Người dùng thuộc tổ chức đã tồn tại trong hệ thống">Identity User</mat-radio-button>
           <mat-radio-button [value]="2" title="Người dùng không thuộc tổ chức đã tồn tại trong hệ thống">Owner</mat-radio-button>
+          <mat-radio-button [value]="3" title="Người dùng cá nhân">Personal</mat-radio-button>
         </mat-radio-group><br>
 
         <mat-form-field *ngIf="company == 2">
@@ -28,6 +29,7 @@
           <mat-label>Domain</mat-label>
           <input matInput [(ngModel)]="user.domain" id="lemail" required="">
         </mat-form-field><br>
+
 
         <mat-form-field>
           <mat-label>Họ và tên</mat-label>

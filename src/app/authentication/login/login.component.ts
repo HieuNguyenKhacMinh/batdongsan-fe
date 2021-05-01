@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/client/manager']);
         }
       }
+     
       console.log(res.role);
       
       this.message = res.message
