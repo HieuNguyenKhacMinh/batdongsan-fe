@@ -15,7 +15,8 @@ export class RealEstateDetailComponent implements OnInit {
 
 
     product: any;
-    comment: any = {};
+    productComment: any = {};
+    replyComment: any = {};
     async ngOnInit() {
 
         this.getData();
@@ -28,16 +29,22 @@ export class RealEstateDetailComponent implements OnInit {
             this.product = res;
             console.log(this.product);
 
-            this.comment.product_id = this.product.id;
+            this.productComment.product_id = this.product.id;
 
         })
     }
 
-    sendComment() {
-        console.log(this.comment);
-        this.realEstateService.sendComment(this.comment).subscribe(res => {
-
+    sendComment(comment?: any) {
+        if(comment){
+            
+        this.productComment = this.replyComment;
+        this.productComment.parent_id = comment.id;
+        }
+        
+        this.realEstateService.sendComment(this.productComment).subscribe(res => {
             this.getData();
+            this.productComment = {};
+            this.replyComment = {};
         })
     }
 }
