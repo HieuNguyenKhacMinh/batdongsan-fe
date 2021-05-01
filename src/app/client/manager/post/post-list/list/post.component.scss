@@ -1,14 +1,43 @@
 
-.category-post {
-    display: flex;
+// .category-post {
+//     display: flex;
 
-.example-card {
-    margin: 1rem;
-   width: 300px;
-  }
+// .example-card {
+//     margin: 1rem;
+//    width: 300px;
+//   }
   
-  .example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    background-size: cover;
-  }
+//   .example-header-image {
+//     background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+//     background-size: cover;
+//   }
+// }
+.category-post {
+  width: 1000px;
+  display: flex;
+  display: inline-block;
+.example-card {
+  margin: 1rem;
+ width: 200px;
+ float: left;
+}
+.conten{
+    width: 200px;
+    height: 635px;
+    float: left;
+}
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+}
+.pre-wrap {
+  word-wrap: break-word; /* IE 5.5-7 */
+  white-space: -moz-pre-wrap; /* Firefox 1.0-2.0 */
+  white-space: pre-wrap; /* current browsers */
+  font-family: serif;
+  font-size: 14px;
+}
+.mat-card-header .mat-card-title {
+  font-size: 14px;
 }

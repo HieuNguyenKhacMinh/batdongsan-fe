@@ -11,37 +11,37 @@
             <mat-card-content>
                 <pre class="pre-wrap">
                 {{product.description}}
-            </pre>
+                </pre>
             </mat-card-content>
             <h4><b>Đặc điểm nổi bậc</b></h4>
-            <pre>Thuộc dự án: <a [routerLink]="['/client/projects/', product.project.id]" routerLinkActive="router-link-active" >{{product.project.name}}</a></pre>
-            <pre
-                class="pre-wrap2"><span style="color:#5F6666;"><b> Loại tin đăng:</b></span> {{product.product_type.name}}</pre>
-            <pre
-                class="pre-wrap2"><span style="color:#5F6666;"><b> Địa chỉ:</b></span> {{product.address_id.street}}</pre>
-            <pre
-                class="pre-wrap2"><span style="color:#5F6666;"><b> Đường vào:</b>Đường vào:</span> {{product.entry_width}} mét</pre>
-            <pre
-                class="pre-wrap2"><span style="color:#5F6666;"><b> Mặt tiền:</b>Mặt tiền:</span> {{product.facade}} m</pre>
-            <pre class="pre-wrap2"><span style="color:#5F6666;"><b> Diện tích:</b></span> {{product.facade}} m2</pre>
-            <pre
-                class="pre-wrap2"><span style="color:#5F6666;"><b> Số phòng ngủ:</b></span> {{product.no_of_bedroom}} phòng</pre>
-            <pre
-                class="pre-wrap2"><span style="color:#5F6666;"><b> Số phòng vệ sinh:</b></span> {{product.no_of_toilet}} phòng</pre>
-            <pre
-                class="pre-wrap2"><span style="color:#5F6666;"><b> Số tầng:</b></span> {{product.no_of_floors}} tầng</pre>
-            <pre
-                class="pre-wrap2"><span style="color:#5F6666;"><b> Pháp lý:</b></span> {{product.juridical}} phòng</pre>
-            <pre
-                class="pre-wrap2"><span style="color:#5F6666;"><b> Hướng nhà:</b></span> {{product.house_direstion_id.name}}</pre>
-            <pre
-                class="pre-wrap2"><span style="color:#5F6666;"><b> Hướng ban công:</b></span> {{product.balcony_direction_id.name}}</pre>
+            <div *ngIf="product.project">Thuộc dự án: <a [routerLink]="['/client/projects/', product.project.id]" routerLinkActive="router-link-active" >{{product.project.name}}</a></div>
+            <div 
+                class="pre-wrap2"><span style="color:#5F6666;"><b> Loại tin đăng:</b></span > {{product.product_type.name}}</div>
+            <div
+                class="pre-wrap2"><span style="color:#5F6666;"><b> Địa chỉ:</b></span> {{product.address_id.street}}</div>
+            <div
+                class="pre-wrap2"><span style="color:#5F6666;"><b> Đường vào:</b>Đường vào:</span> {{product.entry_width}} mét</div>
+            <div
+                class="pre-wrap2"><span style="color:#5F6666;"><b> Mặt tiền:</b>Mặt tiền:</span> {{product.facade}} m</div>
+            <div class="pre-wrap2"><span style="color:#5F6666;"><b> Diện tích:</b></span> {{product.facade}} m2</div>
+            <div
+                class="pre-wrap2"><span style="color:#5F6666;"><b> Số phòng ngủ:</b></span> {{product.no_of_bedroom}} phòng</div>
+            <div
+                class="pre-wrap2"><span style="color:#5F6666;"><b> Số phòng vệ sinh:</b></span> {{product.no_of_toilet}} phòng</div>
+            <div
+                class="pre-wrap2"><span style="color:#5F6666;"><b> Số tầng:</b></span> {{product.no_of_floors}} tầng</div>
+            <div
+                class="pre-wrap2"><span style="color:#5F6666;"><b> Pháp lý:</b></span> {{product.juridical}} phòng</div>
+            <div
+                class="pre-wrap2"><span style="color:#5F6666;"><b> Hướng nhà:</b></span> {{product.house_direstion_id.name}}</div>
+            <div
+                class="pre-wrap2"><span style="color:#5F6666;"><b> Hướng ban công:</b></span> {{product.balcony_direction_id.name}}</div>
 
             <!-- <p><b>Thông tin dự án</b></p>
-            <pre>Loại tin đăng: {{product.product_type}}</pre>
-            <pre>Địa chỉ: {{product.home_number}},{{product.street}},{{product.wards}}</pre>
-            <pre>Đường vào: {{product.entry_width}} mét</pre>
-            <pre>Mặt tiền: {{product.facade}} mặt tiền</pre> -->
+            <div>Loại tin đăng: {{product.product_type}}</div>
+            <div>Địa chỉ: {{product.home_number}},{{product.street}},{{product.wards}}</div>
+            <div>Đường vào: {{product.entry_width}} mét</div>
+            <div>Mặt tiền: {{product.facade}} mặt tiền</div> -->
             <mat-card-actions>
                 <button mat-button>LIKE</button>
                 <button mat-button>SHARE</button>

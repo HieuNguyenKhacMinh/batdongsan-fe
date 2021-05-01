@@ -44,40 +44,60 @@
             </mat-card-actions>
         </mat-card>
     </div>
+    <div class="comments" style="width: 100%;">
+        <mat-card class="example-card" *ngFor="let comment of project.comments">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+            </mat-card-header>
+            <mat-card-content>
+                <p>
+                    {{comment.content}}
+                </p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button>LIKE</button>
+                <button mat-button (click)="comment.isReply=1">REPLY</button>
+            </mat-card-actions>
+
+            <div *ngIf="comment.children">
+                <mat-card class="example-card" *ngFor="let comment of comment.children">
+                    <mat-card-header>
+                        <div mat-card-avatar class="example-header-image"></div>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p>
+                            {{comment.content}}
+                        </p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <button mat-button>LIKE</button>
+                    </mat-card-actions>
+                </mat-card>`     
+            </div>
+
+            <mat-card class="example-card" *ngIf="comment.isReply===1">
+                <mat-card-header>
+                    <div mat-card-avatar class="example-header-image"></div>
+                    <mat-card-title>Shiba Inu</mat-card-title>
+                    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+                </mat-card-header>
+
+                <mat-card-content>
+
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Reply a comment</mat-label>
+                        <textarea matInput [(ngModel)]="replyComment.content"></textarea>
+                    </mat-form-field>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-button (click)="sendComment(comment)">SEND</button>
+                </mat-card-actions>
+            </mat-card>
+
+        </mat-card>
+    </div>
     <div class="comment">
         <mat-card class="example-card">
-            <mat-card-header>
-                <div mat-card-avatar class="example-header-image"></div>
-
-            </mat-card-header>
-
-            <mat-card-content>
-                <p>
-                    Bất động sản giá bao nhiêu
-                </p>
-            </mat-card-content>
-            <mat-card-actions>
-                <button mat-button>LIKE</button>
-                <button mat-button>REPLY</button>
-            </mat-card-actions>
-        </mat-card>
-        <mat-card class="example-card reply">
-            <mat-card-header>
-                <div mat-card-avatar class="example-header-image"></div>
-
-            </mat-card-header>
-
-            <mat-card-content>
-                <p>
-                   Căn hộ đẹp quá
-                </p>
-            </mat-card-content>
-            <mat-card-actions>
-                <button mat-button>LIKE</button>
-                <button mat-button>REPLY</button>
-            </mat-card-actions>
-        </mat-card>
-        <<mat-card class="example-card">
             <mat-card-header>
                 <div mat-card-avatar class="example-header-image"></div>
                 <mat-card-title>Shiba Inu</mat-card-title>
@@ -88,11 +108,11 @@
 
                 <mat-form-field class="example-full-width">
                     <mat-label>Leave a comment</mat-label>
-                    <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+                    <textarea matInput [(ngModel)]="projectComment.content"></textarea>
                 </mat-form-field>
             </mat-card-content>
             <mat-card-actions>
-                <button mat-button>SEND</button>
+                <button mat-button (click)="sendComment()">SEND</button>
             </mat-card-actions>
             </mat-card>
     </div>

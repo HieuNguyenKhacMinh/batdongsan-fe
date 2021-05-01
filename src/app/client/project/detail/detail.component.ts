@@ -14,9 +14,34 @@ export class ProjectDetailComponent implements OnInit {
     project: any;
     
     ngOnInit() {
+        // const id = this.route.snapshot.paramMap.get('id');
+        // this.projectSerivce.getProject(id).subscribe((res: any) => {
+        //     this.project = res;
+        // })
+        this.getData();
+    }
+
+    getData() {
+        // get id from router
         const id = this.route.snapshot.paramMap.get('id');
-        this.projectSerivce.getProject(id).subscribe((res: any) => {
+        this.projectSerivce.getProject(id).subscribe(res => {
             this.project = res;
+            this.projectComment.project_id = this.project.id;
+            
+        })
+    }
+    projectComment: any = {};
+    replyComment: any = {};
+    sendComment(comment?: any) {
+        if(comment){
+        this.projectComment = this.replyComment;
+        this.projectComment.parent_id = comment.id;
+        }
+        
+        this.projectSerivce.sendComment(this.projectComment).subscribe(res => {
+            this.getData();
+            this.projectComment = {};
+            this.replyComment = {};
         })
     }
 }

@@ -42,7 +42,7 @@ houseDirestions: any[] = [];
 
 ngOnInit() {
 
-    this.realEstateService.getFormality().subscribe((res: any[]) => {
+    this.realEstateService.getFormality(true).subscribe((res: any[]) => {
         this.formalities = res;
         this.realEstate.formality_id = this.formalities[0].id;
     })

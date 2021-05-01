@@ -1,3 +1,4 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NeedSellComponent } from './../create-real-estate/need-sell/need-sell.component';
 import { NeedBuyComponent } from './../create-real-estate/need-buy/need-buy.component';
 import { NgModule } from "@angular/core";
@@ -23,6 +24,8 @@ import { PostItemComponent } from './list/post/post.component';
         MaterialModule,
         HttpClientModule,
         NewsRoutingModule,
+        FormsModule,
+        ReactiveFormsModule
     ],
     providers: [NewsService]
 })

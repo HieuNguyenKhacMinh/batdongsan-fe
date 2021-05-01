@@ -35,12 +35,13 @@ export class RealEstateDetailComponent implements OnInit {
     }
 
     sendComment(comment?: any) {
+        console.log(comment +"iiiiiiiiiiiiii");
         if(comment){
             
         this.productComment = this.replyComment;
         this.productComment.parent_id = comment.id;
         }
-        
+
         this.realEstateService.sendComment(this.productComment).subscribe(res => {
             this.getData();
             this.productComment = {};

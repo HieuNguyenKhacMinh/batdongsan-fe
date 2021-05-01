@@ -11,14 +11,40 @@ import { NewsService } from '../news.service';
 export class NewsDetailComponent implements OnInit {
     constructor(private service: NewsService,  private route: ActivatedRoute) { }
 
+    postComment: any = {};
+    replyComment: any = {};
     post: any;
     ngOnInit() {
+        // get id from router
+        // const id = this.route.snapshot.paramMap.get('id');
+        // this.service.getNews(id).subscribe(res => {
+        //     this.post = res;
+        //     console.log(this.post);
+            
+        // })
+        this.getData();
+    }
+
+    getData() {
         // get id from router
         const id = this.route.snapshot.paramMap.get('id');
         this.service.getNews(id).subscribe(res => {
             this.post = res;
-            console.log(this.post);
+            this.postComment.post_id = this.post.id;
             
+        })
+    }
+
+    sendComment(comment?: any) {
+        if(comment){
+        this.postComment = this.replyComment;
+        this.postComment.parent_id = comment.id;
+        }
+        
+        this.service.sendComment(this.postComment).subscribe(res => {
+            this.getData();
+            this.postComment = {};
+            this.replyComment = {};
         })
     }
 }

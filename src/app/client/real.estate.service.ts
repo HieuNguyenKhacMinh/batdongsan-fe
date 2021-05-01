@@ -56,6 +56,7 @@ export class RealEstateService {
 
     getProducts(isBuy?: boolean): Observable<any> {
         const url = "http://localhost:3000/cms/product/all/" + (isBuy ? 1 : 0);
+        debugger
         return this.httpClient.get(url);
     }
 
@@ -79,6 +80,7 @@ export class RealEstateService {
             authorization: localStorage.getItem('authorization') || '',
             site_id: localStorage.getItem('site_id') || ''
         };
+        debugger
         return this.httpClient.get(`${url}/${id}`);
     }
 
