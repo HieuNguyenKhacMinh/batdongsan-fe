@@ -31,6 +31,7 @@ export class MenuComponent implements OnInit {
 
     signOut() {
         localStorage.clear();
-        this.router.navigate(['./client']);
+        // this.router.navigate(['./client']);
+        location.href = "/client"
     }
 }

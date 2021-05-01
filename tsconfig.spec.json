@@ -14,5 +14,4 @@
   "include": [
     "src/**/*.spec.ts",
     "src/**/*.d.ts"
-  ]
-}
+, "src/app/client/manager/profile/profile.component.spec.ts

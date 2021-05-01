@@ -9,21 +9,35 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 })
 
 export class RealEstateDetailComponent implements OnInit {
-    constructor(private realEstateService: RealEstateService,  private route: ActivatedRoute
-        ) { }
-    
+    constructor(private realEstateService: RealEstateService, private route: ActivatedRoute
+    ) { }
+
 
 
     product: any;
-
+    comment: any = {};
     async ngOnInit() {
-        
+
+        this.getData();
+    }
+
+    getData() {
         // get id from router
         const id = this.route.snapshot.paramMap.get('id');
         this.realEstateService.getProduct(id).subscribe(res => {
             this.product = res;
             console.log(this.product);
-            
+
+            this.comment.product_id = this.product.id;
+
+        })
+    }
+
+    sendComment() {
+        console.log(this.comment);
+        this.realEstateService.sendComment(this.comment).subscribe(res => {
+
+            this.getData();
         })
     }
 }
