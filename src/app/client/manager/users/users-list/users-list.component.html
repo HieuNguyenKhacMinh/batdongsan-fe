@@ -17,7 +17,8 @@
 
         </div>
         <div *ngIf="column === 'action'">
-          <button mat-stroked-button (click)="openDialog(element)" color="">Sửa</button>
+          <button *ngIf="!element['deactive']"  mat-stroked-button (click)="confirmDeactiveDialog(element)" color="">Khóa</button>
+          <button *ngIf="element['deactive']"  mat-stroked-button (click)="active(element)" color="">Mở Khóa</button>
           <button mat-stroked-button (click)="confirmDialog(element)" color="warn">Xóa</button>
         </div>
       </td>

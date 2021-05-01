@@ -1,15 +1,14 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
 
-@Injectable({ providedIn: 'root' })
-export class UserService {
-  url = 'http://localhost:3000/cms/user';
+@Injectable()
+export class DashboardService {
+  url = 'http://localhost:3000/cms/dashboard';
   propertiesUrl = ''
   constructor(private http: HttpClient) { }
 
   all(): any {
-    let headers = { authorization: `bearer ${localStorage.getItem('access_token')}`, organization_id: localStorage.getItem('organization_id') || '' }
+    let headers = { authorization: localStorage.getItem('authorization') || '', site_id: localStorage.getItem('site_id') || '' }
     return this.http.get(`${this.url}`, { headers });
   }
 
@@ -19,7 +18,7 @@ export class UserService {
 
   getProperties() {
     let headers = { authorization: localStorage.getItem('authorization') || '', site_id: localStorage.getItem('site_id') || '' }
-    return this.http.get(`http://localhost:3000/cms/table-config/user`, { headers });
+    return this.http.get(`http://localhost:3000/cms/table-config/dashboard`, { headers });
   }
   update(data: any) {
     let headers = {
@@ -35,20 +34,5 @@ export class UserService {
       site_id: localStorage.getItem('site_id') || ''
     };
     return this.http.delete(`${this.url}/${data.id}`, { headers });
-  }
-  deactive(data: any) {
-    let headers = {
-      authorization: localStorage.getItem('authorization') || '',
-      site_id: localStorage.getItem('site_id') || ''
-    };
-    return this.http.delete(`${this.url}/deactive/${data.id}`, { headers });
-  }
-
-  active(data: any) {
-    let headers = {
-      authorization: localStorage.getItem('authorization') || '',
-      site_id: localStorage.getItem('site_id') || ''
-    };
-    return this.http.put(`${this.url}/active/${data.id}`, {}, { headers });
   }
 }

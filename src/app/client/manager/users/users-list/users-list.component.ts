@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateUsersComponent } from '../create/create.component';
+import { DeactiveUsersComponent } from '../deactive/deactive.component';
 import { DeleteUsersComponent } from '../delete/delete.component';
 import { UserService } from '../users.service';
 
@@ -21,9 +22,9 @@ export class UsersListComponent implements OnInit {
     this.userService.getProperties().subscribe((res: any) => {
       // change column display
       this.properties = res.content;
-      const arr = ["organization_id"]
+      const arr = ["organization_id", "password"]
       this.columnsToDisplay = Object.keys(res.content).filter(c => !arr.includes(c));
-      // this.columnsToDisplay.push('action');
+      this.columnsToDisplay.push('action');
     })
 
     this.getDatasource();
@@ -63,5 +64,23 @@ export class UsersListComponent implements OnInit {
 
       this.getDatasource();
     });
+  }
+  confirmDeactiveDialog(dataSource?: any): void {
+    const dialogRef = this.dialog.open(DeactiveUsersComponent, {
+      width: '550px',
+      data: { properties: this.properties, dataSource }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+
+      this.getDatasource();
+    });
+  }
+
+  active(dataSource?: any): void {
+    this.userService.active(dataSource).subscribe(res => {
+      this.getDatasource();
+    })
   }
 }

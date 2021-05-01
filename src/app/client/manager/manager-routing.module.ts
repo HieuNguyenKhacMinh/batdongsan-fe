@@ -56,8 +56,12 @@ const routes: Routes = [{
       loadChildren: () => import('./buy-hire/buy-hire.module').then(m => m.BuyHireModule)
     },
     {
+      path: "dashboard",
+      loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+    },
+    {
       path: '',
-      redirectTo: 'company',
+      redirectTo: 'dashboard',
       pathMatch: 'full'
     }]
 },

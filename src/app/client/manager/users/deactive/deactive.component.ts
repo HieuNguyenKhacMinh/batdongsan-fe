@@ -3,21 +3,21 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { UserService } from '../users.service';
 
 @Component({
-    selector: 'delete-user',
-    templateUrl: 'delete.component.html',
-    styleUrls: ['delete.component.scss']
+    selector: 'deactive-hotel',
+    templateUrl: 'deactive.component.html',
+    styleUrls: ['deactive.component.scss']
 })
 
-export class DeleteUsersComponent implements OnInit {
+export class DeactiveUsersComponent implements OnInit {
     constructor(
         private service: UserService,
-        public dialogRef: MatDialogRef<DeleteUsersComponent>,
+        public dialogRef: MatDialogRef<DeactiveUsersComponent>,
         @Inject(MAT_DIALOG_DATA) public data: any) { }
 
     ngOnInit() { }
 
     delete() {
-        this.service.delete(this.data.dataSource).subscribe(res => {
+        this.service.deactive(this.data.dataSource).subscribe(res => {
             this.dialogRef.close();
         })
     }

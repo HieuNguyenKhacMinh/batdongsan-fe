@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('organization_id', res.organization_id);
         localStorage.setItem('user_id', res.user_id);
         localStorage.setItem('user_role', res.role);
-
+       
         if (res.role === 0) {
           this.router.navigate(['./admin']);
         } if (res.role === 1) {
