@@ -1,5 +1,5 @@
-<div>
-  <div *ngFor="let column of columns">
+<div class="scroll">
+  <div *ngFor="let column of columns" >
     <div *ngIf="column !== 'id'">
 
       <div *ngIf="properties[column].type ==='textarea'">
@@ -24,8 +24,8 @@
             </mat-form-field>
           </div>
         </div>
-        <!-- else radio -->
-        <div *ngIf="properties[column].type !=='radio'">
+        <!-- else dropdown -->
+        <div *ngIf="properties[column].type !=='dropdown'">
           <mat-form-field>
             <mat-label> {{properties[column].alias}}</mat-label>
             <input matInput [(ngModel)]="dataSource[column]">

@@ -1,3 +1,5 @@
+import { ProfileService } from './profile/profile.service';
+import { UserProfileComponent } from './profile/profile.component';
 import { FooterComponent } from './footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import { CreateRealEstateComponent } from './create-real-estate/create-real-estate.component';
@@ -29,9 +31,11 @@ import { NeedSellComponent } from './create-real-estate/need-sell/need-sell.comp
         CreateRealEstateComponent,
         NeedBuyComponent,
         NeedSellComponent,
-        FooterComponent
+        FooterComponent,
+        UserProfileComponent
     ],
-    providers: [MenuService, 
+    providers: [MenuService,,
+        ProfileService, 
         RealEstateService],
 })
 export class ClientModule { }

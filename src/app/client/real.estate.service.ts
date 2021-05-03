@@ -56,7 +56,6 @@ export class RealEstateService {
 
     getProducts(isBuy?: boolean): Observable<any> {
         const url = "http://localhost:3000/cms/product/all/" + (isBuy ? 1 : 0);
-        debugger
         return this.httpClient.get(url);
     }
 
@@ -80,7 +79,6 @@ export class RealEstateService {
             authorization: localStorage.getItem('authorization') || '',
             site_id: localStorage.getItem('site_id') || ''
         };
-        debugger
         return this.httpClient.get(`${url}/${id}`);
     }
 
@@ -96,9 +94,21 @@ export class RealEstateService {
         const url = "http://localhost:3000/cms/comment";
         let headers = {
             authorization: localStorage.getItem('authorization') || '',
-            user_id: localStorage.getItem('user_id') || ''
+            user_id: localStorage.getItem('user_id') || '',
+            organization_id: localStorage.getItem('organization_id') || ''
         };
 
         return this.httpClient.post(url, comment, { headers });
     }
+    saveWishlist(wishlist: any) {
+        const url = "http://localhost:3000/cms/wishlist";
+        let headers = {
+            authorization: localStorage.getItem('authorization') || '',
+            user_id: localStorage.getItem('user_id') || '',
+            organization_id: localStorage.getItem('organization_id') || ''
+        };
+
+        return this.httpClient.post(url, wishlist, { headers });
+    }
+
 }

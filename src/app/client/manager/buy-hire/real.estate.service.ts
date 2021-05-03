@@ -56,7 +56,6 @@ export class RealEstateService {
     getProducts(isBuy?: boolean): Observable<any> {
         let headers = { authorization: `bearer ${localStorage.getItem('access_token')}`, organization_id: localStorage.getItem('organization_id') || '' }
         const url = "http://localhost:3000/cms/product/all/" + (isBuy ? 1 : 0);
-        debugger
         return this.httpClient.get(url, { headers });
     }
 

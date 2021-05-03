@@ -10,7 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { PostItem2Component } from './post-list/list/post.component';
-
+import { CreatePostComponent } from './post-list/create/create.component';
 @NgModule({
     imports: [
         CommonModule,
@@ -24,7 +24,9 @@ import { PostItem2Component } from './post-list/list/post.component';
     declarations: [PostComponent,
         PostListComponent,
         PostDetailComponent,
-        PostItem2Component],
+        PostItem2Component,
+        CreatePostComponent],
+       
     providers: [PostService],
 })
 export class PostModule { }

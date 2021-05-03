@@ -1,5 +1,5 @@
 <div></div>
-<div class="scroll">
+<div class="scroll" *ngIf="dataSource">
   <div *ngFor="let column of columns">
     <div *ngIf="column !== 'id'">
 

@@ -32,8 +32,12 @@
             <input matInput [(ngModel)]="dataSource[column]">
           </mat-form-field>
         </div>
-
-
+        <div *ngIf="properties[column].type ==='date'">
+          <mat-form-field>
+              <mat-label> {{properties[column].alias}}</mat-label>
+              <input type="date" matInput [(ngModel)]="dataSource[column]">
+          </mat-form-field>
+      </div>
       </div>
     </div>
   </div>

@@ -11,6 +11,7 @@ import { NewsService } from '../news.service';
 export class NewsDetailComponent implements OnInit {
     constructor(private service: NewsService,  private route: ActivatedRoute) { }
 
+    currentUser : any = {};
     postComment: any = {};
     replyComment: any = {};
     post: any;
@@ -22,6 +23,10 @@ export class NewsDetailComponent implements OnInit {
         //     console.log(this.post);
             
         // })
+        this.currentUser = {
+            id: localStorage.getItem('user_id'),
+            fullname: localStorage.getItem('fullname')
+        }
         this.getData();
     }
 

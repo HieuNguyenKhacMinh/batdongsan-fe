@@ -4,7 +4,7 @@
 
     <span class="example-padding"></span>
     <div *ngFor="let menu of menus">
-        <button mat-button [routerLink]="[menu.path]">{{menu.name}}</button>
+        <button mat-button [routerLink]="[menu.path]" style="font-size: 12px;">{{menu.name}}</button>
     </div>
 
     <span class="example-spacer"></span>
@@ -12,12 +12,17 @@
         routerLinkActive="router-link-active" aria-label="Example icon-button with heart icon">
         <mat-icon>add</mat-icon>
     </button>
+
+    <button mat-icon-button class="example-icon favorite-icon" [routerLink]="['/client/manager/notification']"
+    routerLinkActive="router-link-active" aria-label="Example icon-button with heart icon">
+    <mat-icon>bell</mat-icon>
+</button>
     <button *ngIf="!userId" [routerLink]="['/auth/login']" routerLinkActive="router-link-active" mat-button
         class="example-icon" aria-label="Example icon-button with share icon">
         Login
     </button>
 
-    <button mat-button [matMenuTriggerFor]="menu">{{user.email}}</button>
+    <button mat-button [matMenuTriggerFor]="menu">{{user.fullname}}</button>
     <mat-menu #menu="matMenu">
         <a mat-menu-item [routerLink]="['/client/manager']" routerLinkActive="router-link-active">Quản lý tài khoản</a>
         <button mat-menu-item (click)="signOut()">Đăng xuất</button>

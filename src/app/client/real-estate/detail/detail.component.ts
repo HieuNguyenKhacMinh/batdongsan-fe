@@ -13,12 +13,15 @@ export class RealEstateDetailComponent implements OnInit {
     ) { }
 
 
-
+    currentUser: any = {};
     product: any;
     productComment: any = {};
     replyComment: any = {};
     async ngOnInit() {
-
+        this.currentUser = {
+            id: localStorage.getItem('user_id'),
+            fullname: localStorage.getItem('fullname')
+        }
         this.getData();
     }
 

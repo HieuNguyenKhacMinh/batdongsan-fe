@@ -25,4 +25,15 @@ export class NewsService {
 
         return this.httpClient.post(url, comment, { headers });
     }
+
+    saveWishlist(wishlist: any) {
+        const url = "http://localhost:3000/cms/wishlist";
+        let headers = {
+            authorization: localStorage.getItem('authorization') || '',
+            user_id: localStorage.getItem('user_id') || '',
+            organization_id: localStorage.getItem('organization_id') || ''
+        };
+
+        return this.httpClient.post(url, wishlist, { headers });
+    }
 }

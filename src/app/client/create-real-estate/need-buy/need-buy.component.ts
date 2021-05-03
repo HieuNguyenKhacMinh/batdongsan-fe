@@ -1,12 +1,16 @@
 import { RealEstateService } from './../../real.estate.service';
 import { Component, OnInit } from '@angular/core';
 
+export enum IsBuyHire {
+    No, // sell
+    Yes // Buy-hire
+}
+
 @Component({
     selector: 'need-buy',
     templateUrl: 'need-buy.component.html',
     styleUrls: ["./need-buy.component.scss"]
 })
-
 export class NeedBuyComponent implements OnInit {
     constructor(private realEstateService: RealEstateService) { }
     realEstate: any = {};
@@ -42,7 +46,7 @@ export class NeedBuyComponent implements OnInit {
     
     ngOnInit() {
     
-        this.realEstateService.getFormality().subscribe((res: any[]) => {
+        this.realEstateService.getFormality(true).subscribe((res: any[]) => {
             this.formalities = res;
             this.realEstate.formality_id = this.formalities[0].id;
         })
@@ -109,6 +113,7 @@ export class NeedBuyComponent implements OnInit {
     
     save() {
         console.log(this.realEstate);
+        this.realEstate.is_buy_hire = IsBuyHire.Yes;
         this.realEstateService.save(this.realEstate).subscribe(res => {
             console.log(res);
     

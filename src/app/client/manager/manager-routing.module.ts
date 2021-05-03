@@ -61,7 +61,11 @@ const routes: Routes = [{
     },
     {
       path: "profile",
-      loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule)
+      loadChildren: () => import('./my-profile/profile.module').then(m => m.ProfileModule)
+    },
+    {
+      path: "wishlist",
+      loadChildren: () => import('./wishlist/wishlist.module').then(m => m.WishlistModule)
     },
     {
       path: '',

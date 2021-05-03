@@ -28,7 +28,6 @@ export class PipelineComponent implements OnInit {
       // change column display
       this.properties = res.content;
       const arr = [];
-      debugger
       this.columnsToDisplay = Object.keys(res.content)
         .sort((a: any, b: any) => (this.properties[a].order > this.properties[b].order) ? 1 : ((this.properties[b].order > this.properties[a].order) ? -1 : 0));
       this.columnsToDisplay.push('action');

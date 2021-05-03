@@ -36,7 +36,8 @@ export class PostService {
       authorization: localStorage.getItem('authorization') || '',
       site_id: localStorage.getItem('site_id') || ''
     };
-    return data.id ? this.httpClient.put(`${this.url}/${data.id}`, data, { headers }) :
+    return data.id ?
+      this.httpClient.put(`${this.url}/${data.id}`, data, { headers }) :
       this.httpClient.post(`${this.url}`, data, { headers });
   }
   delete(data: any) {

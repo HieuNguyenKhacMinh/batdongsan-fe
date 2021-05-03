@@ -2,7 +2,7 @@
     <div *ngIf="project" class="project">
         <mat-card class="example-card">
             <mat-card-header>
-                <mat-card-title>{{project.name}}</mat-card-title>
+                <mat-card-title style="color: red;">{{project.name}}</mat-card-title>
             </mat-card-header>
             <div style="float: left;">
             <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
@@ -39,82 +39,76 @@
             <pre>Đường vào: {{product.entry_width}} mét</pre>
             <pre>Mặt tiền: {{product.facade}} mặt tiền</pre> -->
             <mat-card-actions>
-                <button mat-button>LIKE</button>
-                <button mat-button>SHARE</button>
+                <button mat-button>Thích</button>
+                <button mat-button>Theo dõi</button>
             </mat-card-actions>
         </mat-card>
     </div>
-    <div class="comments" style="width: 100%;">
+    <div class="comments" *ngIf="project">
         <mat-card class="example-card" *ngFor="let comment of project.comments">
             <mat-card-header>
                 <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>{{ comment.created_by_user.full_name }}</mat-card-title>
+                <mat-card-subtitle>{{comment.created_date | date: 'dd/MM/yyyy HH:mm:ss' }}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
-                <p>
-                    {{comment.content}}
-                </p>
+                <pre>{{comment.content}}</pre>
             </mat-card-content>
             <mat-card-actions>
-                <button mat-button>LIKE</button>
-                <button mat-button (click)="comment.isReply=1">REPLY</button>
+                <button mat-button>Thích</button>
+                <button mat-button (click)="comment.isReply=!comment.isReply">Trả lời</button>
             </mat-card-actions>
-
+    
             <div *ngIf="comment.children">
-                <mat-card class="example-card" *ngFor="let comment of comment.children">
+                <mat-card class="example-card-children" *ngFor="let comment of comment.children">
                     <mat-card-header>
                         <div mat-card-avatar class="example-header-image"></div>
+                        <mat-card-title>{{ comment.created_by_user.full_name }}</mat-card-title>
+                        <mat-card-subtitle>{{comment.created_date | date: 'dd/MM/yyyy HH:mm:ss' }}</mat-card-subtitle>
                     </mat-card-header>
                     <mat-card-content>
-                        <p>
-                            {{comment.content}}
-                        </p>
+                        <pre>{{comment.content}}</pre>
                     </mat-card-content>
                     <mat-card-actions>
-                        <button mat-button>LIKE</button>
+                        <button mat-button>Thích</button>
                     </mat-card-actions>
-                </mat-card>`     
+                </mat-card>`
             </div>
-
-            <mat-card class="example-card" *ngIf="comment.isReply===1">
+    
+            <mat-card class="example-card-children" *ngIf="comment.isReply">
                 <mat-card-header>
                     <div mat-card-avatar class="example-header-image"></div>
-                    <mat-card-title>Shiba Inu</mat-card-title>
-                    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+                    <mat-card-title>{{ currentUser.fullname }}</mat-card-title>
                 </mat-card-header>
-
+    
                 <mat-card-content>
-
+    
                     <mat-form-field class="example-full-width">
-                        <mat-label>Reply a comment</mat-label>
+                        <mat-label>Bình luận</mat-label>
                         <textarea matInput [(ngModel)]="replyComment.content"></textarea>
                     </mat-form-field>
+                    <button mat-button (click)="sendComment(comment)">Gửi</button>
+    
                 </mat-card-content>
-                <mat-card-actions>
-                    <button mat-button (click)="sendComment(comment)">SEND</button>
-                </mat-card-actions>
             </mat-card>
-
+    
         </mat-card>
     </div>
     <div class="comment">
         <mat-card class="example-card">
             <mat-card-header>
                 <div mat-card-avatar class="example-header-image"></div>
-                <mat-card-title>Shiba Inu</mat-card-title>
-                <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+                <mat-card-title>{{ currentUser.fullname }}</mat-card-title>
             </mat-card-header>
-
+    
             <mat-card-content>
-
+    
                 <mat-form-field class="example-full-width">
-                    <mat-label>Leave a comment</mat-label>
+                    <mat-label>Bình luận</mat-label>
                     <textarea matInput [(ngModel)]="projectComment.content"></textarea>
-                </mat-form-field>
+                </mat-form-field><button mat-button (click)="sendComment()">Gửi</button>
             </mat-card-content>
-            <mat-card-actions>
-                <button mat-button (click)="sendComment()">SEND</button>
-            </mat-card-actions>
-            </mat-card>
+        </mat-card>
     </div>
 </div>
 

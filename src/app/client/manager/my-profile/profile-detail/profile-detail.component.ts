@@ -42,8 +42,9 @@ export class UserDetailComponent implements OnInit {
             // get properites
             this.properties = res.content;
             // filter những collum có visible != true
+           const arr = ["organization_id", "password", "role"]
             this.columns = Object.keys(res.content)
-                .filter(column => !["organization_id"].includes(column))
+                .filter(column => !arr.includes(column))
                 .filter((column: any) => this.properties[column].visible !== true);
             /** colums reference */
             const references = this.columns.filter((column: any) => this.properties[column].reference !== undefined);

@@ -9,20 +9,29 @@ import { ActivatedRoute } from '@angular/router';
 })
 
 export class BuyHireDetailComponent implements OnInit {
-    constructor(private realEstateService: RealEstateService,  private route: ActivatedRoute) { }
+    constructor(private realEstateService: RealEstateService, private route: ActivatedRoute) { }
 
-  
+
     productComment: any = {};
     replyComment: any = {};
     product: any;
+
+    currentUser: any = {};
+
     ngOnInit() {
         // get id from router
         // const id = this.route.snapshot.paramMap.get('id');
         // this.realEstateService.getProduct(id).subscribe(res => {
         //     this.product = res;
         //     console.log(this.product);
-            
+
         // })
+
+        this.currentUser = {
+            id: localStorage.getItem('user_id'),
+            fullname: localStorage.getItem('fullname')
+        }
+
         this.getData();
     }
 
@@ -37,14 +46,14 @@ export class BuyHireDetailComponent implements OnInit {
 
         })
     }
-    
+
     sendComment(comment?: any) {
-        if(comment){
-            
-        this.productComment = this.replyComment;
-        this.productComment.parent_id = comment.id;
+        if (comment) {
+
+            this.productComment = this.replyComment;
+            this.productComment.parent_id = comment.id;
         }
-        
+
         this.realEstateService.sendComment(this.productComment).subscribe(res => {
             this.getData();
             this.productComment = {};

@@ -45,9 +45,5 @@ export class PostItem2Component implements OnInit {
        
     }
 
-    updateCompany() {
-        this.service.update(this.dataSource).subscribe(res => {
-            this.setIsEdit(true);
-        })
-    }
+
 }

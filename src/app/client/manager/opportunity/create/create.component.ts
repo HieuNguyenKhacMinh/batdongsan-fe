@@ -25,7 +25,9 @@ export class CreateOpportunityComponent implements OnInit, OnChanges {
 
     async selectionChange($event) {
         // get column change
-        const columnSelected = $event.source.ngControl.name;
+        const columnSelected = $event.source.ngControl?.name;
+
+        if (!columnSelected) return;
         const value = $event.value;
         // get column dependent
         const dependentColumns = this.properties[columnSelected].reference.dependents;
@@ -70,10 +72,10 @@ export class CreateOpportunityComponent implements OnInit, OnChanges {
         }))
 
         this.dataSource = this.data.dataSource || {};
-        
+
         this.dataSource.organization_id = localStorage.getItem("organization_id");
 
-        await this.service.getData(`${this.properties["pipeline_id"].reference.api_url}/${this.dataSource.organization_id }`).subscribe((res) => {
+        await this.service.getData(`${this.properties["pipeline_id"].reference.api_url}/${this.dataSource.organization_id}`).subscribe((res) => {
             this.properties["pipeline_id"].data = res;
         })
     }

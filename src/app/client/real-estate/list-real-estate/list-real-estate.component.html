@@ -13,17 +13,16 @@
                         <p>
                             {{product.sub_description}}
                         </p>
-                        <p>
-                            <span><b>Giá: {{product.price}} {{product.product_unit.name}}</b></span>
-                            <span class="m-l-1"><b>Diện tích: {{product.acreage}} m²</b></span>
-                        </p>
+                            <div *ngIf="product.price"><span><b>Giá: {{product.price}} {{product.product_unit.name}}</b></span></div>
+                            <div *ngIf="!product.price"><b>Giá: Thương lượng</b></div>
+                            <div><span><b>Diện tích: {{product.acreage}} m²</b></span></div>
                     </div>
                 </div>
-
+                <div>{{product.wishlists?.length}} wishlists</div>
             </mat-card-content>
             <mat-card-actions>
-                <button mat-button>LIKE</button>
-                <button mat-button>SHARE</button>
+                <button mat-button (click)="addWishlist(product)">Thích</button>
+                <button mat-button>Theo dõi</button>
             </mat-card-actions>
         </mat-card>
     </div>

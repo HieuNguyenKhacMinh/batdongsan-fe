@@ -21,12 +21,12 @@ export class OpportunityListComponent implements OnInit {
   properties: any;
   pipelines: any[] = [];
   ngOnInit() {
-     //get table properties
-     this.opportunityService.getProperties().subscribe((res: any) => {
+    //get table properties
+    this.opportunityService.getProperties().subscribe((res: any) => {
       // change column display
       this.properties = res.content;
       this.columnsToDisplay = Object.keys(res.content)
-      .sort((a: any, b: any) => (this.properties[a].order > this.properties[b].order) ? 1 : ((this.properties[b].order > this.properties[a].order) ? -1 : 0));
+        .sort((a: any, b: any) => (this.properties[a].order > this.properties[b].order) ? 1 : ((this.properties[b].order > this.properties[a].order) ? -1 : 0));
       this.columnsToDisplay.push('action');
     })
     this.opportunityService.all().subscribe(res => {
@@ -63,7 +63,7 @@ export class OpportunityListComponent implements OnInit {
   openDialog(dataSource?: any): void {
     const dialogRef = this.dialog.open(CreateOpportunityComponent, {
       width: '550px',
-      data: {properties: this.properties, dataSource}
+      data: { properties: this.properties, dataSource: dataSource || {} }
     });
 
     dialogRef.afterClosed().subscribe(result => {

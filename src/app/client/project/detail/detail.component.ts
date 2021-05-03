@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ProjectDetailComponent implements OnInit {
     constructor(private route: ActivatedRoute, private projectSerivce: ProjectService) { }
 
+    currentUser: any = {};
     project: any;
     
     ngOnInit() {
@@ -18,6 +19,10 @@ export class ProjectDetailComponent implements OnInit {
         // this.projectSerivce.getProject(id).subscribe((res: any) => {
         //     this.project = res;
         // })
+        this.currentUser = {
+            id: localStorage.getItem('user_id'),
+            fullname: localStorage.getItem('fullname')
+        }
         this.getData();
     }
 

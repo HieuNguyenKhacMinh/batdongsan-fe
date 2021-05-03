@@ -15,6 +15,14 @@ example-container {
   padding: 20px;
 }
 
-a {
+a{
   text-decoration: none;
+  color: rgb(79, 79, 248);
 }
+a:active{
+  color: dimgray;
+}
+mat-list-item:hover {
+ background-color: rgb(197, 184, 184);
+}
+

@@ -19,7 +19,11 @@ export class OpportunityService {
             authorization: localStorage.getItem('authorization') || '',
             site_id: localStorage.getItem('site_id') || ''
         };
-        return this.http.put(`${url}/${data.id}`, data, { headers });
+        if(data.id) {
+            return this.http.put(`${url}/${data.id}`, data, { headers });
+        }
+        return this.http.post(`${url}`, data, { headers });
+
     }
 
     getProperties() {

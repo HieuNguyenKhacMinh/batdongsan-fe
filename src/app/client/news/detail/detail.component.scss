@@ -1,7 +1,7 @@
-.post{
-   margin-left: 150px;
+.post {
+    margin-left: 150px;
 }
-.content{
+.content {
     width: 600px;
     font-family: Roboto;
     font-style: normal;
@@ -12,14 +12,12 @@
     margin-bottom: 16px;
     display: inline-block;
 }
-.example-card{
+.example-card {
     width: 600px;
-   
 }
 img {
     height: 400px;
     margin-top: 4px;
-
 }
 .pre-wrap {
     word-wrap: break-word; /* IE 5.5-7 */
@@ -29,15 +27,27 @@ img {
     font-size: 14px;
     font-family: Serif;
 }
-.comments {
-    width: 100%;
-}
+
 .total {
     width: 1000px;
     margin-left: 150px;
 }
 
-
 .example-full-width {
- width: 617px;
+    width: 617px;
+}
+
+mat-card-content {
+    display: flex;
+}
+.comments {
+    width: 600px;
+
+    .example-card {
+        border: 1px solid #ccc;
+    }
+
+    .example-card-children {
+        width: 94%;
+    }
 }

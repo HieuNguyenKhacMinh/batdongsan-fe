@@ -1,45 +1,77 @@
 <p>notification works!</p>
-<div>
-  <button mat-button (click)="openDialog()" color="primary">Thêm</button>
-</div>
-<div *ngIf="columnsToDisplay">
-  <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
-    <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
-      <th mat-header-cell *matHeaderCellDef> {{properties[column]?.alias}} </th>
-      <td mat-cell *matCellDef="let element">
-        <div *ngIf="column !== 'action'">
-          <!-- if id-->
-          <div *ngIf="column === 'id'">
-            <span>
-              {{ element[column]?.slice(0, 5)}}
-            </span>
-          </div>
-          <!-- else id-->
-          <div *ngIf="column !== 'id'">
-            <!-- if -->
-            <div *ngIf="properties[column].reference !== undefined">
-              {{ element[properties[column].reference.table][properties[column].reference.label]}}
-            </div>
-            <!-- else -->
-            <div *ngIf="properties[column].reference === undefined">
-              <span>
-                {{ element[column]}}
-              </span>
-            </div>
-          </div>
-        </div>
-        <div *ngIf="column === 'action'">
-          <button mat-stroked-button (click)="openDialog(element)" color="">Sửa</button>
-          <button mat-stroked-button (click)="confirmDialog(element)" color="warn">Xóa</button>
-        </div>
-      </td>
-    </ng-container>
- 
-    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-    <tr mat-row *matRowDef="let element; columns: columnsToDisplay;" class="example-element-row"
-      [class.example-expanded-row]="expandedElement === element"
-      (click)="expandedElement = expandedElement === element ? null : element">
-    </tr>
-     
-  </table>
-</div>
+
+<mat-card class="example-card" *ngFor="let notify of dataSource">
+
+  <div *ngIf="notify.notification_type===0">
+    <div *ngIf="notify.post">
+      <a target="_blank" [routerLink]="['/client/profile',notify.user.id ]">
+        {{notify.user.full_name}}</a>
+      Thích
+      <a target="_blank" [routerLink]="['/client/news',notify.post.id ]"
+        routerLinkActive="router-link-active">
+        {{notify.post.title}}</a>
+    </div>
+    <p>
+      {{notify.name}}
+    </p>
+    {{notify.created_date | date: 'dd/MM/yyyy HH:mm:ss'}}
+  </div>
+
+  <div *ngIf="notify.notification_type===1">
+    <div *ngIf="notify.product">
+      <a target="_blank" [routerLink]="['/client/profile',notify.user.id ]">
+        {{notify.user.full_name}}</a>
+      Thích
+      <a target="_blank" [routerLink]="['/client/real-estate',notify.product.id ]"
+        routerLinkActive="router-link-active">
+        {{notify.product.title}}</a>
+    </div>
+    <p>
+      {{notify.name}}
+    </p>
+    {{notify.created_date | date: 'dd/MM/yyyy HH:mm:ss'}}
+  </div>
+
+  <div *ngIf="notify.notification_type===2">
+    <div *ngIf="notify.product">
+      <a target="_blank" [routerLink]="['/client/profile',notify.user.id ]">
+        {{notify.user.full_name}}</a>
+      Thích
+      <a target="_blank" [routerLink]="['/client/buy-hire',notify.product.id ]" routerLinkActive="router-link-active">
+        {{notify.product.title}}</a>
+    </div>
+    <p>
+      {{notify.name}}
+    </p>
+    {{notify.created_date | date: 'dd/MM/yyyy HH:mm:ss'}}
+  </div>
+
+  <div *ngIf="notify.notification_type===6">
+    <div *ngIf="notify.product">
+      <a target="_blank" [routerLink]="['/client/profile',notify.user.id ]">
+        {{notify.user.full_name}}</a>
+      bình luận
+      <a target="_blank" [routerLink]="['/client/real-estate',notify.product.id ]"
+        routerLinkActive="router-link-active">
+        {{notify.product.title}}</a>
+    </div>
+    <p>
+      {{notify.name}}
+    </p>
+    {{notify.created_date | date: 'dd/MM/yyyy HH:mm:ss'}}
+  </div>
+
+  <div *ngIf="notify.notification_type===7">
+    <div *ngIf="notify.product">
+      <a target="_blank" [routerLink]="['/client/profile',notify.user.id ]">
+        {{notify.user.full_name}}</a>
+      bình luận
+      <a target="_blank" [routerLink]="['/client/buy-hire',notify.product.id ]" routerLinkActive="router-link-active">
+        {{notify.product.title}}</a>
+    </div>
+    <p>
+      {{notify.name}}
+    </p>
+    {{notify.created_date | date: 'dd/MM/yyyy HH:mm:ss'}}
+  </div>
+</mat-card>

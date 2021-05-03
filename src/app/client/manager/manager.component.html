@@ -5,19 +5,26 @@
         <mat-list role="list">
 
             <mat-list-item role="listitem" style="background:#8189b7;color:white">
-                CÁ NHÂN
+                Cá nhân
             </mat-list-item>
-
             <mat-list-item role="listitem">
                 <a matLine [routerLink]="['/client/manager/profile']"
                     routerLinkActive="router-link-active">Hồ sơ</a>
             </mat-list-item>
             <mat-list-item role="listitem">
-                <a matLine [routerLink]="['/client/manager/notification']"
-                    routerLinkActive="router-link-active">Thông báo</a>
+                <a matLine [routerLink]="['/client/manager/profile']"
+                    routerLinkActive="router-link-active">Đổi mật khẩu</a>
+            </mat-list-item>
+            <mat-list-item role="listitem">
+                <a matLine [routerLink]="['/client/manager/wishlist']"
+                    routerLinkActive="router-link-active">Yêu thích</a>
             </mat-list-item>
             <mat-list-item role="listitem" style="background:#8189b7;color:white">
-                QUẢN LÝ TÀ KHOẢN
+               Công ty/Tổ chức
+            </mat-list-item>
+            <mat-list-item role="listitem">
+                <a matLine [routerLink]="['/client/manager/notification']"
+                    routerLinkActive="router-link-active">Thông báo</a>
             </mat-list-item>
             <mat-list-item role="listitem">
                 <a matLine [routerLink]="['/client/manager/company']"
@@ -25,10 +32,10 @@
             </mat-list-item>
             <mat-list-item role="listitem">
                 <a matLine [routerLink]="['/client/manager/users']"
-                    routerLinkActive="router-link-active">QL thành viên</a>
+                    routerLinkActive="router-link-active">Users</a>
             </mat-list-item>
             <mat-list-item role="listitem" style="background:#8189b7;color:white">
-                QUẢN LY CRM
+                 Bán hàng
             </mat-list-item>
             <mat-list-item role="listitem">
                 <a matLine [routerLink]="['/client/manager/lead']"
@@ -43,7 +50,7 @@
                     routerLinkActive="router-link-active">Cơ hội</a>
             </mat-list-item>
             <mat-list-item role="listitem" style="background:#8189b7;color:white">
-                QUẢN LÝ BÀI VIẾT
+                Tin đăng
             </mat-list-item>
             <mat-list-item role="listitem">
                 <a matLine [routerLink]="['/client/manager/post']"

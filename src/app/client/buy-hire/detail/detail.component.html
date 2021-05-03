@@ -3,9 +3,10 @@
     <div *ngIf="product" class="product">
         <mat-card class="example-card">
             <mat-card-header>
-                <mat-card-title>{{product.title}}</mat-card-title>
+                <mat-card-title style="color: red;">{{product.title}}</mat-card-title>
             </mat-card-header>
-            <p><b>Khu vực:</b> <span style="color: limegreen;"> {{product.product_type.name}}</span> tại <span style="color:#055699;">{{product.street}}</span>, {{product.wards.name}}, {{product.city.name}}</p>
+            <p><b>Khu vực:</b> <span style="color: limegreen;"> {{product.product_type.name}}</span> tại <span
+                    style="color:#055699;">{{product.street}}</span>, {{product.wards.name}}, {{product.city.name}}</p>
             <pre><b>Gía:</b>   <span style="color: limegreen;">{{product.price}} {{product.product_unit.name}}</span>  <b>Diện tích:</b>  <span style="color: limegreen;">{{product.acreage}} m2</span></pre>
 
             <p><b>Thông tin mô tả</b></p>
@@ -15,11 +16,11 @@
             </pre>
             </mat-card-content>
             <div style="float: left;margin-right: 50px;">
-            <p><b>Đặc điểm bất động sản</b></p>
-            <pre>Thuộc dự án: <a [routerLink]="['/client/projects/', product.project.id]" routerLinkActive="router-link-active" >{{product.project.name}}</a></pre>
-            <pre>Địa chỉ: {{product.street}} - {{product.wards.name}} - {{product.city.name}}</pre>
-            <pre>Loại tin rao: {{product.product_type.name}}</pre>
-            <pre>Mặt tiền: {{product.facade}} m</pre>
+                <p><b>Đặc điểm bất động sản</b></p>
+                <pre>Thuộc dự án: <a [routerLink]="['/client/projects/', product.project.id]" routerLinkActive="router-link-active" >{{product.project.name}}</a></pre>
+                <pre>Địa chỉ: {{product.street}} - {{product.wards.name}} - {{product.city.name}}</pre>
+                <pre>Loại tin rao: {{product.product_type.name}}</pre>
+                <pre>Mặt tiền: {{product.facade}} m</pre>
             </div>
             <div>
                 <p><b>Thông tin liên hệ</b></p>
@@ -28,87 +29,85 @@
                 <pre>Email: <span style="color: #055699;">{{product.email}}</span></pre>
             </div>
 
+          
             <!-- <p><b>Thông tin dự án</b></p>
             <pre>Loại tin đăng: {{product.product_type}}</pre>
             <pre>Địa chỉ: {{product.home_number}},{{product.street}},{{product.wards}}</pre>
             <pre>Đường vào: {{product.entry_width}} mét</pre>
             <pre>Mặt tiền: {{product.facade}} mặt tiền</pre> -->
             <mat-card-actions style="clear: left;">
-                <button mat-button>LIKE</button>
-                <button mat-button>SHARE</button>
+                <p>
+                    {{product.wishlists?.length}} wishlists
+                </p>
+                <button mat-button>Thích</button>
+                <button mat-button>Theo dõi</button>
             </mat-card-actions>
         </mat-card>
     </div>
-    <div class="comments">
+    <div class="comments" *ngIf="product">
         <mat-card class="example-card" *ngFor="let comment of product.comments">
             <mat-card-header>
                 <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>{{ comment.created_by_user.full_name }}</mat-card-title>
+                <mat-card-subtitle>{{comment.created_date | date: 'dd/MM/yyyy HH:mm:ss' }}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
-                <p>
-                    {{comment.content}}
-                </p>
+                <pre>{{comment.content}}</pre>
             </mat-card-content>
             <mat-card-actions>
-                <button mat-button>LIKE</button>
-                <button mat-button (click)="comment.isReply=1">REPLY</button>
+                <button mat-button>Thích</button>
+                <button mat-button (click)="comment.isReply=!comment.isReply">Trả lời</button>
             </mat-card-actions>
 
             <div *ngIf="comment.children">
-                <mat-card class="example-card" *ngFor="let comment of comment.children">
+                <mat-card class="example-card-children" *ngFor="let comment of comment.children">
                     <mat-card-header>
                         <div mat-card-avatar class="example-header-image"></div>
+                        <mat-card-title>{{ comment.created_by_user.full_name }}</mat-card-title>
+                        <mat-card-subtitle>{{comment.created_date | date: 'dd/MM/yyyy HH:mm:ss' }}</mat-card-subtitle>
                     </mat-card-header>
                     <mat-card-content>
-                        <p>
-                            {{comment.content}}
-                        </p>
+                        <pre>{{comment.content}}</pre>
                     </mat-card-content>
                     <mat-card-actions>
-                        <button mat-button>LIKE</button>
+                        <button mat-button>Thích</button>
                     </mat-card-actions>
-                </mat-card>`     
+                </mat-card>`
             </div>
 
-            <mat-card class="example-card" *ngIf="comment.isReply===1">
+            <mat-card class="example-card-children" *ngIf="comment.isReply">
                 <mat-card-header>
                     <div mat-card-avatar class="example-header-image"></div>
-                    <mat-card-title>Shiba Inu</mat-card-title>
-                    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+                    <mat-card-title>{{ currentUser.fullname }}</mat-card-title>
                 </mat-card-header>
 
                 <mat-card-content>
 
                     <mat-form-field class="example-full-width">
-                        <mat-label>Reply a comment</mat-label>
+                        <mat-label>Bình luận</mat-label>
                         <textarea matInput [(ngModel)]="replyComment.content"></textarea>
                     </mat-form-field>
+                    <button mat-button (click)="sendComment(comment)">Gửi</button>
+
                 </mat-card-content>
-                <mat-card-actions>
-                    <button mat-button (click)="sendComment(comment)">SEND</button>
-                </mat-card-actions>
             </mat-card>
 
         </mat-card>
     </div>
     <div class="comment">
-        <<mat-card class="example-card">
+        <mat-card class="example-card">
             <mat-card-header>
                 <div mat-card-avatar class="example-header-image"></div>
-                <mat-card-title>Shiba Inu</mat-card-title>
-                <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+                <mat-card-title>{{ currentUser.fullname }}</mat-card-title>
             </mat-card-header>
 
             <mat-card-content>
 
                 <mat-form-field class="example-full-width">
-                    <mat-label>Leave a comment</mat-label>
+                    <mat-label>Bình luận</mat-label>
                     <textarea matInput [(ngModel)]="productComment.content"></textarea>
-                </mat-form-field>
+                </mat-form-field><button mat-button (click)="sendComment()">Gửi</button>
             </mat-card-content>
-            <mat-card-actions>
-                <button mat-button (click)="sendComment()">SEND</button>
-            </mat-card-actions>
-            </mat-card>
+        </mat-card>
     </div>
 </div>

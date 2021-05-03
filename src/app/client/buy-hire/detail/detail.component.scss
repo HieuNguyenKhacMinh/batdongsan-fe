@@ -22,7 +22,7 @@
         background-size: cover;
     }
     .example-full-width {
-        width: 100%;
+        width: 85%;
     }
 
     .reply {
@@ -46,6 +46,17 @@ img {
 pre{
     font-family: serif;
 }
-mat-card-header{
-    color: #055699;
+mat-card-content {
+    display: flex;
+}
+.comments {
+    width: 600px;
+
+    .example-card {
+        border: 1px solid #ccc;
+    }
+
+    .example-card-children {
+        width: 94%;
+    }
 }

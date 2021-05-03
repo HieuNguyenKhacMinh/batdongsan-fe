@@ -1,3 +1,4 @@
+import { UserProfileComponent } from './profile/profile.component';
 import { CreateRealEstateComponent } from './create-real-estate/create-real-estate.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -39,6 +40,10 @@ const routes: Routes = [{
     {
       path: "create-real-estate",
       component: CreateRealEstateComponent,
+    },
+    {
+      path: "profile/:id",
+      component: UserProfileComponent,
     },
   ],
 }];
