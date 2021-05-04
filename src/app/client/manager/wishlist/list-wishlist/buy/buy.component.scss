@@ -68,25 +68,24 @@
 //     }
 // }
 
-
 .category-post {
     width: 1000px;
     display: flex;
     display: inline-block;
-.example-card {
-    margin: 1rem;
-   width: 200px;
-   float: left;
-  }
-  .conten{
-      width: 200px;
-      height: 635px;
-      float: left;
-  }
-  .example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    background-size: cover;
-  }
+    .example-card {
+        margin: 1rem;
+        //    width: 200px;
+        float: left;
+    }
+    .content {
+        width: 200px;
+        height: 635px;
+        float: left;
+    }
+    .example-header-image {
+        background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+        background-size: cover;
+    }
 }
 .pre-wrap {
     word-wrap: break-word; /* IE 5.5-7 */

@@ -1,21 +1,21 @@
-import { ListRealEstateComponent } from './list-real-estate/list-real-estate.component';
+import { ListWishlistComponent } from './list-wishlist/list-wishlist.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { RealEstateComponent } from './real-estate.component';
-import { RealEstateDetailComponent } from './detail/detail.component';
+import { WishlistComponent } from './wishlist.component';
+import {  WishlistDetailComponent } from './detail/detail.component';
 
 const routes: Routes = [{
     path: '',
-    component: RealEstateComponent,
+    component: WishlistComponent,
     children: [
         { path: '', redirectTo: 'list', pathMatch: '**' },
         {
             path: 'list',
-            component: ListRealEstateComponent,
+            component: ListWishlistComponent,
         },
         {
             path: ':id',
-            component: RealEstateDetailComponent,
+            component: WishlistDetailComponent,
         },
     ],
 }];

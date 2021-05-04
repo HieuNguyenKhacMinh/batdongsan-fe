@@ -1,0 +1,17 @@
+<mat-tab-group>
+    <mat-tab label="Bài viết">
+        <wishlist-post [posts]="posts"></wishlist-post>
+    </mat-tab>
+    <mat-tab label="Cần bán - Cho thuê">
+        <wishlist-sell [products]="sellProducts"></wishlist-sell>
+    </mat-tab>
+    <mat-tab label="Cần mua - thuê">
+        <wishlist-buy [products]="buyProducts"></wishlist-buy>
+    </mat-tab>
+    <mat-tab label="Dự án">
+        <wishlist-project [projects]="projects"></wishlist-project>
+    </mat-tab>
+</mat-tab-group>
+
+
+

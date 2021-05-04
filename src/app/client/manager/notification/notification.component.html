@@ -1,12 +1,10 @@
-<p>notification works!</p>
-
 <mat-card class="example-card" *ngFor="let notify of dataSource">
 
   <div *ngIf="notify.notification_type===0">
     <div *ngIf="notify.post">
       <a target="_blank" [routerLink]="['/client/profile',notify.user.id ]">
         {{notify.user.full_name}}</a>
-      Thích
+      thích bài viết
       <a target="_blank" [routerLink]="['/client/news',notify.post.id ]"
         routerLinkActive="router-link-active">
         {{notify.post.title}}</a>
@@ -21,7 +19,7 @@
     <div *ngIf="notify.product">
       <a target="_blank" [routerLink]="['/client/profile',notify.user.id ]">
         {{notify.user.full_name}}</a>
-      Thích
+      thích sản phẩm
       <a target="_blank" [routerLink]="['/client/real-estate',notify.product.id ]"
         routerLinkActive="router-link-active">
         {{notify.product.title}}</a>
@@ -36,9 +34,24 @@
     <div *ngIf="notify.product">
       <a target="_blank" [routerLink]="['/client/profile',notify.user.id ]">
         {{notify.user.full_name}}</a>
-      Thích
+      Thích Sản phẩm
       <a target="_blank" [routerLink]="['/client/buy-hire',notify.product.id ]" routerLinkActive="router-link-active">
         {{notify.product.title}}</a>
+    </div>
+    <p>
+      {{notify.name}}
+    </p>
+    {{notify.created_date | date: 'dd/MM/yyyy HH:mm:ss'}}
+  </div>
+
+  <div *ngIf="notify.notification_type===3">
+    <div *ngIf="notify.project">
+      <a target="_blank" [routerLink]="['/client/profile',notify.user.id ]">
+        {{notify.user.full_name}}</a>
+      thích dự án
+      <a target="_blank" [routerLink]="['/client/projects',notify.project.id ]"
+        routerLinkActive="router-link-active">
+        {{notify.project.name}}</a>
     </div>
     <p>
       {{notify.name}}
@@ -50,7 +63,7 @@
     <div *ngIf="notify.product">
       <a target="_blank" [routerLink]="['/client/profile',notify.user.id ]">
         {{notify.user.full_name}}</a>
-      bình luận
+      bình luận sản phẩm 
       <a target="_blank" [routerLink]="['/client/real-estate',notify.product.id ]"
         routerLinkActive="router-link-active">
         {{notify.product.title}}</a>
@@ -65,7 +78,7 @@
     <div *ngIf="notify.product">
       <a target="_blank" [routerLink]="['/client/profile',notify.user.id ]">
         {{notify.user.full_name}}</a>
-      bình luận
+      bình luận sản phẩm
       <a target="_blank" [routerLink]="['/client/buy-hire',notify.product.id ]" routerLinkActive="router-link-active">
         {{notify.product.title}}</a>
     </div>

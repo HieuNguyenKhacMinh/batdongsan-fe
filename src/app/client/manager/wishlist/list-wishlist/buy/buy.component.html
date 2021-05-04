@@ -1,8 +1,6 @@
-
 <div class="category-post">
-    <!-- <div class="chill"><search-real-estate (change)="changeConditionSearch($event)"></search-real-estate></div> -->
     <mat-card class="example-card" *ngFor="let product of products">
-        <div class="conten">
+        <div class="content">
             <mat-card-header>
                 <mat-card-title [routerLink]="['../../../real-estate', product.id]"
                     routerLinkActive="router-link-active" style="color:rgb(158, 27, 27);text-transform: uppercase;">
@@ -15,10 +13,12 @@
                 <p class="pre-wrap">
                     {{product.sub_description}}
                 </p>
-                <p>
-                    <span><b>Giá: {{product.price}} {{product.product_unit.name}}</b></span>
+                <div>
+                    <div *ngIf="product.price && product.product_unit">
+                        <span><b>Giá: {{product.price}} {{product.product_unit.name}}</b></span>
+                    </div>
                     <span class="m-l-1"><b> | Diện tích: {{product.acreage}} m²</b></span>
-                </p>
+                </div>
             </mat-card-content>
             <mat-card-actions>
                 <!-- <button mat-button [routerLink]="['../', product.id]" routerLinkActive="router-link-active" >Edit</button> -->

@@ -13,9 +13,13 @@
         <mat-icon>add</mat-icon>
     </button>
 
-    <button mat-icon-button class="example-icon favorite-icon" [routerLink]="['/client/manager/notification']"
+    <button mat-icon-button class="example-icon favorite-icon" [routerLink]="['/client/manager/wishlist']"
     routerLinkActive="router-link-active" aria-label="Example icon-button with heart icon">
-    <mat-icon>bell</mat-icon>
+    <mat-icon>favorite</mat-icon>
+</button>
+<button mat-icon-button class="example-icon favorite-icon" [routerLink]="['/client/manager/notification']"
+routerLinkActive="router-link-active" aria-label="Example icon-button with heart icon">
+<mat-icon>bell</mat-icon>
 </button>
     <button *ngIf="!userId" [routerLink]="['/auth/login']" routerLinkActive="router-link-active" mat-button
         class="example-icon" aria-label="Example icon-button with share icon">

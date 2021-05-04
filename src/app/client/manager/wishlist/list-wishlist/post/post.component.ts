@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
     selector: 'wishlist-post',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class WishlistPostComponent implements OnInit {
+
+    @Input() posts: any[] = [];
+    
     constructor() { }
 
     ngOnInit() { }

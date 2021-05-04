@@ -1,9 +1,11 @@
-<!-- Hello world!! -->
-
 <mat-drawer-container class="example-container" autosize>
     <mat-drawer #drawer class="example-sidenav" mode="side" [opened]="true">
         <mat-list role="list">
 
+            <mat-list-item role="listitem">
+                <a matLine [routerLink]="['/client/manager/dashboard']"
+                    routerLinkActive="router-link-active">Dashboard</a>
+            </mat-list-item>
             <mat-list-item role="listitem" style="background:#8189b7;color:white">
                 Cá nhân
             </mat-list-item>
@@ -64,6 +66,10 @@
                 <a matLine [routerLink]="['/client/manager/buy-hire/list']"
                     routerLinkActive="router-link-active">Nhà đất cần mua/ thuê</a>
             </mat-list-item>
+            <mat-list-item role="listitem">
+                <a matLine [routerLink]="['/client/manager/projects/list']"
+                    routerLinkActive="router-link-active">Dự án</a>
+            </mat-list-item>
             <mat-list-item role="listitem" style="background:#8189b7;color:white">
                 CÀI ĐẶT
             </mat-list-item>
@@ -80,8 +86,6 @@
         <button type="button" mat-icon-button (click)="drawer.toggle()">
             <mat-icon>menu</mat-icon>
         </button>
-        hello
-
         <router-outlet></router-outlet>
     </div>
 

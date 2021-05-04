@@ -17,14 +17,14 @@ export class ProjectItemComponent implements OnInit {
         this.projects = this.projects.slice(0, 4);
     }
 
-    addWishlist(project: any) {
-        console.log(project.id);
-        this.projectService.saveWishlist({ project_id: project.id }).subscribe((res: any) => {
-            const product = this.projects.find(p => p.id === res.project_id);
+    addWishlist(pj: any) {
+        console.log(pj.id);
+        this.projectService.saveWishlist({ project_id: pj.id }).subscribe((res: any) => {
+            const project = this.projects.find(p => p.id === res.project_id);
             if (res.delete_flag === 0) {
                 project.wishlists.push(res);
             } else {
-                product.wishlists.splice(product.wishlists.findIndex(w => w.id === res.id), 1)
+                project.wishlists.splice(project.wishlists.findIndex(w => w.id === res.id), 1)
             }
         });
     }

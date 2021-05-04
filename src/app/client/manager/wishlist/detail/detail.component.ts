@@ -8,7 +8,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
     styleUrls: ["./detail.component.scss"]
 })
 
-export class RealEstateDetailComponent implements OnInit {
+export class WishlistDetailComponent implements OnInit {
     constructor(private realEstateService: RealEstateService,  private route: ActivatedRoute
         ) { }
     
@@ -18,14 +18,6 @@ export class RealEstateDetailComponent implements OnInit {
 
     async ngOnInit() {
         
-        // get id from router
-        // const id = this.route.snapshot.paramMap.get('id');
-        // this.realEstateService.getProduct(id).subscribe(res => {
-        //     this.product = res;
-        //     console.log(this.product);
-            
-        // })
-
         const id = this.route.snapshot.paramMap.get('id');
         
         const organization_id = localStorage.getItem("organization_id");

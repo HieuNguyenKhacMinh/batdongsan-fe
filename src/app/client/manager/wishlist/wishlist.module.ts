@@ -1,17 +1,17 @@
 import { WishlistService } from './/wishlist.service';
-import { WishlistProjectComponent } from './list-real-estate/project/project.component';
-import { WishlistSellComponent } from './list-real-estate/sell/sell.component';
-import { WishlistBuyComponent } from './list-real-estate/buy/buy.component';
-import { WishlistPostComponent } from './list-real-estate/post/post.component';
-import { RealEstateDetailComponent } from './detail/detail.component';
-import { RealEstateComponent } from './real-estate.component';
-import { RealEstateRoutingModule } from './real-estate.routing.module';
+import { WishlistProjectComponent } from './list-wishlist/project/project.component';
+import { WishlistSellComponent } from './list-wishlist/sell/sell.component';
+import { WishlistBuyComponent } from './list-wishlist/buy/buy.component';
+import { WishlistPostComponent } from './list-wishlist/post/post.component';
+import { WishlistDetailComponent } from './detail/detail.component';
+import { WishlistComponent } from './wishlist.component';
+import { RealEstateRoutingModule } from './wishlist.routing.module';
 import { MaterialModule } from '../../../material-module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { ListRealEstateComponent } from './list-real-estate/list-real-estate.component';
+import { ListWishlistComponent } from './list-wishlist/list-wishlist.component';
 import { RealEstateService } from './real.estate.service';
 
 @NgModule({
@@ -21,18 +21,18 @@ import { RealEstateService } from './real.estate.service';
         HttpClientModule,
         FormsModule,
         MaterialModule,
+        ReactiveFormsModule,
     ],
     exports: [],
     declarations: [
-        RealEstateComponent,
-        ListRealEstateComponent,
-        RealEstateDetailComponent,
+        WishlistComponent,
+        ListWishlistComponent,
+        WishlistDetailComponent,
         WishlistPostComponent,
         WishlistBuyComponent,
         WishlistSellComponent,
         WishlistProjectComponent
     ],
-
     providers: [
         RealEstateService,
         WishlistService

@@ -39,8 +39,8 @@
                 {{product.wishlists?.length}} wishlists
             </p>
             <mat-card-actions>
-                <button mat-button>Thích</button>
-                <button mat-button>Chia sẻ</button>
+                <button mat-button (click)="addWishlist(product)">Thích</button>
+                <button mat-button>Theo dõi</button>
             </mat-card-actions>
         </mat-card>
     </div>
