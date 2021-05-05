@@ -1,0 +1,10 @@
+
+<div>
+    <button mat-button [routerLink]="['../create']" routerLinkActive="router-link-active">Thêm</button>
+</div>
+<div>
+    <div *ngFor="let type of projectTypes">
+        <h1 *ngIf="type.projects != ''">{{type.name}}</h1>
+        <project-item [projects]="type.projects"></project-item>
+    </div>
+</div>

@@ -5,34 +5,42 @@
                 <mat-card-title style="color: red;">{{project.name}}</mat-card-title>
             </mat-card-header>
             <div style="float: left;">
-            <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-                alt="Photo of a Shiba Inu" style="margin-top:30px">
-           
-            <p style="color: #055699;" ><b>GIỚI THIỆU DỰ ÁN</b></p>
-            <mat-card-content>
-                <pre class="pre-wrap">
+                <div *ngIf="project.files && project.files.length > 0">
+                    <img mat-card-image src="{{ 'http://localhost:3000/' + project.files[0].path  }}"
+                        alt="Photo of a Shiba Inu" style="height: 100px;width: 200px;margin-left: 15px;">
+                </div>
+                <div *ngIf="!project.files || project.files.length === 0">
+                    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+                        alt="Photo of a Shiba Inu">
+                </div>
+                <p style="color: #055699;"><b>GIỚI THIỆU DỰ ÁN</b></p>
+                <mat-card-content>
+                    <pre class="pre-wrap">
                 {{project.description}}
             </pre>
-            </mat-card-content>
-        </div>
+                </mat-card-content>
+            </div>
             <div>
                 <h4 style="color: #055699;"><b>THÔNG TIN DỰ ÁN</b></h4>
                 <!-- <pre>Tên dự án: <a [routerLink]="['/client/projects/', product.project.id]" routerLinkActive="router-link-active" >{{product.project.name}}</a></pre> -->
-                <pre class="pre-wrap2"><span style="color:#5F6666;"><b> Tên dự án:</b></span> {{project.name}}</pre> 
-                <pre class="pre-wrap2"><span style="color:#5F6666;"><b> Tổng diện tích:</b></span> {{project.total_area}}</pre>
-                <pre class="pre-wrap2"><span style="color:#5F6666;"><b> Loại hình dự án:</b></span> {{project.projectType.name}}</pre>
-                <pre class="pre-wrap2"><span style="color:#5F6666;"><b> Đơn vị phân phối:</b></span> {{project.distribution_unit}}</pre>
-                <pre class="pre-wrap2"><span style="color:#5F6666;"><b> Địa chỉ:</b></span> {{project.address?.home_number}} - {{project.address?.street}} - {{project.wards?.name}} - {{project.district?.name}} - {{project.city?.name}} - {{project.country?.name}}</pre>
-                <pre class="pre-wrap2"><span style="color:#5F6666;"><b> Thuộc các tin rao bán: </b></span></pre> 
-                    <div *ngFor="let product of project.products">
+                <pre class="pre-wrap2"><span style="color:#5F6666;"><b> Tên dự án:</b></span> {{project.name}}</pre>
+                <pre
+                    class="pre-wrap2"><span style="color:#5F6666;"><b> Tổng diện tích:</b></span> {{project.total_area}}</pre>
+                <pre
+                    class="pre-wrap2"><span style="color:#5F6666;"><b> Loại hình dự án:</b></span> {{project.projectType.name}}</pre>
+                <pre
+                    class="pre-wrap2"><span style="color:#5F6666;"><b> Đơn vị phân phối:</b></span> {{project.distribution_unit}}</pre>
+                <pre
+                    class="pre-wrap2"><span style="color:#5F6666;"><b> Địa chỉ:</b></span> {{project.address?.home_number}} - {{project.address?.street}} - {{project.wards?.name}} - {{project.district?.name}} - {{project.city?.name}} - {{project.country?.name}}</pre>
+                <pre class="pre-wrap2"><span style="color:#5F6666;"><b> Thuộc các tin rao bán: </b></span></pre>
+                <div *ngFor="let product of project.products">
                     <div *ngIf=" product.project_id === project.id">
-                        <a [routerLink]="['../../real-estate', product.id]" 
-                        routerLinkActive="router-link-active">
+                        <a [routerLink]="['../../real-estate', product.id]" routerLinkActive="router-link-active">
                             {{product.sub_title}}</a>
                     </div>
                 </div>
             </div>
-           
+
             <!-- <p><b>Thông tin dự án</b></p>
             <pre>Loại tin đăng: {{product.product_type}}</pre>
             <pre>Địa chỉ: {{product.home_number}},{{product.street}},{{product.wards}}</pre>
@@ -58,7 +66,7 @@
                 <button mat-button>Thích</button>
                 <button mat-button (click)="comment.isReply=!comment.isReply">Trả lời</button>
             </mat-card-actions>
-    
+
             <div *ngIf="comment.children">
                 <mat-card class="example-card-children" *ngFor="let comment of comment.children">
                     <mat-card-header>
@@ -74,24 +82,24 @@
                     </mat-card-actions>
                 </mat-card>`
             </div>
-    
+
             <mat-card class="example-card-children" *ngIf="comment.isReply">
                 <mat-card-header>
                     <div mat-card-avatar class="example-header-image"></div>
                     <mat-card-title>{{ currentUser.fullname }}</mat-card-title>
                 </mat-card-header>
-    
+
                 <mat-card-content>
-    
+
                     <mat-form-field class="example-full-width">
                         <mat-label>Bình luận</mat-label>
                         <textarea matInput [(ngModel)]="replyComment.content"></textarea>
                     </mat-form-field>
                     <button mat-button (click)="sendComment(comment)">Gửi</button>
-    
+
                 </mat-card-content>
             </mat-card>
-    
+
         </mat-card>
     </div>
     <div class="comment">
@@ -100,9 +108,9 @@
                 <div mat-card-avatar class="example-header-image"></div>
                 <mat-card-title>{{ currentUser.fullname }}</mat-card-title>
             </mat-card-header>
-    
+
             <mat-card-content>
-    
+
                 <mat-form-field class="example-full-width">
                     <mat-label>Bình luận</mat-label>
                     <textarea matInput [(ngModel)]="projectComment.content"></textarea>
@@ -117,8 +125,8 @@
 
 
 <!-- <div *ngIf="project" class="project"> -->
-   
-    <!-- <mat-card class="example-card">
+
+<!-- <mat-card class="example-card">
         <mat-card-header>
             <mat-card-title>
                 {{project.name}}
@@ -134,7 +142,7 @@
             <p>
                 Tổng diện tích: {{project.total_area}} m²
             <!-- </p> -->
-            <!-- <pre class="pre-wrap">
+<!-- <pre class="pre-wrap">
                 {{project.description}}
             </pre>
         </mat-card-content>

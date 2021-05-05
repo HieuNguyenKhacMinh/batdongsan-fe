@@ -1,4 +1,5 @@
-<h3 style="text-align: center;margin: 30px 0px 0px 0px;color: #055699;"><b>ĐĂNG TIN RAO CẦN MUA, CẦN THUÊ NHÀ ĐẤT</b></h3>
+<h3 style="text-align: center;margin: 30px 0px 0px 0px;color: #055699;"><b>ĐĂNG TIN RAO CẦN MUA, CẦN THUÊ NHÀ ĐẤT</b>
+</h3>
 <h5 style="text-align: center;">(Quý vị nhập thông tin nhà đất cần mua hoặc cần thuê vào các mục dưới đây)</h5>
 
 <div class="form">
@@ -144,6 +145,15 @@
         <mat-label style="color:darkgray;">Email</mat-label>
         <input matInput [(ngModel)]="realEstate.email">
     </mat-form-field>
+    Hình ảnh
+    <div *ngIf="image">
+        <img src="{{ 'http://localhost:3000/' + image.path }}" />
+    </div>
+    <div class="form-group">
+        <label for="file">Choose File</label>
+        <input type="file" id="file" (change)="handleFileInput($event.target.files)">sdvsd
 
+        <button mat-button (click)="uploadImage()">Upload</button>
+    </div>
     <button mat-raised-button (click)="save()">Thêm mới</button>
 </div>

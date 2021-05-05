@@ -1,21 +1,29 @@
 <div class="real-estate">
     <search-real-estate (change)="changeConditionSearch($event)"></search-real-estate>
     <div style="width: 60%;">
-        <mat-card class="example-card" *ngFor="let product of products" >
+        <mat-card class="example-card" *ngFor="let product of products">
             <mat-card-header>
-                <mat-card-title [routerLink]="['../', product.id]" routerLinkActive="router-link-active" style="color: red;" > {{product.title}}</mat-card-title>
+                <mat-card-title [routerLink]="['../', product.id]" routerLinkActive="router-link-active"
+                    style="color: red;"> {{product.title}}</mat-card-title>
             </mat-card-header>
             <mat-card-content>
                 <div class="flex">
-                    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-                        alt="Photo of a Shiba Inu" style="height: 100px;width: 200px;margin-left: 15px;">
+                    <div *ngIf="product.files && product.files.length > 0">
+                        <img mat-card-image src="{{ 'http://localhost:3000/' +product.files[0].path  }}"
+                            alt="Photo of a Shiba Inu" style="height: 100px;width: 200px;margin-left: 15px;">
+                    </div>
+                    <div *ngIf="!product.files || product.files.length === 0">
+                        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+                        alt="Photo of a Shiba Inu">
+                    </div>
                     <div class="content">
                         <p>
                             {{product.sub_description}}
                         </p>
-                            <div *ngIf="product.price"><span><b>Giá: {{product.price}} {{product.product_unit.name}}</b></span></div>
-                            <div *ngIf="!product.price"><b>Giá: Thương lượng</b></div>
-                            <div><span><b>Diện tích: {{product.acreage}} m²</b></span></div>
+                        <div *ngIf="product.price"><span><b>Giá: {{product.price}}
+                                    {{product.product_unit.name}}</b></span></div>
+                        <div *ngIf="!product.price"><b>Giá: Thương lượng</b></div>
+                        <div><span><b>Diện tích: {{product.acreage}} m²</b></span></div>
                     </div>
                 </div>
                 <div>{{product.wishlists?.length}} wishlists</div>

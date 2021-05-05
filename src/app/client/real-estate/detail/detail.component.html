@@ -2,8 +2,14 @@
 <div class="total" *ngIf="product">
     <div class="product">
         <mat-card class="example-card">
-            <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-                alt="Photo of a Shiba Inu">
+            <div *ngIf="product.files && product.files.length > 0">
+                <img mat-card-image src="{{ 'http://localhost:3000/' + product.files[0].path  }}" alt="Photo of a Shiba Inu"
+                    style="height: 100px;width: 200px;margin-left: 15px;">
+            </div>
+            <div *ngIf="!product.files || product.files.length === 0">
+                <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+                    alt="Photo of a Shiba Inu">
+            </div>
             <mat-card-header>
                 <mat-card-title>{{product.title}}</mat-card-title>
             </mat-card-header>
@@ -26,8 +32,8 @@
             <pre class="pre-wrap2"><span style="color:#5F6666;"><b> Số phòng vệ sinh:</b></span> {{product.no_of_toilet}} phòng</pre>
             <pre class="pre-wrap2"><span style="color:#5F6666;"><b> Số tầng:</b></span> {{product.no_of_floors}} tầng</pre>
             <pre class="pre-wrap2"><span style="color:#5F6666;"><b> Pháp lý:</b></span> {{product.juridical}} phòng</pre>
-            <pre class="pre-wrap2"><span style="color:#5F6666;"><b> Hướng nhà:</b></span> {{product.house_direstion.name}}</pre>
-            <pre class="pre-wrap2"><span style="color:#5F6666;"><b> Hướng ban công:</b></span> {{product.balcony_direstion.name}}</pre>
+            <pre class="pre-wrap2" *ngIf="product.house_direstion"><span style="color:#5F6666;"><b> Hướng nhà:</b></span> {{product.house_direstion.name}}</pre>
+            <pre class="pre-wrap2" *ngIf="product.balcony_direstion"><span style="color:#5F6666;"><b> Hướng ban công:</b></span> {{product.balcony_direstion.name}}</pre>
            
             <!-- <p><b>Thông tin dự án</b></p>
             <div>Loại tin đăng: {{product.product_type}}</div>

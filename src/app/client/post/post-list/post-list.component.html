@@ -1,0 +1,7 @@
+<div>
+    <button mat-button [routerLink]="['../create']" routerLinkActive="router-link-active">Thêm</button>
+</div>
+ <div *ngFor="let cat of categories">
+    <h1 *ngIf="cat.posts != ''">{{cat.name}}</h1>
+    <app-news-category-post [posts]="cat.posts"></app-news-category-post>
+</div>

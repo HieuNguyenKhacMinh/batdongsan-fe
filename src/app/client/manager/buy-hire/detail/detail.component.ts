@@ -16,7 +16,7 @@ export class BuyHireDetailComponent implements OnInit {
 
     dataSource: any = {};
     product: any;
-
+    
     async ngOnInit() {
         
         // get id from router
@@ -74,10 +74,25 @@ export class BuyHireDetailComponent implements OnInit {
     }
 
     updateCompany() {
+        this.dataSource.file_id = this.image.id;
+        console.log(this.dataSource.file_id +"haaaaaaaaaaaaaaaddd");
+        console.log(this.image.id +"haaaaaaaaaaaaaaaddd");
         this.realEstateService.update(this.dataSource).subscribe(res => {
             this.setIsEdit(true);
         })
     }
-
+    fileToUpload: File = null;
+    handleFileInput(files: FileList) {
+        this.fileToUpload = files.item(0);
+    }
+    image: any;
+    uploadImage() {
+        this.realEstateService.postFile(this.fileToUpload).subscribe(data => {
+            console.log(data);
+            this.image = data;
+        }, error => {
+            console.log(error);
+        });
+    }
     
 }

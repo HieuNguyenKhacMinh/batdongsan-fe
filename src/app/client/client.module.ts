@@ -1,3 +1,6 @@
+import { PostModule } from './post/post.module';
+import { PostDetailComponent } from './post/post-detail/post-detail.component';
+import { ProjectItemComponent } from './project/list/project/project-item.component';
 import { ProfileService } from './profile/profile.service';
 import { UserProfileComponent } from './profile/profile.component';
 import { FooterComponent } from './footer/footer.component';
@@ -22,7 +25,7 @@ import { NeedSellComponent } from './create-real-estate/need-sell/need-sell.comp
         ClientRoutingModule,
         HttpClientModule,
         MaterialModule,
-        FormsModule,
+        FormsModule
     ],
     exports: [],
     declarations: [

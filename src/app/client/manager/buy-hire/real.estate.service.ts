@@ -118,5 +118,11 @@ export class RealEstateService {
         const url = "http://localhost:3000/cms/product";
         return this.httpClient.get(`${url}/${id}`);
       }
+      postFile(fileToUpload: File): Observable<any> {
+        const endpoint = 'http://localhost:3000';
+        const formData: FormData = new FormData();
+        formData.append('image', fileToUpload, fileToUpload.name);
+        return this.httpClient.post(endpoint, formData, { headers: {} });
+      }
     
 }

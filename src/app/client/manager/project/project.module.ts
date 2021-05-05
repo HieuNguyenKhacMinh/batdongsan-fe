@@ -1,26 +1,36 @@
-import { ProjectListComponent } from './project-list/project-list.component';
-import { ProjectService } from '../project/project.service';
-import { ProjectComponent } from './project.component';
-import { ProjectRoutingModule } from './project-routing.module';
-import { MaterialModule } from '../../../material-module';
-import { HttpClientModule } from '@angular/common/http';
-import { CommonModule } from '@angular/common';
+import { CreateProjectectComponent } from './list/create/create.component';
+import { ProjectService } from './project.service';
+import { ProjectItemComponent } from './list/project/project-item.component';
+import { MaterialModule } from './../../../material-module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { ProjectDetailComponent } from './project-detail/project-detail.component';
-
-
+import { ProjectRoutingModule } from './project.routing.module'
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { from } from 'rxjs';
+import { ProjectComponent } from './project.component';
+import { ListProjectComponent } from './list/list.component';
+import { ProjectDetailComponent } from './detail/detail.component';
 
 @NgModule({
-    imports: [  
+    imports: [
         CommonModule,
+        ProjectRoutingModule,
         HttpClientModule,
         MaterialModule,
-        ProjectRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
     ],
     exports: [],
-    declarations: [ProjectComponent,
-        ProjectListComponent,
-        ProjectDetailComponent],
-    providers: [ProjectService],
+    declarations: [
+        ProjectComponent,
+        ListProjectComponent,
+        ProjectDetailComponent,
+        ProjectItemComponent,
+        CreateProjectectComponent,
+    ],
+    providers: [
+        ProjectService
+    ],
 })
 export class ProjectModule { }

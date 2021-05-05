@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-client-manager-project',
-  templateUrl: './project.component.html',
-  styleUrls: ['./project.component.scss']
+    selector: 'app-client-project',
+    templateUrl: 'project.component.html',
+    styleUrls: ["./project.component.scss"]
 })
-export class ProjectComponent {
-  title = 'y';
+
+export class ProjectComponent implements OnInit {
+    constructor() { }
+
+    ngOnInit() { }
 }

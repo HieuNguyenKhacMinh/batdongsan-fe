@@ -1,4 +1,15 @@
 <div class="scroll">
+  Hình ảnh
+  <div *ngIf="image">
+    <img  src="{{ 'http://localhost:3000/' + image.path }}" /> 
+  </div>
+  <div class="form-group">
+      <label for="file">Choose File</label>
+      <input type="file"
+             id="file"
+             (change)="handleFileInput($event.target.files)"> 
+
+             <button mat-button cdkFocusInitial (click)="uploadImage()">Upload</button>
   <div *ngFor="let column of columns">
     <div *ngIf="column !== 'id'">
 

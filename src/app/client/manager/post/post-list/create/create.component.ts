@@ -31,8 +31,8 @@ export class CreatePostComponent implements OnInit {
         this.getColumns();
 
 
-    } 
-    
+    }
+
     getColumns() {
         this.service.getProperties().subscribe(async (res: any) => {
 
@@ -56,10 +56,27 @@ export class CreatePostComponent implements OnInit {
         })
     }
 
+
     create() {
+
+        this.dataSource.file_id = this.image.id;
         console.log(this.dataSource);
         this.service.update(this.dataSource).subscribe(res => {
         })
 
+    }
+
+    fileToUpload: File = null;
+    handleFileInput(files: FileList) {
+        this.fileToUpload = files.item(0);
+    }
+    image: any;
+    uploadImage() {
+        this.service.postFile(this.fileToUpload).subscribe(data => {
+            console.log(data);
+            this.image = data;
+        }, error => {
+            console.log(error);
+        });
     }
 }

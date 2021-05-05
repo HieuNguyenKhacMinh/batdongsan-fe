@@ -112,6 +112,7 @@ export class NeedBuyComponent implements OnInit {
     }
     
     save() {
+        this.realEstate.file_id = this.image.id;
         console.log(this.realEstate);
         this.realEstate.is_buy_hire = IsBuyHire.Yes;
         this.realEstateService.save(this.realEstate).subscribe(res => {
@@ -120,4 +121,18 @@ export class NeedBuyComponent implements OnInit {
         })
     }
        
+
+    fileToUpload: File = null;
+    handleFileInput(files: FileList) {
+        this.fileToUpload = files.item(0);
+    }
+    image: any;
+    uploadImage() {
+        this.realEstateService.postFile(this.fileToUpload).subscribe(data => {
+            console.log(data);
+            this.image = data;
+        }, error => {
+            console.log(error);
+        });
+    }
 }

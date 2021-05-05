@@ -1,8 +1,14 @@
 <div *ngIf="post" class="total">
     <div>
     <mat-card class="example-card">
-        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" 
-        alt="Photo of a Shiba Inu" style="margin-top: 4px;" >
+        <div *ngIf="post.files && post.files.length > 0">
+            <img mat-card-image src="{{ 'http://localhost:3000/' + post.files[0].path  }}"
+                alt="Photo of a Shiba Inu" style="height: 100px;width: 200px;margin-left: 15px;">
+        </div>
+        <div *ngIf="!post.files || post.files.length === 0">
+            <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+            alt="Photo of a Shiba Inu">
+        </div>
         <mat-card-header>
             <mat-card-title>{{post.title}}</mat-card-title>
         </mat-card-header>
