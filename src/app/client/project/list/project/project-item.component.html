@@ -12,11 +12,6 @@
             <img mat-card-image src="{{ 'http://localhost:3000/' + project.files[0].path  }}" alt="Photo of a Shiba Inu"
                 style="height: 100px;width: 200px;margin-left: 15px;">
         </div>
-        <div *ngIf="!project.files || project.files.length === 0">
-            <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-                alt="Photo of a Shiba Inu">
-        </div>
-
         <mat-card-content>
             <p>
                 {{project.address?.home_number}}, {{project.address?.street}} - {{project.wards?.name}} -

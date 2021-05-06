@@ -28,10 +28,10 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('user_role', res.role);
         localStorage.setItem('fullname', res.fullname);
        
-        if (res.role === 0) {
+        if (res.role === 2) {
           // this.router.navigate(['./admin']);
           location.href = "/admin";
-        } if (res.role === 1) {
+        } if (res.role === 0) {
           // this.router.navigate(['/client/manager']);
           location.href = "/client/manager";
         }

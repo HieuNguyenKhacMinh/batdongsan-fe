@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 
 export class CompanyListComponent implements OnInit {
     constructor() { }
-
-    ngOnInit() { }
+      role 
+    ngOnInit() {
+        this.role = +localStorage.getItem("user_role");
+     }
 }

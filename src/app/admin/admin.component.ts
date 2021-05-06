@@ -12,9 +12,10 @@ export class AdminComponent implements OnInit {
     constructor(private router: Router) { }
 
     ngOnInit() {
+
         const role = localStorage.getItem('user_role');
-        if (role !== undefined && 0 !== +role) {
-alert(" Bạn không có quyền truy cập trang")
+        if (role !== undefined && 2 !== +role) {
+            alert(" Bạn không có quyền truy cập trang")
             this.router.navigate(['/client']);
         }
     }

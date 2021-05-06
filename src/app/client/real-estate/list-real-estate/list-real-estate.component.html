@@ -12,10 +12,6 @@
                         <img mat-card-image src="{{ 'http://localhost:3000/' +product.files[0].path  }}"
                             alt="Photo of a Shiba Inu" style="height: 100px;width: 200px;margin-left: 15px;">
                     </div>
-                    <div *ngIf="!product.files || product.files.length === 0">
-                        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-                        alt="Photo of a Shiba Inu">
-                    </div>
                     <div class="content">
                         <p>
                             {{product.sub_description}}
@@ -26,7 +22,7 @@
                         <div><span><b>Diện tích: {{product.acreage}} m²</b></span></div>
                     </div>
                 </div>
-                <div>{{product.wishlists?.length}} wishlists</div>
+                <div>{{product.wishlists?.length}} Lượt thích</div>
             </mat-card-content>
             <mat-card-actions>
                 <button mat-button (click)="addWishlist(product)">Thích</button>

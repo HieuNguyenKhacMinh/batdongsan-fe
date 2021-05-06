@@ -13,7 +13,9 @@ export class PostItem2Component implements OnInit {
 
   @Input() posts: any
 
-  constructor(private service: PostService) { }
+  constructor(private service: PostService) { 
+      
+  }
 
   ngOnInit() {
     this.posts = this.posts.slice(0, 4);

@@ -49,7 +49,7 @@
                 element[properties[column].reference.table][properties[column].reference.label]}}
               </div>
               <div *ngIf="!properties[column].reference.api_url">
-                {{ properties[column].data | filterData : element[column] }}
+                {{ properties[column].data }}
               </div>
             </div>
             <!-- else -->

@@ -99,4 +99,5 @@ export class ListBuyHireComponent implements OnInit {
             this.setIsEdit(true);
         })
     }
+    
 }

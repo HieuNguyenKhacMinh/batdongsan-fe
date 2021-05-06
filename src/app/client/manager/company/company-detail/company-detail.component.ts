@@ -11,7 +11,9 @@ export class CompanyDetailComponent implements OnInit {
     constructor(private service: CompanyService) { }
     edit: any;
     company: any = {};
+    role 
     ngOnInit() {
+        this.role = +localStorage.getItem("user_role");
         this.setColumns()
         const companyId = localStorage.getItem("organization_id");
         if (companyId) {

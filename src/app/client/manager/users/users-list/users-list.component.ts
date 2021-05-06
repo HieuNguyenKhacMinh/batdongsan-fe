@@ -24,7 +24,10 @@ export class UsersListComponent implements OnInit {
       this.properties = res.content;
       const arr = ["organization_id", "password"]
       this.columnsToDisplay = Object.keys(res.content).filter(c => !arr.includes(c));
-      this.columnsToDisplay.push('action');
+      const role = localStorage.getItem("user_role");
+      if (1 === +role) {
+        this.columnsToDisplay.push('action');
+      }
     })
 
     this.getDatasource();

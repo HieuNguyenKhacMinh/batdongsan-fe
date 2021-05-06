@@ -10,7 +10,8 @@ import { RealEstateService } from '../../buy-hire/real.estate.service';
 })
 
 export class BuyHireDetailComponent implements OnInit {
-    constructor(private realEstateService: RealEstateService,  private route: ActivatedRoute
+    constructor(private realEstateService: RealEstateService,  
+        private route: ActivatedRoute
         ) { }
     
 

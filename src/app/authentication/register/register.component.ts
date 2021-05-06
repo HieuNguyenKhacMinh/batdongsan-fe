@@ -17,23 +17,13 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
   }
-   makeid(length) {
-    var result           = [];
-    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var charactersLength = characters.length;
-    for ( var i = 0; i < length; i++ ) {
-      result.push(characters.charAt(Math.floor(Math.random() * 
- charactersLength)));
-   }
-   return result.join('');
-}
   save() {
     console.log(this.user);
     if (this.company === 1) {
       this.user.domail = undefined;
     }
     if(this.company === 3){
-      this.user.company_name = this.makeid(20);
+      this.user.company_name = undefined;
       this.user.domail = undefined;
     }
     // if (!this.user.password.match(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8})$/)) {
