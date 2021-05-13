@@ -112,7 +112,8 @@ export class SearchBuyHireComponent implements OnInit {
 
         this.realEstateService.getFormality(true).subscribe((res: any[]) => {
             this.formalities = res;
-            this.search.formality_id = this.formalities[0].id;
+           // this.search.formality_id = this.formalities[0].id;
+            this.change.emit(this.search);
         })
 
         this.realEstateService.getProductType().subscribe((res: any[]) => {

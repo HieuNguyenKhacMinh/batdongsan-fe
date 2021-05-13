@@ -69,7 +69,7 @@ export class PostDetailComponent implements OnInit {
     handleFileInput(files: FileList) {
         this.fileToUpload = files.item(0);
     }
-    image: any;
+    image: any = {};
     uploadImage() {
         this.service.postFile(this.fileToUpload).subscribe(data => {
             console.log(data);

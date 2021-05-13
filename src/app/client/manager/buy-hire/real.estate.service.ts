@@ -69,7 +69,8 @@ export class RealEstateService {
         const url = "http://localhost:3000/cms/product";
         let headers = {
             authorization: localStorage.getItem('authorization') || '',
-            site_id: localStorage.getItem('site_id') || ''
+            site_id: localStorage.getItem('site_id') || '',
+            
         };
         return this.httpClient.post(url, product, { headers });
     }
@@ -102,6 +103,8 @@ export class RealEstateService {
           site_id: localStorage.getItem('site_id') || ''
         };
         const url = "http://localhost:3000/cms/product";
+        console.log(data);
+        
         return data.id ? this.httpClient.put(`${url}/${data.id}`, data, { headers }) :
           this.httpClient.post(`${url}`, data, { headers });
       }

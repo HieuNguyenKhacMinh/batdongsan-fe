@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class ProjectService {
@@ -41,5 +42,12 @@ export class ProjectService {
       site_id: localStorage.getItem('site_id') || ''
     };
     return this.http.get(`${url}`, { headers });
+  }
+
+  projectFile(fileToUpload: File): Observable<any> {
+    const endpoint = 'http://localhost:3000';
+    const formData: FormData = new FormData();
+    formData.append('image', fileToUpload, fileToUpload.name);
+    return this.http.post(endpoint, formData, { headers: {} });
   }
 }

@@ -9,12 +9,12 @@ export class RegisterService {
   login(user: any): any {
     return this.http.post('http://localhost:3000/auth/register', user);
   }
-  save(product): Observable<any> {
+  save(user): Observable<any> {
     const url = "http://localhost:3000/identity/auth/register";
     let headers = {
         authorization: localStorage.getItem('authorization') || '',
         site_id: localStorage.getItem('site_id') || ''
     };
-    return this.http.post(url, product, { headers });
+    return this.http.post(url, user, { headers });
 }
 }

@@ -10,26 +10,26 @@ import { RealEstateService } from '../../buy-hire/real.estate.service';
 })
 
 export class BuyHireDetailComponent implements OnInit {
-    constructor(private realEstateService: RealEstateService,  
+    constructor(private realEstateService: RealEstateService,
         private route: ActivatedRoute
-        ) { }
-    
+    ) { }
+
 
     dataSource: any = {};
     product: any;
-    
+
     async ngOnInit() {
-        
+
         // get id from router
         // const id = this.route.snapshot.paramMap.get('id');
         // this.realEstateService.getProduct(id).subscribe(res => {
         //     this.product = res;
         //     console.log(this.product);
-            
+
         // })
 
         const id = this.route.snapshot.paramMap.get('id');
-        
+
         const organization_id = localStorage.getItem("organization_id");
         this.dataSource.organization_id = organization_id;
 
@@ -70,14 +70,12 @@ export class BuyHireDetailComponent implements OnInit {
                     this.properties[column].data = res;
                 })
             }))
-
         })
     }
 
     updateCompany() {
+        debugger
         this.dataSource.file_id = this.image.id;
-        console.log(this.dataSource.file_id +"haaaaaaaaaaaaaaaddd");
-        console.log(this.image.id +"haaaaaaaaaaaaaaaddd");
         this.realEstateService.update(this.dataSource).subscribe(res => {
             this.setIsEdit(true);
         })
@@ -86,7 +84,7 @@ export class BuyHireDetailComponent implements OnInit {
     handleFileInput(files: FileList) {
         this.fileToUpload = files.item(0);
     }
-    image: any;
+    image: any = {};
     uploadImage() {
         this.realEstateService.postFile(this.fileToUpload).subscribe(data => {
             console.log(data);
@@ -95,5 +93,5 @@ export class BuyHireDetailComponent implements OnInit {
             console.log(error);
         });
     }
-    
+
 }

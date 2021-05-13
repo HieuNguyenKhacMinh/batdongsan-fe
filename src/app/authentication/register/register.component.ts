@@ -17,7 +17,9 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
   save() {
+
     console.log(this.user);
     if (this.company === 1) {
       this.user.domail = undefined;
@@ -26,13 +28,37 @@ export class RegisterComponent implements OnInit {
       this.user.company_name = undefined;
       this.user.domail = undefined;
     }
+    let kt =0;
+    if(this.user.password.length <6){
+      this.message = "Mật khẩu ít nhất 6 ký tự "
+    }
+    else{
+      for(let i = 0; i<this.user.password.length; i++){
+        if((this.user.password[i] >= 'a' && this.user.password[i] <= 'z') || (this.user.password[i] >= 'A' && this.user.password[i] <= 'Z')) {
+         kt = 1;
+         break;
+      } 
+      }
+      if(kt == 0){
+        this.message = "Mật khẩu ít nhất 6 ký tự bao gồm 1 chữ cái và số"
+      }
+
+    }
+   
+    
     // if (!this.user.password.match(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8})$/)) {
     //   this.message = "password must be containing at least 8 characters, 1 number, 1 upper and 1 lowercase"
     // }
-    if (!this.message)
+   
+    if (kt == 1){
       this.authService.save(this.user).subscribe(res => {
         console.log(res);
       })
+      window.alert("Đăng ký thành công")
+        location.href = "/auth/login";
+    }
+     
+     
   }
   // login(): void {
   //   const user = { username: this.username, password: this.password };

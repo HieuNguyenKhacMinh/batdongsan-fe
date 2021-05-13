@@ -68,7 +68,9 @@ export class RealEstateService {
         const url = "http://localhost:3000/cms/product";
         let headers = {
             authorization: localStorage.getItem('authorization') || '',
-            site_id: localStorage.getItem('site_id') || ''
+            site_id: localStorage.getItem('site_id') || '',
+            organization_id: localStorage.getItem('organization_id') || '',
+            user_id: localStorage.getItem('user_id') || ''
         };
         return this.httpClient.post(url, product, { headers });
     }

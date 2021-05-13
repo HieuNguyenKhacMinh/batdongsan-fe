@@ -16,7 +16,7 @@ export class ListRealEstateComponent implements OnInit {
     ngOnInit() {
         this.realEstateService.getProducts().subscribe((res: any[]) => {
             this.allProducts = res;
-            this.products = this.allProducts;
+            this.products = this.allProducts.filter(product => this.compareObjectAndObject(product, ""));
         })
     }
 

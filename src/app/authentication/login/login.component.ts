@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
         if (res.role === 2) {
           // this.router.navigate(['./admin']);
           location.href = "/admin";
-        } if (res.role === 0) {
+        } if (res.role === 0 || res.role === 1) {
           // this.router.navigate(['/client/manager']);
           location.href = "/client/manager";
         }

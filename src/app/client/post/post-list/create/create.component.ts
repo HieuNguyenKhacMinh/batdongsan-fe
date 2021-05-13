@@ -61,7 +61,7 @@ export class CreatePostComponent implements OnInit {
         this.fileToUpload = files.item(0);
     }
 
-    image: any;
+    image: any = {};
     create() {
 
         this.service.postFile(this.fileToUpload).subscribe(data => {

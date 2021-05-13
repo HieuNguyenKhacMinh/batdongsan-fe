@@ -21,7 +21,7 @@ export class ListBuyHireComponent implements OnInit {
     ngOnInit() {
         this.realEstateService.getProducts(true).subscribe((res: any[]) => {
             this.allProducts = res;
-            this.products = this.allProducts;
+            this.products = this.allProducts.filter(product => this.compareObjectAndObject(product, ""));
         })
 
         const id = this.route.snapshot.paramMap.get('id');

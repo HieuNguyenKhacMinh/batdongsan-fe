@@ -45,10 +45,10 @@
           <mat-label>Password</mat-label>
           <input type="password" matInput [(ngModel)]="user.password" id="lemail" required="">
           <mat-error *ngIf="message">
-            {{message}}
+            Mật khẩu ít nhất 6 ký tự bao gồm 1 chữ cái và số
           </mat-error>
         </mat-form-field>
-        <div *ngIf="message" style="color:red">{{message}}</div>
+        <div *ngIf="message " style="color:red">{{message}}</div>
       </div>
     </mat-card-content>
     <mat-card-actions style="text-align: center;">

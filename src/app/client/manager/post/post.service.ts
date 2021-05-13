@@ -19,7 +19,9 @@ export class PostService {
     return this.httpClient.get(`${url}/${id}`)
   }
   all(): any {
-    let headers = { authorization: localStorage.getItem('authorization') || '', organization_id: localStorage.getItem('organization_id') || '' }
+    let headers = { authorization: localStorage.getItem('authorization') || '', 
+    organization_id: localStorage.getItem('organization_id') || '',
+    user_id: localStorage.getItem('user_id') || '' }
     return this.httpClient.post(`${this.url}/all`, { headers });
   }
 
