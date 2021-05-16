@@ -4,7 +4,7 @@
         <mat-card class="example-card">
             <div *ngIf="product.files && product.files.length > 0">
                 <img mat-card-image src="{{ 'http://localhost:3000/' + product.files[0].path  }}" alt="Photo of a Shiba Inu"
-                    style="height: 100px;width: 200px;margin-left: 15px;">
+                    style="height: 400px;width: 600px;margin-left: 15px;">
             </div>
             <mat-card-header>
                 <mat-card-title>{{product.title}}</mat-card-title>
@@ -15,7 +15,7 @@
                 {{product.description}}
                 </pre>
             </mat-card-content>
-           
+            <div style="float: left;margin-right: 100px;">
             <h4><b>Đặc điểm nổi bậc</b></h4>
             <pre class="pre-wrap2" *ngIf="product.project"><span style="color:#5F6666;"><b>Thuộc dự án:</b></span> <a [routerLink]="['/client/projects/', product.project.id]"
                     routerLinkActive="router-link-active">{{product.project.name}}</a></pre>
@@ -30,14 +30,19 @@
             <pre class="pre-wrap2"><span style="color:#5F6666;"><b> Pháp lý:</b></span> {{product.juridical}} phòng</pre>
             <pre class="pre-wrap2" *ngIf="product.house_direstion"><span style="color:#5F6666;"><b> Hướng nhà:</b></span> {{product.house_direstion.name}}</pre>
             <pre class="pre-wrap2" *ngIf="product.balcony_direstion"><span style="color:#5F6666;"><b> Hướng ban công:</b></span> {{product.balcony_direstion.name}}</pre>
-           
+           </div>
+           <div>
+            <p><b>Liên hệ</b></p>
+            <pre>Tên liên hệ: <span style="color: #055699;">{{product.user?.full_name}}</span></pre>
+            <pre>Số điện thoại: <span style="color: #055699;">{{product.user?.phone_number}}</span></pre>
+        </div>
             <!-- <p><b>Thông tin dự án</b></p>
             <div>Loại tin đăng: {{product.product_type}}</div>
             <div>Địa chỉ: {{product.home_number}},{{product.street}},{{product.wards}}</div>
             <div>Đường vào: {{product.entry_width}} mét</div>
             <div>Mặt tiền: {{product.facade}} mặt tiền</div> -->
 
-            <p>
+            <p style="clear: left;">
                 {{product.wishlists?.length}} wishlists
             </p>
             <mat-card-actions>

@@ -1,3 +1,4 @@
+import { DeleteProjectComponent } from './delete/delete.component';
 import { CreateProjectectComponent } from './list/create/create.component';
 import { ProjectService } from './project.service';
 import { ProjectItemComponent } from './list/project/project-item.component';
@@ -28,6 +29,7 @@ import { ProjectDetailComponent } from './detail/detail.component';
         ProjectDetailComponent,
         ProjectItemComponent,
         CreateProjectectComponent,
+        DeleteProjectComponent,
     ],
     providers: [
         ProjectService

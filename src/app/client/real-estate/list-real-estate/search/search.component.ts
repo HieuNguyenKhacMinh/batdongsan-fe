@@ -30,7 +30,7 @@ export class SearchRealEstateComponent implements OnInit {
         name: "Tất cả"
 
     }, {
-        id: "< 500 triệu",
+        id: "500000000",
         name: "< 500 triệu"
 
     }, {
@@ -147,4 +147,13 @@ export class SearchRealEstateComponent implements OnInit {
         this.districts = this.allDistricts.filter(d => d.city_id === this.search.city_id);
         this.change.emit(this.search);
     }
+    selectedChanges() {
+        this.change.emit(this.search);
+    }
+
+    selectedPrices() {
+        console.log(this.search);
+        this.change.emit(this.search);
+    }
+    
 }

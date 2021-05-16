@@ -1,5 +1,7 @@
 import { ProjectService } from './../../project.service';
 import { Component, Input, OnInit } from '@angular/core';
+import { DeleteProjectComponent } from '../../delete/delete.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
     selector: 'project-item',
@@ -9,11 +11,26 @@ import { Component, Input, OnInit } from '@angular/core';
 
 export class ProjectItemComponent implements OnInit {
 
-    constructor(private projectService: ProjectService) { }
+    constructor(private projectService: ProjectService,public dialog: MatDialog) { }
 
     @Input() projects: any[];
-    
+    dataSource: any;
+    columnsToDisplay: any;
+    expandedElement: any | null | undefined;
+    properties: any;
     ngOnInit() { 
+        this.projectService.getProperties().subscribe((res: any) => {
+            // change column display
+            this.properties = res.content;
+      
+            const arr = ["description", "home_number", "street", "product_type", "product_unit_id",
+            "city_id", "wards_id", "district_id", "country_id"]
+            this.columnsToDisplay = Object.keys(res.content).filter(c => !arr.includes(c)).
+              sort((a: any, b: any) => (this.properties[a].order > this.properties[b].order) ? 1 : ((this.properties[b].order > this.properties[a].order) ? -1 : 0));
+            this.columnsToDisplay.push('action');
+          })
+      
+          this.getDatasource();
         this.projects = this.projects.slice(0, 4);
     }
 
@@ -28,4 +45,23 @@ export class ProjectItemComponent implements OnInit {
             }
         });
     }
+    confirmDialog(dataSource?: any): void {
+        const dialogRef = this.dialog.open(DeleteProjectComponent, {
+          width: '550px',
+          data: { properties: this.properties, dataSource }
+        });
+    
+        dialogRef.afterClosed().subscribe(result => {
+          console.log('The dialog was closed');
+    
+          this.getDatasource();
+        });
+      }
+      getDatasource() {
+        // set datasource
+        this.projectService.all().subscribe((res: any) => {
+          this.dataSource = res;
+        })
+      }
+    
 }

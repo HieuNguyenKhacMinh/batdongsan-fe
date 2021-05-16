@@ -22,8 +22,8 @@ export class ListWishlistComponent implements OnInit {
 
             this.posts = ws.filter(w=> w.post).map(w=> w.post);
             this.projects = ws.filter(w=> w.project).map(w=> w.project);
-            this.buyProducts = ws.filter(w=> w.product && w.product.is_buy_hire === 0).map(w=> w.product);
-            this.sellProducts = ws.filter(w=> w.product && w.product.is_buy_hire === 1).map(w=> w.product);
+            this.buyProducts = ws.filter(w=> w.product && w.product.is_buy_hire === 1).map(w=> w.product);
+            this.sellProducts = ws.filter(w=> w.product && w.product.is_buy_hire === 0).map(w=> w.product);
             console.log(this.wishlists);
             console.log(this.buyProducts);
             

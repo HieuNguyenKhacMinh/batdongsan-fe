@@ -148,4 +148,8 @@ export class SearchRealEstateComponent implements OnInit {
         this.districts = this.allDistricts.filter(d => d.city_id === this.search.city_id);
         this.change.emit(this.search);
     }
+    selectedPrice() {
+        console.log(this.search);
+        this.change.emit(this.search);
+    }
 }

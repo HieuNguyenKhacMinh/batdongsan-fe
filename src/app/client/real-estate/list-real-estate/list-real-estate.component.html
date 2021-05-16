@@ -22,7 +22,8 @@
                         <div><span><b>Diện tích: {{product.acreage}} m²</b></span></div>
                     </div>
                 </div>
-                <div>{{product.wishlists?.length}} Lượt thích</div>
+                <div><i style="margin-left: 10px;">Người đăng:</i> {{product.user?.full_name}}</div>
+                <div style="margin-left:10px;"><mat-icon>favorite</mat-icon>{{product.wishlists?.length}} </div>  
             </mat-card-content>
             <mat-card-actions>
                 <button mat-button (click)="addWishlist(product)">Thích</button>

@@ -15,7 +15,7 @@
 
     <mat-form-field appearance="fill" style="width: 100px;">
         <mat-label>Loại nhà đất</mat-label>
-        <mat-select>
+        <mat-select [(ngModel)]="search.product_type_id" (selectionChange)="selectedChanges()">
             <mat-option *ngFor="let p of productTypes" [value]="p.id">
                 {{p.name}}
             </mat-option>
@@ -43,9 +43,9 @@
         </mat-select>
     </mat-form-field>
     <!-- district -->
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="fill" *ngIf="districts">
         <mat-label>Quận Huyện</mat-label>
-        <mat-select *ngIf="districts">
+        <mat-select [(ngModel)]="search.district_id"(selectionChange)="selectedChanges()">
             <mat-option *ngFor="let p of districts" [value]="p.id">
                 {{p.name}}
             </mat-option>
@@ -54,7 +54,7 @@
     <!-- price -->
     <mat-form-field appearance="fill" style="width:100px;">
         <mat-label>Giá</mat-label>
-        <mat-select>
+        <mat-select [(ngModel)]="search.prices"(selectionChange)="selectedPrices()">
             <mat-option *ngFor="let p of prices" [value]="p.id">
                 {{p.name}}
             </mat-option>

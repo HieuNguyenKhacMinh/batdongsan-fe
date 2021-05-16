@@ -1,6 +1,6 @@
 <div>
     <div *ngFor="let type of projectTypes">
-        <h3>{{type.name}}</h3>
+        <h3 *ngIf="type.projects != ''"><i>{{type.name}}</i></h3>
         <project-item [projects]="type.projects"></project-item>
     </div>
 </div>

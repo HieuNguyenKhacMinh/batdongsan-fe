@@ -28,7 +28,16 @@ export class ListRealEstateComponent implements OnInit {
         
     }
 
-
+    get_min_max_price (prices: string){
+      let price= prices.split("-");
+      if(price[0]){
+        const min : number = +price[0];
+      }
+      if(price[1]){
+        const max : number = +price[1];
+      }
+      
+    }
     compareObjectAndObject(product, search) {
         const keys = Object.keys(search);
     

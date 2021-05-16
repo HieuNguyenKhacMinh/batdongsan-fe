@@ -78,4 +78,8 @@ export class ProjectService {
         formData.append('image', fileToUpload, fileToUpload.name);
         return this.httpClient.post(endpoint, formData, { headers: {} });
       }
+      all(): any {
+        let headers = { authorization: localStorage.getItem('authorization') || '', site_id: localStorage.getItem('site_id') || '' }
+        return this.httpClient.get(`${this.url}`, { headers });
+      }
 }

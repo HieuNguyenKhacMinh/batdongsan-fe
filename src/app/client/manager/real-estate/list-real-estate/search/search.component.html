@@ -54,7 +54,7 @@
     <!-- price -->
     <mat-form-field appearance="fill" style="width:70px;">
         <mat-label>Giá</mat-label>
-        <mat-select>
+        <mat-select [(ngModel)]="search.prices" (selectionChange)="selectedPrice()">
             <mat-option *ngFor="let p of prices" [value]="p.id">
                 {{p.name}}
             </mat-option>

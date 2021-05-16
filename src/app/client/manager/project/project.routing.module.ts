@@ -1,3 +1,4 @@
+import { DeleteProjectComponent } from './delete/delete.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ProjectComponent } from './project.component';
@@ -20,6 +21,10 @@ const routes: Routes = [{
     {
       path: "create",
       component: CreateProjectectComponent,
+    },
+    {
+      path: "delete",
+      component: DeleteProjectComponent,
     },
   ],
 }];
