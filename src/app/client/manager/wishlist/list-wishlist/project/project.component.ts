@@ -16,12 +16,8 @@ export class WishlistProjectComponent implements OnInit {
     addWishlist(project: any) {
         console.log(project.id);
         this.projectService.saveWishlist({ project_id: project.id }).subscribe((res: any) => {
-            const project = this.projects.find(p => p.id === res.project_id);
-            if (res.delete_flag === 0) {
-                project.wishlists.push(res);
-            } else {
-                project.wishlists.splice(project.wishlists.findIndex(w => w.id === res.id), 1)
-            }
+            const index = this.projects.findIndex(p => p.id === res.project_id);
+            this.projects.splice(index, 1);
         });
     }
 }

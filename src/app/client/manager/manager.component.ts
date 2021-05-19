@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./manager.component.scss']
 })
 export class ManagerComponent {
-  title = 'y';
+  title = 'RealEstate-';
   showFiller = true;
 }

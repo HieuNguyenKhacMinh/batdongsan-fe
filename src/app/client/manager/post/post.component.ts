@@ -10,7 +10,7 @@ import { DeletePostComponent } from 'src/app/admin/post/post/delete/delete.compo
   styleUrls: ['./post.component.scss']
 })
 export class PostComponent implements OnInit {
-  title = 'y';
+  title = 'RealEstate-';
   constructor(private postService: PostService, public dialog: MatDialog) {
 
   }

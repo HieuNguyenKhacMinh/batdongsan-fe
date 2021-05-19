@@ -12,7 +12,8 @@ import { OpportunityService } from '../opportunity.service';
 })
 
 export class OpportunityListComponent implements OnInit {
-  constructor(private opportunityService: OpportunityService, private http: HttpClient, public dialog: MatDialog) { }
+  constructor(private opportunityService: OpportunityService,
+    private http: HttpClient, public dialog: MatDialog) { }
 
 
   dataSource: any;

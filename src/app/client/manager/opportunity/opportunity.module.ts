@@ -1,3 +1,4 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OpportunityListComponent } from './opportunity-list/opportunity-list.component';
 import { OpportunityService } from './opportunity.service';
 import { OpportunityComponent } from './opportunity.component';
@@ -12,19 +13,22 @@ import { CreateOpportunityComponent } from './create/create.component';
 
 
 @NgModule({
-    imports: [  
+    imports: [
         CommonModule,
         HttpClientModule,
         MaterialModule,
         OpportunityRoutingModule,
+        FormsModule,
+        ReactiveFormsModule
     ],
     exports: [],
-    declarations: [OpportunityComponent,
+    declarations: [
+        OpportunityComponent,
         OpportunityListComponent,
         OpportunityDetailComponent,
         CreateOpportunityComponent,
     ],
-    entryComponents:[CreateOpportunityComponent],
+    entryComponents: [CreateOpportunityComponent],
     providers: [OpportunityService],
 })
 export class OpportunityModule { }

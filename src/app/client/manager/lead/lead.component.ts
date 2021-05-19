@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./lead.component.scss']
 })
 export class LeadComponent {
-  title = 'y';
+  title = 'RealEstate-';
 }

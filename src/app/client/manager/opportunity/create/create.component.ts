@@ -15,6 +15,11 @@ export class CreateOpportunityComponent implements OnInit, OnChanges {
         @Inject(MAT_DIALOG_DATA) public data: any) { }
 
 
+
+    dataSource: any = {};
+    columns: any;
+    properties: any;
+    references: any[];
     ngOnChanges(changes: SimpleChanges): void {
         console.log(changes);
     }
@@ -45,11 +50,6 @@ export class CreateOpportunityComponent implements OnInit, OnChanges {
         console.log(this.dataSource);
     }
 
-
-    dataSource: any = {};
-    columns: any;
-    properties: any;
-    references: any[];
     async ngOnInit() {
         // get properites
         this.properties = this.data.properties;
@@ -64,14 +64,14 @@ export class CreateOpportunityComponent implements OnInit, OnChanges {
 
         // get data referent
         await Promise.all(this.references.map(async column => {
-            if (!this.properties[column].reference.dependent) {
+            if (!this.properties[column].reference.dependent && this.properties[column].reference.api_url) {
                 await this.service.getData(this.properties[column].reference.api_url).subscribe((res) => {
                     this.properties[column].data = res;
                 })
             }
         }))
-
-        this.dataSource = this.data.dataSource || {};
+ 
+        this.dataSource = this.data.dataSource;
 
         this.dataSource.organization_id = localStorage.getItem("organization_id");
 

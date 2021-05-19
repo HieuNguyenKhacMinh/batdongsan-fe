@@ -1,4 +1,3 @@
-<div></div>
 <div class="scroll" *ngIf="dataSource">
   <div *ngFor="let column of columns">
     <div *ngIf="column !== 'id'">
@@ -32,8 +31,6 @@
             <input matInput [(ngModel)]="dataSource[column]">
           </mat-form-field>
         </div>
-
-
       </div>
     </div>
   </div>

@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent {
-  title = 'y';
+  title = 'RealEstate-';
 }
